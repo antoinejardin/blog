@@ -1,1 +1,2527 @@
-Hello World
+
+<!doctype html>
+<html>
+<head> 
+	<title>A blog on political science and data analysis</title>
+	<meta charset="utf-8"> 
+</head> 
+
+<body>
+
+<div id="header">
+<a href="http://fr.linkedin.com/pub/antoine-jardin/50/31/958">Linkedin</a> - <a href="https://www.facebook.com/ajardin2">Facebook</a> - <a href="http://www.cee.sciences-po.fr/fr/le-centre/107-antoine-jardin.html">Centre d'études européennes</a> - ajardin@gmail.com
+<br>
+<br>
+</div>
+
+<div id="nav">
+<ul>
+<li><a href="http://www.ajardin.eu">Index</a></li>
+<li><a href="">Cours</a></li>
+<li><a href="http://www.ajardin.eu/varia">Fichiers</a></li>
+<li><a href="http://www.latex-project.org/">Latex Home</a></li>
+<li><a href="http://www.ctan.org/">CTAN</a></li>
+<li><a href="https://www.gutenberg.eu.org/">Gutenberg</a></li>
+<li><a href="http://biblatex-biber.sourceforge.net/">Biber</a></li>
+<li><a href="http://cran.r-project.org/">R - CRAN</a></li>
+<li><a href="http://www.rstudio.com/">Rstudio</a></li>
+<li><a href="https://www.archlinux.org/">Archlinux</a></li>
+<li><a href="http://suckless.org/">Suckless</a></li>
+</ul>
+</div>
+
+<div id="history">
+<ul>
+<li><a href="#030914">03/09/2014 - Geoda et QGIS : Calculer des indices Bivariate Lisa et exporter les résultats</a></li>
+<li><a href="#060814">06/08/2014 - R : Convertir des fichier.dbf en fichier.csv</a></li>
+<li><a href="#300714_2">30/07/2014 - R : Mapping de surface 3D </a></li>
+<li><a href="#300714">20/07/2014 - R : Librairie Foreign et importation </a></li>
+<li><a href="#290714">29/07/2014 - R : Convertir un fichier .DBF en .csv</a></li>
+<li><a href="#100714">14/07/2014 - R / Contour3D & SM : Cartes et visualisations 3D</a></li>
+<li><a href="#100714">10/07/2014 - Stata 12 : Batch rename</a></li>
+<li><a href="#080714">08/07/2014 - R : Interpolation et projection géographique</a></li>
+<li><a href="#070714">07/07/2014 - R : Syntaxe article votpauvr</a></li>
+<li><a href="#070714_2">07/07/2014 - R / Lattice : Graphique wireframe</a></li>
+<li><a href="#110714_3">07/07/2014 - Facetting sous R, suite</a></li>
+<li><a href="#060714">06/07/2014 - Module rCarto : réaliser directement des cartes choroplèthes sans fusion</a></li>
+<li><a href="#040714">04/07/2014 - Avant le Module rCarto</a></li>
+<li><a href="#030714">03/07/2014 - Arrange multiple plots with gridExtra</a></li>
+<li><a href="#020714">02/07/2014 - Facetting, scatterplot et droite des moindres carrés sous R</a></li>
+<li><a href="#020714_2">02/07/2014 - Cartographie sous R - premier essai</a></li>
+<li><a href="#020714">02/07/2014 - Configuration Latex pour fichier de thèse et bibliographie</a></li>
+<li><a href="#290614">29/06/2014 - Scatter plot avec facetting et ajustement linéaire sous R</a></li>
+<li><a href="#280614">28/06/2014 - Tableau de régression en Latex</a></li>
+<li><a href="#270614">27/06/2014 - Introduction à GGplot2 avec Qplot sous R</a></li>
+<li><a href="#260614">26/06/2014 - Régressions écologiques avec R</a></li>
+<li><a href="#260614_2">26/06/2014 - Créer un Ramdisk (sous Windows)</a></li>
+<li><a href="#170614">17/06/2014 - Les élections européennes de 2014 replacées dans une perspective de long terme</a></li>
+<li><a href="#120614">12/06/2014 - Comment le FN tente de gagner sur tous les tableaux</a></li>
+<li><a href="#110614">11/06/2014 - Les réactions à l'affaire Jean Marie Le Pen</a></li>
+<li><a href="#090614">09/06/2014 - Quelques remarques supplémentaires sur la situation au Front National</a></li>
+<li><a href="#090614_2">09/06/2014 - Divisions au coeur de l'extrême droite</a></li>
+<li><a href="#090614_3">09/06/2014 - La stratégie de Marine Le Pen à l'épreuve</a></li>
+<li><a href="#060514">06/05/2014 - Regards sur la droite</a></li>
+<li><a href="#230414">23/04/2014 - Le mariage pour tous a-t-il pesé sur les élections municipales ?</a></li>
+<li><a href="#170414">17/04/2014 - "Il n'existe pas d'électorat musulman unifié"</a></li>
+<li><a href="#270114">27/01/2014 - Défiance, Racisme, Rejet du système : regards croisés sur les Français face au monde extérieur</a></li>
+<li><a href="#270713">27/07/2013 - "On cherche à faire éclater la notion de diversité"</a></li>
+<li><a href="#180414">18/04/2012 - "La participation pourrait être forte en banlieue"</a></li>
+<li><a href="#010314">01/03/2014 - Stata 12 : Utiliser la commande Outreg</a></li>
+<li><a href="#010214">01/02/2014 - Stata 12 : Syntaxte pour les graphiques de corrélation incluant une pondération</a></li>
+<li><a href="#150114">15/01/2014 - Stata 12 : Regression ESS fichier cumulé</a></li>
+<li><a href="#150214">15/02/2014 - Stata 12 : Utiliser la commande Margins</a></li>
+</ul>
+</div>
+
+<div id="main">
+
+<h1><a id="030914"> Geoda et QGIS : Calculer des indices Bivariate Lisa et exporter les résultats</h1>
+<pre>
+
+# Geoda et QGIS sont des logiciels de géographie complémentaires.
+# QGIS permet de gérer très facilement la création de cartes vectorielles ou raster mais dispose de peu d'options statistiques.
+# Geoda à l'inverse est particulièrement efficace pour calculer des indices de Moran ou de Geary mais ne permet pas d'export satisfaisant des résultats.
+
+# Etape 1 : Geoda
+
+On calcule d'abord l'indice local de Moran, ou Moran bivarié à partir d'un shapefile lié aux données agrégées.
+
+Geoda produit une carte choroplèthe des résultats
+
+Avec un clic droit on peut ensuite "sauvegarder les résultats" du calcul.
+
+Ceux ci sont intégrés dans le fichier de données (dbf) associé au shapefile.
+
+On créé 3 nouvelles variables : 
+
+- Une contenant les valeurs de l'indice LISA ou Bi-LISA
+- Une contenant les clusters issus du calcul de l'incide
+- Une contenant les seuils de significativité des clusters
+
+# Etape 2 : QGIS
+
+Le nouveau shapefile associé aux indices calculé sous Geoda est ouvert via Qgis.
+
+On peut alors représenter les valeurs de l'indice LISA lui même (ce qui est impossible sous Geoda)
+
+Mais également retrouver les valeurs des clusters et les indices de significativité
+
+# Etape 3 : Export depuis QGIS
+
+On ouvre un compositeur d'impression pour exporter la carte comme tout autre module choroplèthe.
+
+
+***** NB : ces opérations sont possibles mais plus complexes sous R et feront l'objet d'un prochain post *****
+</pre>
+
+<h1><a id="060814"> R : Convertir des fichier.dbf en fichier.csv</a></h1>
+<pre>
+# Les analyses cartographiques demandent d'utiliser des fichiers shapefile.
+# Les données associées aux shapefiles créés par certains logiciels comme GEODA se trouvent stockés dans un fichier dbf.
+# Si on veut retrouver l'indice de moran calculé par GEODA pour une post analyse, il faut convertir le dbf créé en .csv.
+# On peut ensuite le traiter avec STATA, excel ou R.
+
+# On ouvre R en chargeant foreign.
+
+
+library (foreign)
+
+df <- read.dbf ("map.dbf")
+colnames (df)
+
+write.csv (df, "map.csv")
+
+# Et voila on dispose d'un fichier .csv parfaitement utilisable.
+# Attention le format SHP tronque les noms de variables ...
+# C'est souvent assez pénible, en importation comme en exportation.
+
+# Importation sous Stata du .csv
+
+insheet using "C:\Users\Antoine\Documents\dfd.csv", comma
+</pre>
+
+
+<h1><a id="300714_2"> R : Mapping de surface 3D </a></h1>
+<pre>
+
+# C'est une opération complexe qui demande de bien maitriser la structure des données
+# Il y a de nombreux tutoriels mais ils sont difficile à saisir pour les débutants
+# On considère qu'on part d'un dataframe (d) constitué de coordonnées X Y Z
+# Il va falloir projeter Z dans une matrice XY pour en afficher la surface 3D interpolée
+# On utilise la librairie Akima
+
+library(akima)
+
+# On spécifie x, y et Z à partir du data.frame
+
+View(d)
+
+x <- d$x
+y <- d$y
+z <- d$yes
+
+# On calcule l'interpolation
+
+m1 <- interp(x=x, y=y, z=z, xo=seq(min(x), max(x), length = 40),yo=seq(min(y), max(y), length = 40))
+
+# On enregistre le résultat (une liste) en .csv pour obtenir un data.frame
+
+write.csv(m1, file="m1.csv")
+`m1` <- read.csv("~/m1.csv", sep=";", na.strings="")
+
+# Premier graphique : Lattice 
+
+library(lattice)
+
+# Conversion du data.frame (m1) en matrice (matrix)
+
+matrix <- data.matrix(m1)
+
+# graphique wireframe
+
+wireframe(matrix)
+wireframe(matrix, shade=TRUE)
+
+# On peut aussi utiliser RGL 
+
+library(rgl)
+
+# Magnification de Z
+
+z1 <- 2*matrix
+
+# X et Y sont le nombre de lignes et de colonnes de la matrice
+
+x1 <- 10 * (1:nrow(z))
+y1 <- 10 * (1:ncol(z))
+
+# graphique
+
+rgl.surface(x1,y1, z1)
+
+# Nouvelle magnification
+
+z1 <- matrix *10
+
+# On peut changer l'apparence du résultat
+
+rgl.surface(x1,y1, z1, color="red", back="lines")
+
+savehistory("C:/Users/Antoine/Desktop/mapping3d.Rhistory")
+
+********************* 
+
+2e Exemple 
+
+*********************
+
+library(rgl)
+library(akima)
+
+# Chargement de données
+
+TCExy <- read.csv("C:/Users/Antoine/Desktop/DATASET/FR/TCExy.csv")
+View(TCExy)
+
+# Dataframe simple
+
+d <-TCExy
+
+# spécification des variables
+
+x <- d$x
+y <- d$y
+z <- (d$oui / d$votants)*100
+
+# Interpolation des valeurs avec pas de grille variable
+
+m1 <- interp(x=x, y=y, z=z, xo=seq(min(x), max(x), length = 20),yo=seq(min(y), max(y), length = 20), duplicate="strip")
+
+m1 <- interp(x=x, y=y, z=z, xo=seq(min(x), max(x), length = 100),yo=seq(min(y), max(y), length = 100), duplicate="strip")
+
+m1 <- interp(x=x, y=y, z=z, xo=seq(min(x), max(x), length = 1000),yo=seq(min(y), max(y), length = 1000), duplicate="strip")
+
+# sauvegarde du fichier
+
+write.csv(m1, file="m1.csv")
+
+# Importation en data.frame
+
+`m1` <- read.csv("~/m1.csv", sep=",", na.strings="")
+
+# On supprime les variables inutiles
+
+m1$X <- NULL
+m1$x <- NULL
+m1$y <- NULL
+
+# on transforme le DF en matrice
+
+matrix <- data.matrix(m1)
+
+# Mesure de Z
+
+z1 <- 2*matrix
+
+# Mesure de x et y
+
+x1 <- 10 * (1:nrow(z1))
+y1 <- 10 * (1:ncol(z1))
+
+# graphique
+rgl.surface(x1,y1, z1)
+
+# Matrice nouvelle (Z/2)
+
+z1 <- matrix
+
+rgl.surface(x1,y1, z1)
+
+# On inverse les axes X et Y en x2 et y2
+
+x2 <- 1000-x1
+y2 <- 1000-y1
+
+# Essai des valeurs des axes
+
+rgl.surface(x2,y1, z1)
+rgl.surface(x2,y2, z1)
+rgl.surface(x1,y2, z1)
+
+# Changement de Z
+
+z1 <- matrix*10
+
+z1 <- matrix/2
+
+# Graphiques
+
+rgl.surface(x1,y2, z1)
+
+# Colorisation
+
+rgl.surface(x1,y2, z1, color="blue")
+rgl.surface(x1,y2, z1, color="green")
+rgl.surface(x1,y2, z1, color="lightskyblue")
+
+
+</pre>
+
+<h1><a id="300714"> R : Librairie Foreign et importation de fichiers</a></h1>
+<pre>
+
+# On peut toujours exporter les fichiers Stata ou SPSS en CSV puis les ouvrir avec R
+# C'est la méthode que je recommande car le format CSV est le plus fiable et pratique sur le long terme
+# Ceci étant, il est parfois complexe et lourd à utiliser pour générer de très gros fichiers.
+
+# On charge d'abord la librairie foreign
+
+library(foreign)
+
+# Ensuite on utilise read.dta de la même façon que read.csv pour les fichiers ordinaires.
+
+d <- read.dta("C:/Users/Antoine/Desktop/INSEE DETAIL ENQUETES/RP19682008_individus_dbase/simple.dta")
+
+# de la même façon pour les fichiers SPSS on utilise
+
+d <- read.spss
+
+# Pour les fichiers SAS
+
+d <- read.xport
+
+# Attention, par défaut, l'objet créé est un data frame !
+</pre>
+
+<h1><a id="290714_2">Stata : Fusion des fichiers découpés sous R</a></h1>
+<pre>
+  
+# Conversion des .csv en .dta
+
+insheet using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\68.csv", comma
+save "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\68.dta"
+clear all
+
+insheet using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\75.csv", comma
+save "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\75.dta"
+clear all
+
+insheet using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\82.csv", comma
+save "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\82.dta"
+clear all
+
+insheet using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\90.csv", comma
+save "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\90.dta"
+clear all
+
+insheet using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\99.csv", comma
+save "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\99.dta"
+clear all
+
+insheet using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\08.csv", comma
+save "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\08.dta"
+clear all
+
+# utilisation du fichier source
+
+use "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\68.dta", clear
+
+# Append fusionne les fichiers en ajoutant les observations des différentes variables
+
+append using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\75.dta"
+append using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\82.dta"
+append using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\90.dta"
+append using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\99.dta"
+append using "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\08.dta"
+
+# vérification
+
+tab natio
+
+# Sauvegarde
+
+save "C:\Users\Antoine\Desktop\INSEE DETAIL ENQUETES\RP19682008_individus_dbase\full.dta"
+
+</pre>
+
+<h1><a id="290714">R : Convertir un fichier .DBF en .csv - 29/07/2014</a></h1>
+<pre>
+# on utilise la librairie "foreign" pour importer le fichier au format base de données
+# Ici le fichier des échantillons détaillés issus des recencements INSEE de 1968 à 2008.
+
+d<-read.dbf(file="rp19682008.dbf")
+
+# on obtient un dataframe nommé d, ici il contient environ 31 millions de lignes.
+# on vérifie l'intégrité du dataframe
+
+head(d)
+tail(d)
+colnames(d)
+
+# Ceci vérifie les premières et dernières lignes d'une part, le nom de colonnes d'autre part.
+# on peut alors enregistrer le csv
+
+write.csv(d, file ="test.csv")
+
+# Celui-ci pesera environ 2 Go
+# Hélas sa création dépasse les capacités mémoires de mon PC (16Go)
+# On découpe alors le fichier par vagues de recensement
+
+Warning messages:
+1: In as.list.data.frame(X) :
+  Reached total allocation of 16325Mb: see help(memory.size)
+2: In as.list.data.frame(X) :
+  Reached total allocation of 16325Mb: see help(memory.size)
+
+c68 <- subset(d, an_recens==1968)
+c75 <- subset(d, an_recens==1975)
+c82 <- subset(d, an_recens==1982)
+c90 <- subset(d, an_recens==1990)
+c99 <- subset(d, an_recens==1999)
+c08 <- subset(d, an_recens==2008
+
+# On peut sauvegarder chacun des datasets
+
+write.csv(c68, file ="68.csv")
+write.csv(c75, file ="75.csv")
+write.csv(c82, file ="82.csv")
+write.csv(c90, file ="90.csv")
+write.csv(c99, file ="99.csv")
+write.csv(c08, file ="08.csv")
+
+</pre>
+
+<h1><a id="140714">R / Contour3D : Cartes et visualisations 3D - 14/07/2014</a></h1>
+
+<pre>
+# Installation des packages
+
+install.packages("misc3d")
+install.packages("tkrplot")
+
+# Chargement des librairies
+
+library(misc3d)
+library(rgl)
+library(ggplot2)
+library(MASS)
+
+# Démo fournie avec le paquet
+
+with(quakes, {
+d <- kde3d(long, lat, -depth, n = 40)
+contour3d(d$d, exp(-12), d$x/22, d$y/28, d$z/640,
+color = "green", color2 = "gray", scale=FALSE,
+engine = "standard")
+})
+
+# Chargement des données
+
+TCExy <- read.csv("C:/Users/Antoine/Desktop/DATASET/FR/TCExy.csv")
+
+# visualisation préalable
+
+View(TCExy)
+
+# création d'un data.frame plus simple à manipuler 
+
+df1 <- TCExy
+
+# création de la variable % de "oui" en 2005
+
+df1$yes = df1$oui/df1$votants
+
+# On réduit les coordonnées en x et y pour les manipuler et on transforme la variable 
+# d'intéret en coordonnée Z
+
+df1$x <- df1$x/1000
+df1$y <- df1$y/1000
+df1$z <- df1$yes
+
+# Calcul des densités 3D pour le graphique (Kernel Density 3D)
+
+d <-kde3d(df1$x, df1$y, df1$z, n=40)
+
+# Premier graphique avec choix du moteur RGL
+
+contour3d(d$d, 0.1, d$x/7, d$y/20, d$z, color="red", color2="gray", scale=FALSE,engine="rgl")
+
+# Changement des paramètres, puis on va tatonner pour améliorer la visualisation
+
+contour3d(d$d, 0.2, d$x/7, d$y/20, d$z, color="red", color2="gray", scale=FALSE,engine="rgl")
+
+# On magnifie l'axe des Z pour donner de la profondeur 3D au graphique
+
+contour3d(d$d, 0.2, d$x, d$y, d$z, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 0.2, d$x, d$y, d$z*100, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 0.2, d$x, d$y, d$z*1000, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 0.2, d$x, d$y, d$z*100000, color="red", color2="gray", scale=FALSE,engine="rgl")
+
+# On augmente le facteur d'échelle (f) de 0.2 à 50 pour calibrer le recyclage de l'axe Z
+
+contour3d(d$d, 0.2, d$x, d$y, d$z*10000, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 0.3, d$x, d$y, d$z*10000, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 0.5, d$x, d$y, d$z*10000, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d,  1, d$x, d$y, d$z*10000, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d,  2, d$x, d$y, d$z*10000, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d,  3, d$x, d$y, d$z*10000, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d,  4, d$x, d$y, d$z*10000, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d,  5, d$x, d$y, d$z*10000, color="red", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d,  5, d$x, d$y, d$z*10000, color="blue", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d,  8, d$x, d$y, d$z*10000, color="blue", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 10, d$x, d$y, d$z*10000, color="blue", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 20, d$x, d$y, d$z*10000, color="blue", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 30, d$x, d$y, d$z*10000, color="blue", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 40, d$x, d$y, d$z*10000, color="blue", color2="gray", scale=FALSE,engine="rgl")
+contour3d(d$d, 50, d$x, d$y, d$z*10000, color="blue", color2="gray", scale=FALSE,engine="rgl")
+
+# Changement des couleurs
+
+contour3d(d$d, 35, d$x, d$y, d$z*10000, color="green", color2="gray", scale=FALSE,engine="rgl")
+
+# Fixation du facteur d'échelle (scale=TRUE)
+
+contour3d(d$d, 35, d$x, d$y, d$z*10000, color="green", color2="gray", scale=TRUE,engine="rgl")
+contour3d(d$d, 40, d$x, d$y, d$z*10000, color="green", color2="gray", scale=TRUE,engine="rgl")
+
+# Sauvegarde
+
+savehistory("C:/Users/Antoine/Desktop/c3d.Rhistory")
+
+---------------------------------------------------------------------------------------------
+
+# Package SM
+
+install.packages("sm")
+install.packages("rpanel")
+
+library(rpanel)
+library(sm)
+
+# Usage rapide : 
+
+sm.density(df)
+sm.density(df, panel=TRUE)
+
+# On peut tout adapter avec SM option et notamment pondérer les résultats
+</pre>
+
+
+<h1><a id="110714">Stata : Dictionnary File for Spanish Census MicroData - 11/07/2014</a></h1>
+<pre>
+dictionary using test.dat {
+  _column(1) CPRO %2f
+  _column(3) CMUN %3f
+  _column(6) IDHUECO %10s
+  _column(16) NORDEN %4f
+  _column(20) FACTOR %14f
+  _column(34) MNAC %2f
+  _column(36) ANAC %4f
+  _column(40) EDAD %3f
+  _column(43) SEXO %1f
+  _column(44) NACI %3f
+  _column(47) CPAISN %3f
+  _column(50) CPRON %2f
+  _column(52) CMUNN %3f
+  _column(55) ANORES %4f
+  _column(59) ANOM %4f
+  _column(63) ANOC %4f
+  _column(67) ANOE %4f
+  _column(71) CLPAIS %3f
+  _column(74) CLPRO %2f
+  _column(76) CLMUNP %3f
+  _column(79) CPAISUNANO %3f
+  _column(82) CPROUNANO %2f
+  _column(84) CMUNANO %3f
+  _column(87) CPAISDANO %3f
+  _column(90) CPRODANO %2f
+  _column(92) CMUNDANO %3f
+  _column(95) SEG_VIV %1f
+  _column(96) SEG_PAIS %3f
+  _column(99) SEG_PROV %2f
+  _column(101) SEG_MUN %3f
+  _column(104) SEG_NOCHES %3f
+  _column(107) SEG_DISP 1%f
+  _column(108) ECIVIL %1f
+  _column(109) ESCOLAR %1f
+  _column(110) ESREAL %2f
+  _column(112) TESTUD %1f
+  _column(113) TAREA1 %1f
+  _column(114) TAREA2 %1f
+  _column(115) TAREA3 %1f
+  _column(116) TAREA4 %1f
+  _column(117) HIJOS %1f
+  _column(118) NHIJOS %2f
+  _column(120) RELA %1f
+  _column(121) JORNADA %1f
+  _column(122) CNO %2f
+  _column(124) CNAE %2f
+  _column(126) SITU %1f
+  _column(127) ESCUR1 %2f
+  _column(129) ESCUR2 %2f
+  _column(131) ESCUR3 %3f
+  _column(133) LTRABA %1f
+  _column(134) PAISTRABA %3f
+  _column(137) PROTRABA %2f
+  _column(139) MUNTRABA %3f
+  _column(142) CODTRABA %5f
+  _column(147) NVIAJE %1f
+  _column(148) MDESP1 %1f
+  _column(149) MDESP2 %1f
+  _column(150) TDESP %1f
+  _column(151) TENEN %1f
+  _column(152) CALE %1f
+  _column(153) ASEO %1f
+  _column(154) BADUCH %1f
+  _column(155) INTERNET %1f
+  _column(156) AGUACOR %1f
+  _column(157) SUT %3f
+  _column(160) NHAB %2f
+  _column(162) PLANTAS %2f
+  _column(164) PLANTAB %1f
+  _column(165) TIPOEDIF %1f
+  _column(166) ANOCONS %2f
+  _column(168) ESTADO %1f
+  _column(169) ASCENSOR %1f
+  _column(170) ACCESIB %1f
+  _column(171) GARAJE %1f
+  _column(172) PLAZAS %1f
+  _column(173) GAS %1f
+  _column(174) TELEF %1f
+  _column(175) ACAL %1f
+  _column(176) RESID %1f
+  _column(177) FAMILIA %1f
+  _column(178) PAD_NORDEN %2f
+  _column(180) MAD_NORDEN %2f
+  _column(182) CON_NORDEN %2f
+  _column(184) OPA_NORDEN %2f
+  _column(186) TIPOPER %1f
+  _column(187) NUCLEO %2f
+  _column(189) NMIEM %2f
+  _column(191) NFAM %1f
+  _column(192) NNUC %1f
+  _column(193) NGENER %2f
+  _column(195) ESTHOG %2f
+  _column(197) TIPOHOG %2f
+  _column(199) NOCU %2f
+  _column(201) NPARAIN %2f
+  _column(203) NPFAM %2f
+  _column(205) NPNUC %2f
+  _column(207) HM5 %2f
+  _column(209) H0515 %2f
+  _column(211) H1624 %2f
+  _column(213) H2534 %2f
+  _column(215) H3564 %2f
+  _column(217) H6584 %2f
+  _column(219) H85M %2f
+  _column(221) HESPHOG %2f
+  _column(223) MESPHOG %2f
+  _column(225) HEXTHOG %2f
+  _column(227) MEXTHOG %2f
+  _column(229) COMBINAC %1f
+  _column(230) EDADPAD %2f
+  _column(232) PAISNACPAD %3f
+  _column(235) NACIPAD %1f
+  _column(236) ECIVPAD %1f
+  _column(237) ESTUPAD %1f
+  _column(238) SITUPAD %1f
+  _column(239) SITPPAD %1f
+  _column(240) EDADMAD %2f
+  _column(242) PAISNACMAD %3f
+  _column(245) NACIMAD %1f
+  _column(246) ECIVMAD %1f
+  _column(247) ESTUMAD %1f
+  _column(248) SITUMAD %1f
+  _column(249) SITPMAD %1f
+  _column(250) EDADCON %2f
+  _column(252) NACCON %1f
+  _column(253) NACICON %1f
+  _column(254) ECIVCON %1f
+  _column(255) ESTUCON %1f
+  _column(256) SITUCON %1f
+  _column(257) SITPCON %1f
+  _column(258) TIPONUC %1f
+  _column(259) TAMNUC %2f
+  _column(261) NHIJO %2f
+  _column(263) NHIJOC %2f
+  _column(265) FAMNUM %2f
+  _column(267) TIPOPARECIV %2f 
+  _column(269) TIPOPARSEX %2f
+  _column(271) DIFEDAD %2f
+}
+</pre>
+
+<h1><a id="100714">Stata : Batch rename - 10/07/2014</a></h1>
+
+<pre>
+rename v1-vx act(###), add
+</pre>
+
+<h1><a id="080714">R : Interpolation et projection géographique - 08/07/2014</a></h1>
+
+<pre>
+# Tutoriel basé sur l'excellente page web d'Adam Dennett
+http://rpubs.com/adam_dennett/10873
+
+# Chargement des packages
+
+library(ggplot2)
+library(gstat)
+library(sp)
+library(maptools)
+
+# Chargement des données avec coordonnées XY
+
+TCExy <- read.csv("C:/Users/Antoine/Desktop/DATASET/FR/TCExy.csv")
+View(TCExy)
+
+# Codage en données spatialisées
+
+coordinates(TCExy) = ~x+y
+
+# Visualisation du codage
+
+plot(TCExy)
+
+# Définition des variables des axes X/Y de la grille de projection des valeurs
+
+x.range <- as.integer(range(TCExy@coords[, 1]))
+y.range <- as.integer(range(TCExy@coords[, 2]))
+
+# Définition des bornes min/max du cadrage
+
+plot(TCExy)
+locator(4)
+
+# Indication du range selon les valeurs produites par le locator
+# A renseigner à la main
+
+x.range <- as.integer(c(-673.5673, 11894.2330))
+y.range <- as.integer(c(16000,28000))
+
+# Expansion de la grille jusqu'aux bornes qu'on vient de définir
+
+grd <- expand.grid(x = seq(from = x.range[1], to = x.range[2], by = 200), y = seq(from = y.range[1], to = y.range[2], by = 200))
+
+# renseigne le système de coordonnées de la grille
+
+coordinates(grd) <- ~x + y
+gridded(grd) <- TRUE
+
+# Vérification
+
+plot(grd, cex = 1.5)
+
+# Projection des points de la couche du dataset
+
+points(TCExy, pch = 1, col = "red", cex = 1)
+
+# On indique la variable à projeter, ici le vote oui au TCE
+
+idw <- idw(formula = oui ~ 1, locations = TCExy, newdata = grd)
+
+# formattage
+
+idw.output = as.data.frame(idw)
+
+# nommage des variables
+
+names(idw.output)[1:3] <- c("long", "lat", "var1.pred")
+
+# visualisation graphique
+
+plot <- ggplot(data = idw.output, aes(x = long, y = lat))
+
+# couche graphique
+
+layer1 <- c(geom_tile(data = idw.output, aes(fill = var1.pred)))
+
+# représentation des deux couches
+
+plot + layer1 + scale_fill_gradient(low = "#FEEBE2", high = "#7A0177")
+
+savehistory("C:/Users/Antoine/Desktop/DATASET/code R/cartographic interpolation.Rhistory")
+</pre>
+
+<h1><a id="070714">R : Syntaxe article votpauvr -  07/07/2014</a></h1>
+
+<pre>
+m07 <- ggplot(data, aes(x=margin, y=to07T1)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2007")
+m09 <- ggplot(data, aes(x=margin, y=to09)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2009")
+m10 <- ggplot(data, aes(x=margin, y=to10T1)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2010")
+
++ theme_bw(base_size=16)
+
+
+`d2` <- read.csv("C:/Users/Antoine/Desktop/d2.csv")
+
+View(`d2`)
+
+colnames(d2)
+
+library(ggplot2)
+
+fn7 <- ggplot(d2, aes(x=margin, y=fn1_7)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Score total du FN en 2007") + theme_bw(base_size=16)
+d7 <- ggplot(d2, aes(x=margin, y=fn1_7)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Score total de la droite en 2007") + theme_bw(base_size=16)
+g7 <- ggplot(d2, aes(x=margin, y=g1_7)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Score total de la gauche en 2007") + theme_bw(base_size=16)
+
+g9 <- ggplot(d2, aes(x=margin, y=g9)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Score total de la gauche en 2009") + theme_bw(base_size=16)
+d9 <- ggplot(d2, aes(x=margin, y=d9)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Score total de la droite en 2009") + theme_bw(base_size=16)
+fn9 <- ggplot(d2, aes(x=margin, y=fn9)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Score total du FN* en 2009") + theme_bw(base_size=16)
+
+g10 <- ggplot(d2, aes(x=margin, y=g10)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Score total de la gauche en 2010") + theme_bw(base_size=16)
+d10 <- ggplot(d2, aes(x=margin, y=d10)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Score total de la droite en 2010") + theme_bw(base_size=16)
+fn10 <- ggplot(d2, aes(x=margin, y=fn10)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Score total du FN en 2010") + theme_bw(base_size=16)
+
+g7_full <- ggplot(d2, aes(x=margin, y=g1_7)) + geom_point(shape=1) + geom_smooth(method=lm)  + xlab("Indicateur de précarité") + ylab ("Score total de la gauche en 2007") + theme_bw(base_size=16)
+d7_full <- ggplot(d2, aes(x=margin, y=fn1_7)) + geom_point(shape=1) + geom_smooth(method=lm) + xlab("Indicateur de précarité") + ylab ("Score total du FN en 2007") + theme_bw(base_size=16)
+fn7_full <- ggplot(d2, aes(x=margin, y=fn1_7)) + geom_point(shape=1) + geom_smooth(method=lm)  + xlab("Indicateur de précarité") + ylab ("Score total du FN en 2007") + theme_bw(base_size=16)
+
+g9_full <- ggplot(d2, aes(x=margin, y=g9)) + geom_point(shape=1) + geom_smooth(method=lm) + xlab("Indicateur de précarité") + ylab ("Score total de la gauche en 2009") + theme_bw(base_size=16)
+d9_full <- ggplot(d2, aes(x=margin, y=d9)) + geom_point(shape=1) + geom_smooth(method=lm)  + xlab("Indicateur de précarité") + ylab ("Score total de la droite en 2009") + theme_bw(base_size=16)
+fn9_full <- ggplot(d2, aes(x=margin, y=fn9)) + geom_point(shape=1) + geom_smooth(method=lm) + xlab("Indicateur de précarité") + ylab ("Score total du FN* en 2009") + theme_bw(base_size=16)
+
+g10_full <- ggplot(d2, aes(x=margin, y=g10)) + geom_point(shape=1) + geom_smooth(method=lm) + xlab("Indicateur de précarité") + ylab ("Score total de la gauche en 2010") + theme_bw(base_size=16)
+d10_full <- ggplot(d2, aes(x=margin, y=d10)) + geom_point(shape=1) + geom_smooth(method=lm) + xlab("Indicateur de précarité") + ylab ("Score total de la droite en 2010") + theme_bw(base_size=16)
+fn10_full <- ggplot(d2, aes(x=margin, y=fn10)) + geom_point(shape=1) + geom_smooth(method=lm)  + xlab("Indicateur de précarité") + ylab ("Score total du FN en 2010") + theme_bw(base_size=16)
+
+library(gridExtra)
+
+grid.arrange(fn7_full, fn9_full, fn10_full, ncol=3)
+grid.arrange(d7_full, d9_full, d10_full, ncol=3)
+grid.arrange(g7_full, g9_full, g10_full, ncol=3)
+
+grid.arrange(g7, g9, g10, ncol=3)
+
+
+d7 <- ggplot(d2, aes(x=margin, y=d1_7)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom, ncol=6) + xlab("Indicateur de précarité") + ylab ("Score total de la droite en 2007") + theme_bw(base_size=16)
+d9 <- ggplot(d2, aes(x=margin, y=d9)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom, ncol=6) + xlab("Indicateur de précarité") + ylab ("Score total de la droite en 2009") + theme_bw(base_size=16)
+d10 <- ggplot(d2, aes(x=margin, y=d10)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom, ncol=6) + xlab("Indicateur de précarité") + ylab ("Score total de la droite en 2010") + theme_bw(base_size=16)
+
+g7 <- ggplot(d2, aes(x=margin, y=g1_7)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom, ncol=6) + xlab("Indicateur de précarité") + ylab ("Score total de la gauche en 2007") + theme_bw(base_size=16)
+g9 <- ggplot(d2, aes(x=margin, y=g9)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom, ncol=6) + xlab("Indicateur de précarité") + ylab ("Score total de la gauche en 2009") + theme_bw(base_size=16)
+g10 <- ggplot(d2, aes(x=margin, y=g10)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom,ncol=6) + xlab("Indicateur de précarité") + ylab ("Score total de la gauche en 2010") + theme_bw(base_size=16)
+
+fn7 <- ggplot(d2, aes(x=margin, y=fn1_7)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom, ncol=6) + xlab("Indicateur de précarité") + ylab ("Score total du FN en 2007") + theme_bw(base_size=16)
+fn9 <- ggplot(d2, aes(x=margin, y=fn9)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom,ncol=6) + xlab("Indicateur de précarité") + ylab ("Score total du FN* en 2009") + theme_bw(base_size=16)
+fn10 <- ggplot(d2, aes(x=margin, y=fn10)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom,ncol=6) + xlab("Indicateur de précarité") + ylab ("Score total du FN en 2010") + theme_bw(base_size=16)
+
+grid.arrange(g7,g9,g10)
+grid.arrange(d7,d9,d10)
+grid.arrange(fn7,fn9,fn10)
+
+savehistory("~/vpauvre_hist.Rhistory")
+</pre>
+
+<h1><a id="070714_2">R / Lattice : Graphique wireframe - 07/07/2014</a></h1>
+
+
+<h1>R : Les fonctions Melt et Cast - 07/07/2014 </h1>
+
+<h1>R : Themes GGplot - 07/07/2014 </h1>
+
+<pre>
+ggplot(data, aes(x=margin, y=to10T1)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~nom) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2010") + theme_bw(base_size=16)
+</pre>
+
+<h1><a id="110714_3">Facetting sous R, suite - 07/07/2014</a></h1>
+
+<pre>
+Syntaxe votpauvre
+
+ggplot(data, aes(x=margin, y=to07T1)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~codedep)
+
+ggplot(data, aes(x=margin, y=to07T1)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~code) + xlab("précarité")
+
+ggplot(data, aes(x=margin, y=to07T1)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~code) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2007")
+
+ggplot(data, aes(x=margin, y=to09)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~code) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2009")
+
+ggplot(data, aes(x=margin, y=to10T1)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~code) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2010")
+
+m07 <- ggplot(data, aes(x=margin, y=to07T1)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~code) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2007")
+
+m09 <- ggplot(data, aes(x=margin, y=to09)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~code) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2009")
+
+m10 <- ggplot(data, aes(x=margin, y=to10T1)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~code) + xlab("Indicateur de précarité") + ylab ("Taux de participation en 2010")
+</pre>
+
+
+<h1><a id="060714">Module rCarto : réaliser directement des cartes choroplèthes sans fusion - 06/07/2014</a></h1>
+
+<pre>
+# Module
+library(rCarto)
+
+# Fichier de travail
+setwd("C:/Users/Antoine/Desktop/essai")
+
+# Base de données
+celec <- read.csv("C:/Users/Antoine/Desktop/essai/celec.csv")
+
+# Shapefile
+shape <- readShapeSpatial("C:/Users/Antoine/Desktop/Cartelec/fond0710.shp")
+
+# Nom de colonnes
+colnames(celec)
+
+# Variable à cartographier
+celec$to07 <- celec$vot07t1/celec$ins07t1
+
+# Carte avec arrondissement à 1 décimale
+mapChoropleth(shpFile="c:/Users/Antoine/Desktop/Cartelec/fond0710.shp", shpId="BUREAU", df=celec, dfId="bvcom", var="to07", style="quantile", nclass=10, lgdRnd=1, palCol="Greens", title="Taux de participation en 2007", legend="turnout 2009", author = "quantiles", source="Antoine JARDIN")
+
+# Idem avec 2 décimales
+mapChoropleth(shpFile="c:/Users/Antoine/Desktop/Cartelec/fond0710.shp", shpId="BUREAU", df=celec, dfId="bvcom", var="to07", style="quantile", nclass=10, lgdRnd=2, palCol="Greens", title="Taux de participation en 2007", legend="turnout 2009", author = "quantiles", source="Antoine JARDIN")
+
+# Idem avec une autre gamme de couleurs
+mapChoropleth(shpFile="c:/Users/Antoine/Desktop/Cartelec/fond0710.shp", shpId="BUREAU", df=celec, dfId="bvcom", var="to07", style="quantile", nclass=10, lgdRnd=2, palCol="Greens", title="Taux de participation en 2007", legend="turnout 2009", author = "quantiles", source="Antoine JARDIN")
+</pre>
+
+<h1><a id="040714">Avant le Module rCarto - 04/07/14</a></h1>
+
+<pre>
+setwd("C:/Users/Antoine/Desktop/essai")
+
+# Charge la base de données cartelec
+celec <- read.csv("C:/Users/Antoine/Desktop/essai/celec.csv")
+View(celec)
+
+# Charge la librairie rCarto
+library(rCarto)
+
+# Charge le SHP Cartelec
+shape <- readShapeSpatial("C:/Users/Antoine/Desktop/Cartelec/fond0710.shp")
+
+# Fusion des fichiers dans shape@data (fond de carte avec données du dataset)
+shape@data <- data.frame(shape@data, celec [match(shape@data[,"BUREAU"], celec[,"bvcom"]),])
+
+colnames(celec)
+
+# Construction de l'indicateur % d'ouvriers
+celec$ouvrier <- celec$cs6/celec$totcs
+
+# Nouvelle fusion
+shape@data <- data.frame(shape@data, celec [match(shape@data[,"BUREAU"], celec[,"bvcom"]),])
+
+# Indication de la variable à catégoriser
+shape@data$var <- shape@data$ouvrier
+
+# transformation en vecteur numérique
+var <- as.vector(na.omit(shape@data$ouvrier))
+
+# Nombre de classes (10)
+nbclass <- 10
+
+# type de classe (déciles)
+distr <- classIntervals(var,nbclass, style="quantile")$brks
+
+# Gamme de couleurs
+colours <- brewer.pal(nbclass, "PuOr")
+
+# Création de la couche des couleurs
+colMap <- colours[(findInterval(shape$var,distr,all.inside=TRUE))]
+
+# Cartographie 
+plot(shape, col=colMap,border="black", lwd=1)
+plot(shape, col=colMap,border="black", lwd=0.1)
+plot(shape, col=colMap,border="black", lwd=0.001)
+</pre>
+
+<h1> <a id="030714">Arrange multiple plots with gridExtra </a></h1>
+<pre>
+Graphiques
+
+to12 <- ggplot(data, aes(x=ql_cs3_10, y=to12_1, size=pop)) + geom_point(shape=1) + geom_smooth(method=lm) + labs(title="Taux de participation en 2012 selon le \n quotient de localisation des CPIS. INSEE 2010") + xlab("QL des CPIS") + ylab("Taux de participation 2012 Tour 1")
+
+to09 <- ggplot(data, aes(x=ql_cs3_10, y=to09, size=pop)) + geom_point(shape=1) + geom_smooth(method=lm) + labs(title="Taux de participation en 2012 selon le \n quotient de localisation des CPIS. INSEE 2010") + xlab("QL des CPIS") + ylab("Taux de participation 2012 Tour 1")
+
+to07 <- ggplot(data, aes(x=ql_cs3_10, y=to07_1, size=pop)) + geom_point(shape=1) + geom_smooth(method=lm) + labs(title="Taux de participation en 2012 selon le \n quotient de localisation des CPIS. INSEE 2010") + xlab("QL des CPIS") + ylab("Taux de participation 2012 Tour 1")
+
+to09 <- ggplot(data, aes(x=ql_cs3_10, y=to09, size=pop)) + geom_point(shape=1) + geom_smooth(method=lm) + labs(title="Taux de participation en 2009 selon le \n quotient de localisation des CPIS. INSEE 2010") + xlab("QL des CPIS") + ylab("Taux de participation Européennes 2009")
+
+to07 <- ggplot(data, aes(x=ql_cs3_10, y=to07_1, size=pop)) + geom_point(shape=1) + geom_smooth(method=lm) + labs(title="Taux de participation en 2007 selon le \n quotient de localisation des CPIS. INSEE 2010") + xlab("QL des CPIS") + ylab("Taux de participation 2007 Tour 1")
+
+to04 <- ggplot(data, aes(x=ql_cs3_10, y=to04_1e, size=pop)) + geom_point(shape=1) + geom_smooth(method=lm) + labs(title="Taux de participation en 2004 selon le \n quotient de localisation des CPIS. INSEE 2010") + xlab("QL des CPIS") + ylab("Taux de participation Européennes 2004")
+
+to02 <- ggplot(data, aes(x=ql_cs3_10, y=to02_1, size=pop)) + geom_point(shape=1) + geom_smooth(method=lm) + labs(title="Taux de participation en 2002 selon le \n quotient de localisation des CPIS. INSEE 2010") + xlab("QL des CPIS") + ylab("Taux de participation 2002 Tour 1")
+
+
+library(gridExtra)
+
+grid.arrange(to02, to04, to07, to09, to12)
+grid.arrange(to02, to04, to07, to09, to12, ncol=5)
+
+to02 <- to02 + theme(legend.position="none")
+to04 <- to04 + theme(legend.position="none")
+to07 <- to07 + theme(legend.position="none")
+to09 <- to09 + theme(legend.position="none")
+to12 <- to12 + theme(legend.position="none")
+
+to02 <- to02 + ylim(0,100)
+to04 <- to04 + ylim(0,100)
+to07 <- to07 + ylim(0,100)
+to09 <- to09 + ylim(0,100)
+to12 <- to12 + ylim(0,100)
+
+grid.arrange(to02, to04, to07, to09, to12, ncol=5)
+</pre>
+
+<h1> <a id="020714">Facetting, scatterplot et droite des moindres carrés sous R - 02/07/2014</a></h1>
+
+<pre>
+# Obtenir la liste des variables du dataset
+
+colnames(data)
+
+# Il vaut mieux utiliser ggplot que qplot
+ggplot(dataset, aes(x=var_x, y=var_y, size=weight)) 
++ geom_point(shape=1) = Hollow circle
++ geom_smooth(method=lm) =  regression line
++ facets_wrap(~reg) = facetting par région
+
+# ncol=4 : spécifie le nombre de colonnes dans le graphique facetté
+
+ggplot(data, aes(x=i3, y=p12_exd)) + geom_point(shape=1) + geom_smooth(method=lm)
+ggplot(data, aes(x=i3, y=p12_exd)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~reg)
+ggplot(data, aes(x=p12_exd, y=p12_g)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~reg)
+ggplot(data, aes(x=p12_exd, y=p12_g, size=pop)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~reg)
+ggplot(data, aes(x=p12_exd, y=p12_g, size=pop)) + geom_point(shape=1) + geom_smooth(method=lm) + facet_wrap(~reg, ncol=4)
+</pre>
+
+<h1> <a id="020714_2">Cartographie sous R - premier essai - 02/07/2014 </a></h1>
+<pre>
+# Installation des packages
+
+install.packages("RColorBrewer")
+install.packages("classInt")
+library(RColorBrewer)
+
+# Lancement des packages manquants
+library(maptools)
+library(classInt)
+
+# Importation des données CSV à projeter (dans le dossier de travail)
+data <- read.csv("C:/Users/Antoine/Desktop/essai/data.csv")
+
+View(data)
+
+# Importation du shapefile (dans le dossier de travail)
+fdc <- readShapeSpatial("FR_PLM.shp")
+
+# Fusion des fichiers (by.x variable dans la carto, by.y variable dans le dataset)
+fdc@data <- merge(fdc@data, data, by.x="ID_GEOFLA", by.y="id_geofla")
+
+# Distribution en quartiles
+distr <- classIntervals(fdc$fn14_1,4,style="quantile")$brks
+
+# Idem en déciles
+distr <- classIntervals(fdc$fn14_1,10,style="quantile")$brks
+
+# Choix d'une palette de couleur, ici de "Purple" à "Or"
+colours <- brewer.pal(4,"PuOr")
+
+# Afficher les codes hexa des couleurs
+colours
+
+# Afficher le mapping des couleurs
+colmap <- colours[(findInterval(fdc$fn14_1, distr, all.inside=TRUE))]
+
+# Affichage de la carte elle même
+plot(fdc, col=colmap)
+
+# On peut ensuite l'exporter en SVG ou en PNG
+</pre>
+
+<h1><a id="020714"> Configuration Latex pour fichier de thèse et bibliographie - 02/07/2014</a></h1>
+
+<p> Latex est un éditeur de texte un peu difficile d'accès mais très puissant.
+	Il permet les mises en formes complexes mais aussi de gagner du temps dans la gestion des bibliographiques, des figures et des tableaux.
+	Des modules existent pour exporter les tableaux en latex depuis Stata ou R (notamment outreg2 sous stata).
+	Mais pour gagner du temps des précautions s'imposent.
+</p>
+<p>
+	D'abord latex est de plus en plus fragmenté, on trouve surtout trois versions : 
+</p>
+<p>
+	1 - PDFLatex, version ancienne mais populaire, qui marche bien en général, mais ne gère pas les fichiers encodés en UTF-8, ce qui est la majorité du texte aujourd'hui produit.
+</p>
+<p>
+	2 - XeTex, qui est une version qui vise à corriger ce problème
+</p>
+<p>
+	3 - Lualatex, qui ajoute des fonctions et vise à reprendre les avancées de XeTex. 
+</p>
+<p>
+	Le mieux est aujourd'hui d'utiliser LuaLaTex, c'est le futur de latex.
+</p>
+<p>
+	Précautions d'emploi : 
+</p>
+<p>
+	Il faut toujours enregistrer les fichiers de bibliographie (.bib) et de texte (.tex) au format UTF-8.
+	Prenez l'éditeur de votre choix, j'aime bien sublime text à titre personnel, il donne la coloration syntaxique pour ces deux formats de fichier.
+
+	Vous devez ensuite installer texlive 2014, la distribution la plus complète. Attention l'installation est très longue, la distribution pèse plusieurs gigaoctets.
+	Enfin installez l'éditeur de votre choix, a titre personnel je préfère Texstudio qui est un fork de Texmaker, très répandu aussi.
+
+	Il vous faut configurer texstudio en indiquant que vous utilisez biber pour la gestion de la bibliographie, biblatex pour appeler biber, et lualatex pour compiler.
+	Vous aurez ainsi une distribution latex globale qui fonctionne parfaitement en UTF-8, plus de problèmes de caractères.
+
+	Cerise sur le gateau, lualatex permet d'utiliser polyglossia pour la gestion des différentes langues, en UTF-8, et fontspec pour la gestion des polices installées sur votre ordinateur.
+	Efficace et puissant.
+
+	Un exemple rapide : 
+</p>
+<pre>
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = LuaLaTeX
+
+\documentclass[12pt,a4paper,final]{book}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\setmainfont{Garamond}
+\setmonofont{Consolas}
+\usepackage{csquotes}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage[backend=biber]{biblatex}
+
+\usepackage[left=2.50cm, right=2.50cm, top=3.00cm, bottom=4.00cm]{geometry}
+
+\addbibresource{biblio.bib}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\author{Antoine JARDIN}
+\title{Titre thèse}
+
+\fancyfoot{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{\rightmark}
+\setlength{\headheight}{30pt}
+
+\begin{document}
+	
+\maketitle
+\pagestyle{fancy}
+\justifying
+
+[...] Contenu [...]
+
+\nocite{*}
+\part{Bibliographie}
+\printbibliography
+\end{document}
+</pre>
+
+
+<h1> <a id="290614">Scatter plot avec facetting et ajustement linéaire sous R - 29/06/2014</a></h1>
+<pre>
+# chargement des données
+
+idf_plg <- read.csv("~/DATAR/idf_plg.csv")
+
+# On regarde le data.frame
+
+View(idf_plg)
+
+# Stockage avec un nom plus court
+
+idf <- idf_plg
+
+# Installation du package gridExtra pour combiner les graphiques
+
+install.packages("gridExtra")
+library(gridExtra)
+
+# grid.arrange indique les graphiques déja calculés sous ggplot à afficher
+
+grid.arrange(e12g, e12d, e12fn)
+
+# On peut choisir le nombre de colonnes ou de lignes
+grid.arrange(e12g, e12d, e12fn, ncol=3)
+grid.arrange(e12g, e12d, e12fn, ncol=1)
+
+# Par défaut ggplot2 affiche un ajustement lowess.
+# On peut vouloir un affichage lfit
+# Pour cela, il faut indiquer qu'on veut un ajustement linéaire avec l'outil "formula"
+e12g <- qplot (ql_cs6_10, p12_g, data=idf, geom=c("point","smooth", method="lm", formula = p12g~ql_cs6_10), facets_wrap=dep~., size=pop)
+
+# Ceci ne fonctionne pas, il ne faut pas renseigner le nom des variables mais la formule générique
+# formula = y ~ x
+# exemple
+
+e12g <- qplot (ql_cs6_10, p12_g, data=idf, geom=c("point","smooth"), method="lm", formula = y~x, facets_wrap=dep~., size=pop)
+
+# on réaffiche les graphiques
+
+grid.arrange(e12g, e12d, e12fn, ncol=1)
+</pre>
+
+
+<h1><a id="280614"> Tableau de régression en Latex </a></h1>
+<p> Latex permet d'afficher de façon sobre et claire les tableaux de régressions. On peut exporter du code latex depuis Stata (outred, estat) ou R.
+	Mais il est aussi facile de créer des tableaux directement dans le code Latex de son texte. Voici un exemple
+</p>
+
+<pre>
+
+\begin{center}
+
+\begin{tabular}{l   R{3cm}R {3cm}R{3cm}R{3cm}R {3cm}}
+
+\hline \noalign{\smallskip} 
+
+Régression linéaire par commune\\
+Pondération pour la taille \\
+démographique des municipalités.\\
+& Participation en 2012	& Participation en 2009	& Croissance de la participation entre 2009 et 2012\\
+
+\noalign{\smallskip}\hline \noalign{\smallskip}
+
+QL CPIS	& 1.095***	& 4.304***	& -3.210***\\
+Distance	& 0.582***	& 0.031	& 0.551***\\
+Int (classe * distance)	& 0.139	& 0.199	& -0.060\\
+QL Immigrés FR	& -2.618***	& -3.842***	& 1.224***\\
+Int (classe * immigration)	& -0.013	& -0.473**	& 0.461**\\
+Int (distance * immigration)	& -0.933***	& -1.336***	& 0.403***\\
+Triple interaction	& -0.177	& -0.500***	& 0.322**\\
+\_cons	& 79.606***	& 41.536***	& 38.070***\\
+R2 	& 0.71	& 0.90	& 0.82\\
+N	& 1,281	& 1,281	& 1,281 \\	 	 	 	 	
+
+\noalign{\smallskip}\hline\end{tabular}\\
+\smallskip
+\begin{footnotesize}
+\ * $p<0$.05; ** $p<0$.01; *** $p<0$.001
+\end{footnotesize}\\
+\smallskip
+\end{center}
+
+</pre>
+
+<h1><a id="270614"> Introduction à GGplot2 avec Qplot sous R </a></h1>
+<pre>
+
+# Chargement de la librairie
+library(ggplot2)
+data(diamonds)
+class(diamonds)
+
+# Chargement du data.frame
+diamonds <- diamonds[sample(nrow(diamonds), 500),]
+
+# Scatter plot : x = carat, y = price
+qplot(carat, price, data = diamonds)
+
+# Scatter plot en rouge avec transparence
+qplot(carat, price, data = diamonds, colour = I("red"), size = I(2), shape = I(15), alpha = I(1/5))
+
+# Scatter plot avec lowess smoothing
+qplot(carat, price, data = diamonds, colour = I("red"), size = I(2), shape = I(15), alpha = I(1/5), geom = c("point","smooth"))
+
+# Voir le data.frame
+View(diamonds)
+
+# Afficher des points de couleur différente selon la couleur des diamants
+qplot(carat, price, data = diamonds, colour = color)
+
+# Histogrammes selon le nombre de carats, des barres de couleurs différentes selon la couleur des diamants
+qplot(carat, data=diamonds, geom="histogram", fill=color)
+
+# Changer le nombre de barres de l'histogramme
+qplot(carat, data=diamonds, geom="histogram", fill=color, binwidth= 1)
+qplot(carat, data=diamonds, geom="histogram", fill=color, binwidth= 1/20)
+qplot(carat, data=diamonds, geom="histogram", fill=color, binwidth= 1/10)
+
+# Afficher les courbes de kernel density (epanechnikov). alpha=I change la transparence
+qplot(carat, data=diamonds, geom="density", fill=color, alpha=I(0.1))
+qplot(carat, data=diamonds, geom="density", fill=color, alpha=I(0.5))
+
+# Scatter plot avec des symboles différents selon le type de coupe des diamants
+qplot(carat, price, data=diamonds, shape=cut)
+
+# Idem en faisant en plus varier la couleur des points en fonction de celle des diamants
+qplot(carat, price, data=diamonds, shape=cut, colour=color)
+
+# facetting vertical selon la variable "color"
+qplot(carat,data=diamonds, facets= color ~ ., geom="histogram")
+
+# facetting horizontal selon la variable "color"
+qplot(carat,data=diamonds, facets= .~color, geom="histogram")
+
+# facetting combiné selon les variables cuts (en x) et color (en y)
+qplot(carat,data=diamonds, facets= cut ~ color, geom="histogram")
+
+# facetting du nuage de points carat x price par cut et color.
+qplot(carat,price,data=diamonds, facets= cut ~ color, geom="point")
+</pre>
+
+<h1> <a id="260614">Régressions écologiques avec R </a></h1>
+
+<p> Dans cet exemple ou utilise le module eiPack de R, qui comporte plusieurs outils d'analyse et de diagnostics pour la recherche sur données agrégées.
+	Ces méthodes découlent des recherches théoriques de Gary King et Ari Rosen, elles reprennent les commandes de l'ancien pack ei. 
+	Dans le même temps elles s'appuient aussi sur certains outils inclus dans le package Zelig
+</p>
+<pre>
+
+
+# On va chercher le répertoire de travail
+
+getwd()
+[1] "C:/Users/Antoine/Documents"
+
+# Import des données dans le data frame (ici les données du recensement britannique par LSOA sur Birmingham)
+
+data.frame <- read.csv ("C:/Users/Antoine/Documents/birmi.csv", header=TRUE)
+
+# Vérificationd de l'import
+
+View (data.frame)
+
+# Création de la formule pour la régression écologique : matrice RxC avec Religion et position sociale
+
+formula <- cbind(christian, buddhist, hindu, jewish, muslim, sikh, other_rel, no_rel, comprel) ~ cbind(sec1, sec2, sec3, sec4, sec5, sec6, sec7, sec8, compsec)
+
+
+# Vérification des objets
+
+ls()
+[1] "data.frame" "formula"   
+
+# Installation de eiPack
+
+library(eiPack)
+Le chargement a nécessité le package : MASS
+Le chargement a nécessité le package : coda
+Le chargement a nécessité le package : lattice
+Le chargement a nécessité le package : msm
+
+# Formule de la régression mobilisant la formule et le data.frame que l'on vient d'inclure
+
+ei.reg(formula, data.frame)
+
+# Résultats
+
+Call:  ei.reg(formula = formula, data = data.frame) 
+
+Estimated internal cells:
+
+         christian  buddhist  hindu     jewish    muslim    sikh      other_rel  no_rel    comprel 
+sec1      0.27871    0.03914   0.20195   0.02028  -0.14870   0.14479   0.00780    0.40492   0.05111
+sec2      0.90043    0.00347  -0.14035  -0.00632  -0.57100  -0.15897   0.00134    0.81636   0.15505
+sec3      1.01758   -0.00582   0.02249  -0.02035   0.65209   0.07743   0.02560   -0.77208   0.00306
+sec4     -0.70835   -0.06020   0.35202   0.01503   2.15456   1.04223   0.03051   -1.70164  -0.12416
+sec5      1.22808    0.02500  -0.26733   0.00439   0.02015  -0.94491  -0.10143    1.00558   0.03046
+sec6      0.79894   -0.01081  -0.03786   0.01132  -0.45057  -0.40386  -0.04331    1.07665   0.05949
+sec7      1.16245    0.01924   0.17454  -0.00194  -1.65713   0.81825   0.09895    0.23776   0.14787
+sec8     -1.02085    0.00690  -0.06113  -0.01350   2.61948  -0.17834  -0.00736   -0.41753   0.07233
+compsec   0.27878    0.02137   0.07938   0.02126   0.09941   0.05450   0.01077    0.37192   0.06261
+
+Message d'avis :
+In all(G) :
+
+  conversion automatique d'un argument de type 'double' en booléen (logical)
+
+# Régression bayésienne (même variables)
+
+ei.reg.bayes(formula, data.frame, sample = 1000, weights = data.frame$age001)
+
+Formula:  formula 
+Total sims:  1000 
+
+Estimated internal cells: (averaged across simulations)
+
+         christian  buddhist   hindu      jewish     muslim     sikh       other_rel  no_rel     comprel  
+sec1      0.255868   0.040967   0.208855   0.020665  -0.142041   0.148839   0.007307   0.419616   0.048502
+sec2      0.894671   0.000915  -0.149674  -0.006494  -0.551448  -0.175201   0.000543   0.827026   0.157262
+sec3      0.969418  -0.004445   0.036324  -0.018917   0.663135   0.114941   0.026523  -0.797324   0.000239
+sec4     -0.551790  -0.062043   0.344129   0.014549   2.068667   1.022573   0.032510  -1.741573  -0.124125
+sec5      1.184238   0.032015  -0.260722   0.002590  -0.002812  -0.969065  -0.100070   1.074476   0.034159
+sec6      0.831795  -0.012814  -0.033545   0.011969  -0.500312  -0.374619  -0.041749   1.046044   0.065288
+sec7      1.161579   0.017783   0.156365  -0.002039  -1.576593   0.770128   0.094455   0.263097   0.137832
+sec8     -1.032322   0.005403  -0.054116  -0.012027   2.602139  -0.166241  -0.007031  -0.411866   0.074677
+compsec   0.246179   0.025886   0.081481   0.018585   0.121226   0.060252   0.011960   0.370246   0.062713
+Message d'avis :
+In all(G) :
+  conversion automatique d'un argument de type 'double' en booléen (logical)
+
+# Fonction MD.bayes pour prédire les fréquences
+
+ei.MD.bayes(formula, data = data.frame, sample = 1000, total = data.frame$age001)
+
+Formula:  formula 
+Total sims:  2000 
+Burnin discarded:  1000 
+Sims saved:  1000 
+
+Mean Alpha: (averaged over simulations)
+
+         christian  buddhist  hindu  jewish  muslim  sikh   other_rel  no_rel  comprel
+sec1     57.47       0.45      0.60   0.38    0.76    0.60   0.45      28.29    3.78  
+sec2      2.66       0.19      0.24   0.18    0.45    0.23   0.18       1.42    0.27  
+sec3      3.52       0.20      0.24   0.18    0.59    0.27   0.21       1.26    0.30  
+sec4     20.12       0.32      0.41   0.28    2.48    0.42   0.33       1.61   10.45  
+sec5     50.89       0.43      0.46   0.38    0.87    0.52   0.48      13.31   29.48  
+sec6      1.43       0.17      0.21   0.16    0.47    0.22   0.18       0.62    0.22  
+sec7      1.60       0.18      0.23   0.17    0.56    0.24   0.18       0.71    0.25  
+sec8      0.81       0.17      0.21   0.15    0.83    0.23   0.17       0.41    0.25  
+compsec   1.42       0.18      0.23   0.16    0.79    0.24   0.18       0.51    0.27  
+
+Mean Cell.counts: (averaged over simulations)
+
+         christian  buddhist  hindu  jewish  muslim  sikh   other_rel  no_rel  comprel
+sec1     50325        317       507    232     637     504    304      24864    3294  
+sec2     89224        918      3967    425   18412    6138    958      46577    4406  
+sec3     69847        772      2664    344   15105    3722    879      24667    3816  
+sec4     41886        415       805    268    6033     866    463       3575   20668  
+sec5     34624        245       282    177     580     325    278       9053   20013  
+sec6     70767        771      2806    362   37151    5872    882      31972    4173  
+sec7     55344        734      3177    362   30185    4842    839      24624    4242  
+sec8     31593        712      3493    350   76774    4933    972      15437    4617  
+compsec  50119        901      5249    846   45608    5529   1017      25538    5870  
+
+
+# Stockage du résultat dans l'objet o1 pour calculs ultérieurs ou graphiques
+
+o1 <- ei.MD.bayes(formula, data = data.frame, sample = 1000, total = data.frame$age001)
+
+
+# Calcul sous excel
+# % en ligne
+										
+	christian	buddhist	hindu	jewish	muslim	sikh	other_rel	no_rel	comprel	Total
+sec1	62.14	0.39	0.63	0.29	0.79	0.62	0.38	30.70	4.07	100
+sec2	52.17	0.54	2.32	0.25	10.77	3.59	0.56	27.23	2.58	100
+sec3	57.34	0.63	2.19	0.28	12.40	3.06	0.72	20.25	3.13	100
+sec4	55.86	0.55	1.07	0.36	8.05	1.15	0.62	4.77	27.57	100
+sec5	52.80	0.37	0.43	0.27	0.88	0.50	0.42	13.81	30.52	100
+sec6	45.73	0.50	1.81	0.23	24.01	3.79	0.57	20.66	2.70	100
+sec7	44.51	0.59	2.55	0.29	24.27	3.89	0.67	19.80	3.41	100
+sec8	22.75	0.51	2.52	0.25	55.28	3.55	0.70	11.12	3.32	100
+compsec	35.63	0.64	3.73	0.60	32.42	3.93	0.72	18.15	4.17	100
+Total	46.01	0.54	2.14	0.31	21.48	3.05	0.61	19.23	6.63	100
+										
+
+# % en colonne
+
+	   christian	buddhist	hindu	jewish	muslim	sikh	other_rel	no_rel	comprel	Total
+sec1	10.19	5.48	2.21	6.89	0.28	1.54	4.61	12.05	4.63	7.55
+sec2	18.07	15.87	17.29	12.63	7.99	18.75	14.53	22.58	6.20	15.94
+sec3	14.15	13.34	11.61	10.22	6.55	11.37	13.33	11.96	5.37	11.35
+sec4	8.48	7.17	3.51	7.96	2.62	2.65	7.02	1.73	29.07	6.99
+sec5	7.01	4.24	1.23	5.26	0.25	0.99	4.22	4.39	28.15	6.11
+sec6	14.33	13.33	12.23	10.75	16.12	17.94	13.38	15.50	5.87	14.42
+sec7	11.21	12.69	13.84	10.75	13.10	14.79	12.73	11.94	5.97	11.59
+sec8	6.40	12.31	15.22	10.40	33.31	15.07	14.75	7.48	6.49	12.94
+compsec	10.15	15.57	22.87	25.13	19.79	16.89	15.43	12.38	8.26	13.11
+Total	100 100	100 100	 100 100 100 100 100 100
+
+</pre>
+
+
+<h1><a id="260614_2">Créer un Ramdisk (sous Windows)</a></h1>
+
+<p>
+	La pluspart des personnes pensent que lorsque leur ordinateur est lent, il faut en changer. La pluspart des utilisateurs pensent aussi que le plus important est d'avoir un CPU plus rapide.
+	Pourtant c'est souvent l'accès aux données qui est le goulot d'étranglement pour l'utilisation des logiciels.
+	Pour remédier à ce problème, la nouvelle tendance dans l'industrie est de préconiser l'utilisation des SSD.
+	Mais les SSD coutent chers, et ils sont fragiles à l'usur de leur mémoire.
+	Pour des performances encore plus importantes, une autre option existe : le ramdisk.
+	Toutes vos données seront en RAM pendant le chargement et le traitement des données, les usages sont virtuellement immédiats.
+	Il vous suffit ensuite d'enregistrer sur le disque dur lui même le résultat des analyses, car le ramdisk est effacé en cas de plantage/reboot/extinction de la machine.
+</p>
+<p>
+	Pour installer un ramdisk sous windows il vous faut installer imdisk.
+	Puis le configurer via le panneau de configuration en attribuant une taille à votre ramdisk. L'intéret est d'avoir 16/32 Go de ram pour avoir des ramdisks de plusieurs Go sans soucis.
+	Copiez ensuite vos fichiers dans le ramdisk et lancez votre logiciel. Vous  pouvez maintenant ouvrir et travailler sur les fichiers situés sur le ramdisk.
+	N'oubliez pas de sauvegarder vos résultats et les modifications sur le disque dur lui même.
+</p>
+<p>
+<ul>
+	Avantages de la procédure : 
+
+	Simple
+	Performances Maximales
+	Peu couteuse
+</ul>
+<p>
+<ul>
+	Inconvénients : 
+	Attention à la perte des données en cas de pépin
+	Il est possible de l'automatiser mais ca demande un peu de travail
+</ul>
+	La prochaine fois : un exemple avec TMPFS sous Linux
+</p>
+
+<h1>Utiliser Archlinux</h1>
+
+<p>
+La distribution ArchLinux est l'une des plus intéressantes disponibles. Elle vise au minimalisme et à la simplicité architecturale.
+Voici quelques unes de ses caractéristiques
+</p>
+<ul>
+	<li>Installation Minimale par défaut</li>
+	<li>Packages très récents</li>
+	<li>Rolling Release : mise à jour en continue sans avoir besoin de procéder à une réinstallation</li>
+	<li>Politique directive : Rejet des drivers jugés mauvais</li>
+</ul>
+
+<p> Arch est un bon moyen pour se familariser à Linux, depuis 2008 elle m'a donné la possibilité de progresser rapidement.
+	En échange, elle demande de vouloir apprendre et mettre les mains dans les rouages de l'OS. 
+	Archlinux est une distribution qui suit les grandes tendances des principales opérateurs des systèmes linux.
+	On peut citer l'utilisation de Systemd (système d'init et de contrôle des processus développé par Red Hat et expérimenté d'abord sous Fedora).
+	Archlinux est conforme au standard Linux Standard Base.
+	On pourrait presque regretter ce choix, tant certaines options semblent compliquées et discutables.
+	De façon générale, si vous souhaiter utiliser une distribution Linux ordinaire, c'est sans doute le meilleure compromis entre simplicité, efficacité et compatibilité avec les logiciels.
+	Certains problèmes peuvent surgir quand on cherche à installer des logiciels qui dépendent de transitions sous jacentes.
+	J'ai notamment eu le problème en voulant installer QGIS 2.2 alors que python 3 n'est pas compatible avec python 2.
+	Ceux qui souhaitent utiliser les processus de build de Mozilla comme Firefox OS pourront rencontrer des difficultés similaires.
+</p>
+
+<p> Peut-on alors reprocher quelque chose à Archlinux ? </p>
+
+<p> Malheureusement oui, la distribution parfaite n'existe pas.
+	A mes yeux, le premier problème est la fragmentation entre les dépots officiels et les dépots AUR qui fragilisent la structure des sytèmes installés.
+	Archlinux est un système communautaire et il est difficile à l'équipe centrale de maintenir des dépots aussi vastes que ceux de Debian par exemple.
+	On peut aussi penser qu'Archlinux introduit trop de changement de logiciels, plutôt que de se focaliser sur les <i> meilleurs versions </i> des différents logiciels.
+	Nombreux sont ceux qui introduisent des régressions ou des bugs qui peuvent être problématiques.
+
+	Archlinux pourrait investiguer les options alternatives sous linux, je pense notamment à un système d'init comme OpenRC ou à l'utilisation d'autres libc comme Musl.
+
+	Enfin, les systèmes BSD proposent de prolonger quelque peu la logique d'Archlinux.
+	Ils mettent en oeuvre des noyaux et des outils systèmes différents. Mais les logiciels qui fonctionnent sous linux, lorsqu'ils sont bien codés, fonctionnent la pluspart du temps sous BSD.
+	On distingue 3 principales branches de BSD. 
+	La plus intéressante est pour moi OpenBSD qui cherche à maintenir un système complet avec des exigences de clarté et de qualité très importantes.
+	Un des enjeux pour OpenBSD sera de négocier le passage la GPLv3 de GCC, privant ainsi l'OS d'un compilateur polyvalent pour construire le système de base.
+	FreeBSD adopte une stratégie différente, en optant pour LLVM/Clang, compilateur développé à l'Université de Chicago et utilisé abondamment par Apple pour Mac OS X.
+	LLVM est sous licence BSD, mais son développement n'est pas très ouvert. Son adoption par les distributions linux est attendus, mais le noyau Linux ne peut pas encore être compilé avec LLVM.
+	A terme, la question se posera pour OpenBSD qui devra se demander (1) si toutes les architectures actuelles peuvent encore être supportées (2) si l'intégration de Clang est préférable aux anciennes versions de GCC.
+
+	On voit donc que beaucoup d'évolution du monde linux peuvent paver la voix à des évolutions plus profondes.
+	La remise en cause des blocks fondamentaux du système GNU, sous l'évolution de la licence GPLv3, pourrait paradoxalement mener à un regain d'intéret pour la license BSD.
+	Dans le même temps, on peut espérer que les nouveaux efforts déployés apporteront des améliorations significatives aux briques fondamentales du système qui doivent être redessinnées.
+</p>
+
+
+
+
+<h1><a id="170614">Les élections européennes de 2014 replacées dans une perspective de long terme - 17/06/2014</a></h1>
+
+<p>Les dernières élections européennes ont été marquées par la poussée électorale du Front National. Cette évolution des résultats s’inscrits dans la lignée des scores réalisés par l’extrême droite lors de l’élection présidentielle de 2012. Le FN avait alors retrouvé son niveau maximum historique (en voix comme en pourcentage des suffrages exprimés).
+Pour mieux comprendre et percevoir l’évolution électorale des deux dernières années, les résultats des dernières européennes doivent être replacés dans une séquence plus longue qui s’étend du 21 avril 2002 à nos jours.
+Les résultats sont souvent discutés à partir des scores en pourcentage des suffrages exprimés. Cela permet de mesurer le poids relatif des différentes forces politiques. Mais cette méthode comporte aussi des risques. Elle peut introduire des erreurs d’interprétation en masquant les évolutions du taux de participation électorale. Pour bien saisir les tendances à l’œuvre, il est nécessaire de prendre en compte l’évolution des scores en pourcentage du nombre d’électeurs inscrits.  Dans le même temps, il faut garder à l’esprit qu’entre 2002 et 2014, ce sont plus de 5.3 millions d’électeurs qui ont rejoint le corps électoral. Le renouvellement générationnel a profondément modifié la structure sociale du corps électoral. Les nouveaux inscrits de 2014 n’étaient âgés que de 6 ans le 21 avril 2002.
+</p>
+
+<img src="http://ajardin.eu/varia/score_e14_exp.png"  height=100% width=100%>
+
+<p>
+Ce qui marque aujourd’hui les esprits, c’est de voir l’extrême droite dans son ensemble (représentée par le Front National et quelques candidats extérieurs) recueillir près de 25 % des suffrages exprimés. Cette performance n’avait jamais été réalisée au cours des 20 dernières années, que cela soit à l’occasion d’une élection européenne ou d’une élection présidentielle. Ce chiffre nous amène à penser que l’extrême droite a réalisé une percée électorale importante ces dernières années. Elle s’inscrit en nette progression depuis l’élection européenne de 2009 en quadruplant son score. Dans le même temps, la gauche et la droite réalisent des contreperformances alors même que le PS et l’UMP sont respectivement fragilisés par la concurrence du Front de Gauche et d’Europe Ecologie d’une part, par celle du Modem et de l’UDI de l’autre. Le total des voix de gauche ne dépasse pas les 35 % des exprimés lors des dernières européennes,  alors celui de la droite stagne autour des 36%. On observe depuis le premier tour de la présidentielle 2007 une tendance au déclin structurel  du score de la droite, couplé à une progression de plus en plus nette du Front National. Cette évolution correspond à l’arrivée de Marine Le Pen à la tête du principal parti d’extrême droite, engageant une stratégie d’ancrage électoral rapide alors que la droite parlementaire perdait toutes les élections entre 2007 et 2012 dans un contexte de défiance croissante à l’égard de Nicolas Sarkozy.
+La gauche arrivée au pouvoir lors des dernières élections présidentielles fait face à un décrochage rapide et significatif de son électorat. Dans son ensemble, elle perd près de 10 points en part des suffrages exprimés, que l’on rapporte son score aux européennes de 2009 où à la présidentielle de 2012. Cette défiance frappe la gauche socialiste, comme l’illustre la chute de la confiance envers au président de la République François Hollande, mais également les autres composantes de la gauche qui ne parviennent pas à tirer de bénéfices du rejet de l’exécutif. Nous savons depuis 2002 que les électeurs de gauche sont particulièrement mobiles au sein de leur camp politique. Nombreux sont ceux qui considèrent qu’il est possible de voter pour différents partis de gauche. Cette fluidité électorale interne à la gauche ne s’est pas traduite par un transfert des soutiens du parti socialiste vers les autres partis de gauche.
+</p>
+
+<img src="http://ajardin.eu/varia/score_e14_ins.png"  height=100% width=100%>
+
+<p>
+En observant les évolutions des scores en pourcentage des inscrits, il devient possible d’identifier les dynamiques de mobilisation et de démobilisation spécifiques des différents électorats. La participation évolue d’une élection à l’autre. Elle atteint régulièrement ses maxima lors des élections présidentielles et ses minimas lors des élections européennes. Mais ces variations ne sont pas identiques chez tous les électeurs. Ainsi, entre 2012 et 2014, la gauche recule de plus de 20 points en pourcentage des inscrits. Dans le même temps, la droite recule de 15 points. L’extrême droite, elle, résiste beaucoup mieux au recul de la participation, ne perdant que 3.5 points de pourcentage. Avec 10.13 % des inscrits, le Front National et ses alliés obtiennent un score plus important lors des européennes de 2014 que lors du premier tour de l’élection présidentielle de 2007, et se rapproche de ses maximas (13.28 % des inscrits en 2002, 13.9% des inscrits en 2012).
+Que l’on raisonne à type d’élection constante (en comparant entre eux les trois derniers scrutins européens) ou en prenant en compte les variations entre l’élection présidentielle et l’élection européenne qui lui succède, la progression du Front National est manifeste. Comme l’indiquait l’élection présidentielle de 2012 l’extrême droite a retrouvé l’ensemble de son potentiel électoral. 
+Cette évolution apparait d’autant plus nette que l’on assiste à un double mouvement d’affaiblissement de la gauche et de la droite. Les partis de droite subissent un repli constant depuis l’arrivée au pouvoir de Nicolas Sarkozy en 2007. Ils ne parviennent pas à tirer bénéfice de l’opposition à François Hollande et semblent toujours subir les conséquences de la défiance dont a fait l’objet l’ancien président de la République jusqu’à sa défaite au second tour de l’élection présidentielle de 2012.
+Dans le même temps, la gauche est la force politique qui subit la plus forte perte de soutien de mobilisation électorale au cours des deux dernières années. Ce repli l’amène à ses scores les plus faibles. Alors que la gauche avait pu améliorer son score (en pourcentage des exprimés) suite à ses deux défaites présidentielles de 2002 et 2007 lors des européennes de 2004 et 2009, elle fait l’objet d’un rejet manifeste à l’occasion du scrutin de 2014.
+</p>
+
+<p>
+Les évolutions à venir soulèvent plusieurs questions qui restent ouvertes à ce jour. La gauche est-elle en mesure de remobiliser, ne serait-ce que partiellement, les électeurs qui ont permis à François Hollande d’être élu président de la République ? La droite peut-elle tirer les bénéfices de son positionnement dans l’opposition face à un pouvoir exécutif contesté ? Le Front National est-il parvenu à mobiliser la totalité de son électorat et dispose-t-il d’une marge de progression supplémentaire qui l’amènera au-delà de ses meilleures performances passées dans les années à venir ? 
+Dans un contexte de crise économique profonde, faisant progresser le chômage et la précarité depuis maintenant plus de 6 années, la défiance politique atteint des niveaux sans précédents. Ces éléments, couplés à redéfinition de la stratégie du Front National pourrait modifier la structure du système partisan français. Cependant, les résultats des élections européennes révèlent que cela n’est pas encore le cas.
+</p>
+
+<h1><a id="120614"> Comment le FN tente de gagner sur tous les tableaux - 12/06/2014</a></h1>
+
+<p> L'avocat du Front National, qui était aussi son candidat lors des dernières municipales à Paris, a affirmé aujourd'hui que le journal hebdomadaire de Jean Marie Le Pen ne serait plus diffusé sur le site du parti pour des raisons juridiques. On notera en revanche que M. Wallerand de St Just avait pour collistier Pierre Panet, militant d'extrême droite proche de Dieudonné après avoir été candidat sur les listes antisionistes de 2009 et intervenant au théatre de la Main d'Or.
+M. de St Just ajoute par ailleurs, quoiqu'implicitement, qu'il soutient le contenu des propos de Jean Marie Le Pen. Il déclare notamment au site <a href="http://www.atlantico.fr/decryptage/wallerand-saint-just-entre-jean-marie-et-marine-pen-suis-persuade-que-tout-finira-rentrer-dans-ordre-1609496.html">atlantico</a> <i>" Ce qu'il y a de difficile et de douloureux dans cette affaire, c'est que la présidence du parti a été obligée de prendre cette décision, alors que la phrase incriminée est tout à fait anodine. Mais nous sommes obligés de prendre en considération le poids des censeurs de la liberté d'expression qui évoluent dans notre société. Cela ne veut pas dire pour autant que l'on se plie devant eux, mais nous respectons simplement le besoin de prudence"</i>.
+L'avocat du FN poursuit <i>Je suis sidéré de voir qu'on ait pu faire de cette phrase un tel scandale</i> avant de souligner la proximité politique fondamentale entre Marine et Jean Marie Le Pen : <i>"Il ne s'agit pas d'un décrochage idéologique mais plutôt sur la façon d'exprimer ses idées et ses réactions sur tel ou tel fait d'actualité"</i>.
+A la fin de l'interview, on peut également lire que la liberté d'expression n'existe absolument pas en France aujourd'hui, slogan devenu un leitmotiv du Front National, qui tranche singulièrement avec la volonté affirmée par la direction du FN de porter devant les tribunaux toutes personnes qualifiant le FN de parti d'extrême droite (ce qui, pour l'occasion, ne relève pas de l'opinion mais d'une <a href="http://www.lemonde.fr/politique/article/2012/12/06/le-fn-repond-a-la-definition-historique-de-l-extreme-droite_1801222_823448.html">analyse scientifique rigoureuse et documentée</a>).
+
+Ainsi le FN bénéficie :
+
+<ul>
+<li>- D'une visibilité médiatique importante</li>
+<li>- D'un récit soutenant la stratégie de communication de Marine Le Pen</li>
+<li>- D'une occasion de solidifier les différentes composantes de son électorat en s'adressant aussi aux partisans de la ligne la plus dure</li>
+</ul>
+
+
+
+<h1><a id="110614">Les réactions à l'affaire Jean Marie Le Pen - 11/06/2014</a></h1>
+
+<p>
+Nombreux sont ceux qui appellent Marine Le Pen à condamner son père et président d'honneur du front national.
+Si la présidente du parti cherche à se distancier des déclarations de son père, celle qui est adhérente depuis 1986 n'avait pas réagit de cette façon lors des propos sur "le détail de l'histoire" ni concernant la sordide formule "Durafour Crématoire".
+Ce n'est donc pas d'une dédiabolisation éventuelle qu'il s'agit (d'autant plus que le mot est piégé, le FN n'ayant jamais été diabolisé).
+C'est de l'hypothèse d'une évolution personnelle de Marine Le Pen.
+Les précédents existent, on pense notamment à la trajectoire d'un Gianfranco Fini, ancien dirigeant du MSI italien ayant depuis rompus dans les paroles et dans les actes avec l'extrême droite.
+Cette trajectoire est possible, elle est respectable et il faut la souhaiter.
+Mais ca ne semble pas être celle de Mme Le Pen. La présidente du FN s'est d'ailleurs toujours défendu de suivre l'exemple de Fini.
+</p>
+<p>
+En 2011, dans le quotidien italien "Corriere della Serra", elle affirmait <i>« Je suis l’héritière de mon père, mais moi, je ne fais plus peur »</i> avant d'avancer <i>« Avec mon père, nous sommes d’accord sur les grands sujets : la défense de la nation et de la liberté, le rôle de la France dans le monde. Mais nos personnalités sont différentes : c’est un homme qui a 40 ans de plus que moi, il a connu la guerre, pas moi. Plus que son héritière, je me sens l’héritière d’une lutte pour la défense de la France. Je fais vivre l’idée de l’identité nationale que d’autres essaient juste d’exploiter, Sarkozy en tête. Le fait que mon père ait été vu comme l’ennemi public numéro un m’a forgé le caractère. J’ai envers le FN la même attitude qu’envers mon pays : je prends tout, même ce que je ne partage pas. C’est pourquoi je ne romprai jamais avec le passé. Fini aurait mieux fait d’exprimer sa désapprobation à l’égard du fascisme sans en arriver à le condamner – c’est trop facile. A en juger par la peur qui s’insinue chez nos adversaires, l’hypothèse que j’arrive au second tour se fait plus crédible. J’espère l’emporter au congrès du FN à Tours. J’incarne la sensibilité sociale, Gollnisch la tradition du parti, avec ses mouvements anachroniques et provocateurs. Je veux rompre avec les égarés de l’extrême droite. Je propose aux Français le rétablissement de la loi républicaine dans les rues illégalement occupées par les prières islamiques, la défense de la laïcité et la préférence nationale, la sortie de l’Europe et de l’euro, l’arrêt de l’immigration et un protectionnisme raisonnable. Le dernier livre que j’ai lu est la biographie de Churchill, un grand homme. »</i>
+</p>
+
+<p>
+Marine Le Pen considère donc que c'est un mauvais timing et que l'extrême droite avance mieux masquée. 
+En ce sens, elle est dans la droite ligne de la stratégie développée depuis le congrès de 2011, prendre le pouvoir d'abord.
+En ce sens, les appels à la condamnation de Jean Marie Le Pen servent les intérets de Marine Le Pen.
+Ils lui permettent de se démarquer, sans avoir à rompre. Si elle s'engage ne serait-ce qu'a minima contre le président d'honneur du FN, celui ci aura tout le loisir d'alimenter un roman people.
+Ainsi le FN joue sur plusieurs tableaux : stratégie de congrès pour Jean Marie Le Pen, stratégie électorale pour Marine Le Pen, stratégie de présence médiatique pour l'ensemble du parti.
+</p>
+
+
+<h1><a id="090614">Quelques remarques supplémentaires sur la situation au Front National  - 09/06/2014</a></h1>
+
+
+<ul>
+<li>- Marion Maréchal Le Pen n'a pas pris position</li>
+<li>- Marine Le Pen ne considère par les propos sur la "présence urticante des Roms" ni sur "Monseigneur Ebola" comme étant des fautes politiques</li>
+<li>- Jean Marie Le Pen compte bien continuer à peser sur la ligne du FN et l'évolution de la structure du parti</li>
+<li>- Il a notamment récemment regretté la défaite de Bruno Gollnish au congrès de 2011</li>
+<li>- La situation doit être analysée en prenant en compte la totalité de l'extrême droite et pas seulement la direction du FN</li>
+<li>- Dans les structures militantes et parmi les cadres, nombreux sont les personnes qui pourraient venir en soutien à Jean Marie Le Pen</li>
+<li>- La dichotomie entre structure militante et base électorale du FN pourrait se renforcer</li>
+<li>- Il faudra voir si ces propos sont effectivement de nature à faire baisser le score du FN, du point de vue de la sociologie électorale, rien n'est moins sur</li>
+</ul>
+
+
+<h1><a id="090614_2">Divisions au coeur de l'extrême droite - 09/06/2014</a></h1>
+
+<p>
+	Pour la première fois, Marine le Pen et son entourage semblent engager une confrontation directe avec Jean Marie le Pen. En répondant aux accusations de sa fille, le président d'honneur et membre fondateur du Front National montre qu'une partie du Front National tient à conserver tous les marqueurs de sa ligne idéologique.
+	Cette recherche d'affichage a aussi une histoire, celle du congrès de Marignane pendant lequel Jean Marie Le Pen a été dangereusement marginalisé en interne du Front National par les membres de la mouvance Nationaliste Révolutionnaire alliée à Bruno Mégret.</p>
+<p>
+	On assiste à une bataille idéologique au sein de l'extrême droite entre un groupe proche de Marine Le Pen qui cherche à obtenir des résultats électoraux rapides et un groupe autour de Jean Marie Le Pen qui cherche surtout à déstabiliser idéologiquement la société française. C'est ce que l'on a appelé pendant de longues années "la lepénisation des esprits".
+	Cette bataille est aussi une bataille d'héritage.
+	Elle ouvre une période de confrontation dans l'extrême droite française. Cette confrontation existait déja, suite au congrès de 2011, à la mise à l'écart d'Alain Soral en 2009, des dirigeants des groupes Oeuvre Française et Jeunesses Nationalistes Révolutionnaires (aujourd'hui dissous) ensuite.
+	Pourtant, cette bataille pourrait paradoxalement renforcer une extrême droite qui affiche de plus en plus de pluralisme.</p>
+<p>
+	De la même façon que la mouvance identitaire à fait croitre son champ d'influence en prenant des positions régionalistes, les coupures internes permettent aux dirigeants du FN de se partager le marché idéologique tout en s'attachant les services de tout le nuancier de l'extrême droite. 
+	Jean Marie Le Pen a toujours souhaité que le Front National soit le parti boussole, le parti commun de toute l'extrême droite. Marine Le Pen poursuit cette stratégie, par d'autres moyens.
+
+<p>
+
+
+<h1><a id="090614_3">La stratégie de Marine Le Pen à l'épreuve - 09/06/2014</a></h1>
+
+<p> 
+	Marine Le Pen fait tout son possible pour que le Front National accède au pouvoir. Cette stratégie se décline à toutes les échelles :  locales, européennes, mais aussi nationales.
+	Pour satisfaire cet objectif, elle est prête à mettre en sourdine les éléments qui affilient indiscutablement le Front National à l'extrême droite et ce depuis la création du parti en 1972.
+	Marine Le Pen veut conquérir le pouvoir d'abord pour appliquer les thèses du Front National ensuite.
+	Une des principales barrières qui limitent aujourd'hui le périmètre d'influence du FN est la question de l'antisémitisme.
+</p>
+<p>
+	Lorsque Jean Marie Le Pen suggère qu'Ebola mette un terme à l'immigration, la direction du parti ne juge pas utile de réagir. Car les propos les plus violents et déshumanisants à l'égard des immigrés,
+	et singulièrement des immigrés d'Afrique et d'Europe de l'est (rappelons nous des propos du même Jean Marie Le Pen dénonçant "la présence urticante" des Roms) ne privent pas le FN de la conquète de l'électorat populaire de droite. 
+	En revanche, la question de l'antisémitisme agit encore comme un marqueur idéologique puissant de l'idéologie du parti, associée au discours négationniste et aux attitudes de collaboration durant la seconde guerre mondiale.
+</p>
+	Le Front National, par la voix de sa présidente, ne considère les fautes politiques que lorsqu'elles gènent sa stratégie. Ce n'est pas parce que les propos de Jean Marie Le Pen sont manifestement racistes qu'ils gènent Marine Le Pen. C'est parce que l'antisémitisme gène la stratégie d'accès au pouvoir du principal partie d'extrême droite. Le choix des mots, comme le choix des réactions, montre la direction actulle du FN voit les fautes qui risquent de l'handicapper en rappelant à chacun la nature de ses idées. En revanche, les contradictions de l'attitude de Marine Le Pen montre bien qu'au delà de la hiérarchie entre les groupes humains, c'est la hiérarchie des formes de racisme qui s'établit. Déja révoltante, cette hiérarchie n'est pas celle d'une théorisation raciale, mais de l'opportunisme politique d'une extrême droite qui cherche à s'ancrer le plus profondément possible dans la société française en minimisant les évolutions de son discours au strict nécessaire.
+<p>
+	Maximiser les gains politiques et électoraux, au prix d'un camouflage superficiel, une approche aussi dangereuse qu'efficace que nous révèle une fois de plus la séquence politique des dernières semaines.
+
+</p>
+
+
+<h1><a id="060514">Regards sur la droite - 06/05/2014</a></h1>
+<p>« Les quartiers populaires portent un réel intérêt à la vie politique, même si celui-ci ne se transcrit pas toujours dans des pratiques institutionnelles telles que le vote. »</p>
+<a href="regd39.pdf">Lien</a>
+
+<p>
+<b>Les quartiers se sont peu mobilisés, à l’occasion
+du scrutin municipal. Faut-il en conclure que les
+électeurs qui y vivent ne s’intéressent plus à la
+politique ?</b></p>
+
+<p>
+Non. Dans ces quartiers, même ceux qui ne participent pas au vote s’intéressent à la vie politique. Ils
+ont d’ailleurs été très sensibles au discours des élus
+et des responsables politiques sur la situation des
+banlieues. Ce qui était vrai, lors du précédent quinquennat, le reste aujourd’hui. Les personnes qui vi-
+vent en banlieue ont un regard critique sur ce qui
+se fait. Ceci est notamment perceptible chez les migrants et leurs descendants. On remarque aussi
+que ces personnes s’intéressent aux enjeux politiques de leur pays d’origine, concernant l’entrée de
+la Turquie dans l’Europe, l’intervention française au
+Mali ou encore les révolutions arabes.
+Les quartiers populaires portent donc un réel intérêt
+à la vie politique, même si celui-ci ne se transcrit pas
+toujours dans des pratiques institutionnelles telles
+que le vote. Cela peut apparaitre comme un paradoxe.
+</p>
+
+<p>
+<b>L’une des surprises de ces élections a été le basculement à droite d’un nombre significatif de
+communes populaires. Comment interprétez-
+vous ce phénomène ?</b></p>
+
+<p>
+Ce basculement est dû, pour l’essentiel, à une baisse
+de la participation électorale dans les quartiers qui
+avaient majoritairement soutenu la gauche, en
+2012. Avec, en contrepartie, une forte mobilisation
+de l’électorat de droite. En cela, les municipales de
+2014 sont différentes de celles de 2008. À l’époque,
+les électeurs de gauche étaient restés mobilisés,
+dans une logique défensive face à Nicolas Sarkozy
+après la défaite de 2007. A l’inverse de l’électorat de
+droite était démobilisé. Cette fois-ci, c’est l’inverse.
+Deux ans après la victoire de François Hollande
+à la présidentielle, l’électorat de gauche marqué
+par un sentiment de défiance vis-à-vis du pouvoir et des partis de gouvernement, a décidé de
+se tenir éloigné des urnes. Dans le même temps,
+la droite s’est mobilisée autour de ses thématiques traditionnelles, du registre économique
+aux questions religieuses. De ce point de vue, le
+Mariage pour tous a pu avoir un effet au sein de
+l’électorat de la droite, mais celui-ci reste marginal et ne se traduit pas par un basculement des
+électeurs de la gauche vers la droite.
+</p>
+
+<p>
+<b>Y a-t-il lieu d’évoquer un décrochage des catégories populaires vis-à-vis du politique ?</b></p>
+
+<p>
+Je ne le crois pas. J’évoquerai plutôt un sentiment
+de défiance, ancré dans les milieux populaires, à
+l’égard des partis situés à gauche de l’échiquier
+politique auquel ils s’identifient le plus souvent.
+Cette défiance s’est renforcée depuis deux ans.
+L’absence d’une alternative crédible à la politique
+menée par la droite pèse aujourd’hui dans les
+esprits. De ce point de vue, le vote à gauche ne
+contribue pas à faire évoluer la situation sociale
+dans le pays. Ceci étant dit il ne faut pas surestimer la participation politique dans les milieux
+populaires au cours des vingt ou trente dernières
+années. Ainsi les descendants de l’immigration
+âgés de moins de 40 ans portent un intérêt à la
+politique souvent supérieur à celui de leurs homologues générationnels. Il est donc difficile
+d’évoquer un décrochage car cette idée enjolive
+la situation des années 80 et 90.
+</p>
+
+<p>
+<b>D’aucuns évoquent l’éloignement des catégories moyennes et populaires des villes centres
+pour justifier leur décrochage et l’adhésion
+aux thèses frontistes. Partagez-vous cette
+analyse ?</b></p>
+
+<p>
+Il est très difficile de séparer l’effet de la distance
+géographique de la composition sociologique
+des communes. Est-ce que c’est l’éloignement de
+Paris en lui-même, où la nature sociologique des
+zones périurbaines qui influence le vote ? Les populations qui vivent en milieu périurbain ne vo-
+tent pas majoritairement pour le Front national,
+même si l’adhésion y est plus élevée qu’ailleurs.
+La montée en puissance de ce parti est transversale. Là où vivent des groupes sociaux moins
+protégés du FN par des loyautés anciennes,
+l’adhésion est plus forte. Mais, il nous faut rester
+vigilant. Dire que les ouvriers votent majoritairement FN et que les catégories moyennes n’adhè-
+rent que très modérément aux idées qu’il
+véhicule est très réducteur. La réalité est plus
+complexe.
+</p>
+
+<p>
+<b>Les populations issues de l’immigration ont
+visiblement évolué dans leurs choix électoraux. Cela ne signifie-t-il pas, au fond, que
+l’électorat musulman est politiquement moins
+homogène que dans le passé ?</b></p>
+
+<p>
+Il ne l’a jamais été. Cela relève plus des représentations que d’une réalité sociologique observée.
+Il a été assez peu représenté pendant longtemps,
+puisque les primo-arrivants n’étaient pas dotés
+de la nationalité française et qu’ils n’avaient donc
+pas accès au droit de vote. D’autres n’étaient tout
+simplement pas inscrits sur les listes électorales.
+Depuis, nombreux sont ceux qui ont accès aux
+urnes. Mais il faut rester prudent. Les électeurs
+qui se revendiquent musulmans sont majoritairement ancrés à gauche. Le sont-ils en raison de
+leur appartenance religieuse, parce qu’ils sont
+migrants ou que leur pays d’origine appartenait
+à l’empire colonial français ? Comment distinguer l’effet de la religion de celui de l’origine migratoire ? Comment, à l’intérieur de l’électorat
+musulman, les mécanismes de fragmentation
+peuvent-ils intervenir ? Selon qu’elles sont d’origine pakistanaise, malienne ou marocaine, ces
+personnes n’auront pas nécessairement les
+mêmes grilles de lecture ni les mêmes attentes
+à l’égard de la société française. Comment, enfin,
+les différences de classe sociale modifient-elles
+le rapport à la religion, à la politique et à l’articulation des deux ? Certaines personnes conti-
+nuent de subir une relégation alimentée par les
+discriminations, quand d’autres parviennent à
+connaitre une ascension sociale. Une diversification sociologique des descendants de l’immigration qui se traduit par des comportements
+politiques différents, liés au positionnement
+social des uns et des autres.
+</p>
+
+<p>
+<b>Est-il possible d’établir une rationalisation
+du vote au sein des catégories que vous décrivez ?</b></p>
+
+<p>
+Les descendants de l’immigration sont, majoritairement plus ancrés à gauche que leurs homologues générationnels, parce qu’ils ont la
+mémoire de la trajectoire migratoire de leurs
+ainés. Et ce, quelles que soient leur appartenance sociale. Même ceux qui ont une des attitudes conservatrice se déclarent rarement
+proche de la droite. Pourtant en Allemagne, les
+chrétiens-démocrates n’ont pas hésité à intégrer une dimension religieuse islamique dans
+leur discours et leur programme pour attirer
+ces électeurs De même aux Etats-Unis, les Républicains ont beaucoup parlé d’avortement et
+de religion pour tenter de capter l’électorat hispanique, proche du parti démocrate. En France,
+Nicolas Sarkozy n’a pas agi autrement, en tentant de se rapprocher de l’UOIF.
+Il n’y a donc pas de règle absolue en matière de
+vote des populations immigrées, en dépit d’un
+penchant régulier pour la gauche Il n’y a rien
+de systématique dans leurs choix électoraux,
+les déçus se réfugiant, le plus souvent, dans
+l’abstention.
+</p>
+
+<p>
+Ces trajectoires dispersantes des descendants
+de l’immigration montrent clairement que les
+populations issues des quartiers populaires
+ont changé, du fait d’une immigration qui est
+de moins en moins postcoloniale et de plus en
+plus mondialisée. D’autre part, à mesure que
+ces personnes changent de quartiers, occupent d’autres emplois, accèdent à des catégories sociales différentes, leurs opinions
+politiques tendent à se banaliser, à suivre celles
+du reste de la population.
+</p>
+
+<p>
+<b>Dès lors qu’on évoque l’islam et la politique,
+il est difficile d’échapper au discours sur la
+radicalisation…</b></p>
+
+<p>
+Oui, mais on a tendance à oublier l’autre partie
+du spectre, qui s’éloigne d’une conception traditionnelle et conservatrice, en dépit d’un héritage culturel, religieux et familial.
+La vraie question qui se pose est celle-ci : dans
+quelle mesure la France est-elle une société intégrée qui fait fi de toute opposition entre populations immigrée et française ? Dès lors que
+des individus s’emploient à « découper » le
+monde social entre des gens qui leur ressemblent et des personnes différentes, des frontières se font jour qui peuvent servir de support
+à des logiques de repli comme d’hostilité. Surtout, quand elles sont liées à des facteurs eth-
+niques, migratoires et religieux. Dans ce cas, les
+frontières deviennent moins poreuses et les logiques de confrontation plus violentes.
+</p>
+
+<p>
+<b>La géographie du vote FN a-t-elle évolué, depuis 1995 ?</b></p>
+
+<p>
+Il y a bien un changement qui s’est opéré. Parfois même de façon spectaculaire, comme en
+Seine-Saint-Denis. En 1995, les villes les plus
+riches ne votaient pas pour le FN. En 2012, c’est
+l’inverse qui s’est produit. Tant et si bien que ce
+sont souvent les communes les plus pauvres
+qui votent aujourd’hui le moins en faveur du
+Front National. La corrélation s’est inversée au
+fil du temps. L’un des facteurs explicatifs, c’est
+la part des descendants de l’immigration dans
+l’électorat. Les milieux populaires, en lien avec
+l’immigration, n’adhèrent pas au FN, contrairement aux catégories les plus modestes qui n’en
+sont pas issues. Ceci vaut surtout pour ceux qui
+votaient à droite auparavant. Ce ne sont donc
+pas les électeurs de gauche qui ont basculé en
+faveur du parti frontiste, mais les électeurs de
+droite. Il y a même une division entre les
+classes supérieures restées fidèles à l’UMP et
+les catégories populaires qui optent pour le FN,
+dans une proportion de plus en plus importante. Cette concurrence s’opère à droite, et non
+à gauche.
+</p>
+
+<p>
+<b>Dans le Nord-Pas-de-Calais comme en Seine-et-Marne, en revanche, rien n’a changé. En 1995
+comme en 2012, les villes les plus riches sont
+celles qui votent le moins pour le FN.
+N’assiste-t-on pas à une restructuration de la
+droite, sur fond d’émiettement et de divisions
+entre plusieurs sensibilités ?</b></p>
+
+<p>
+L’émiettement de la droite est une réalité.
+La stratégie Buisson s’est révélée peu payante.
+On a surtout vu l’essoufflement de la stratégie
+de Jean-Marie Le Pen au sein du Front national.
+Après 2011, ce parti qu’on pensait proche de la
+disparition a retrouvé son électorat qui n’a jamais changé d’attitudes politiques depuis 2002.
+Il y a donc une réelle concurrence entre l’UMP
+et le FN pour savoir qui, des deux blocs, sera en
+tête, en 2017. Cette confrontation sera violente
+et il n’est pas certain du tout que l’UMP en sortira vainqueur. Il y a un affrontement important,
+au sein même de ce parti, pour déterminer la
+stratégie à adopter par rapport au FN et dans le
+parti principal de l’extrême droite pour se positionner face à la droite parlementaire. Une par-
+tie du FN accepte les transfuges et les alliances
+quand d’autres militants entendent maintenir
+une séparation plus stricte. Pour sa part, et c’est
+peut être là le plus important, Marine Le Pen
+était prête à mettre en sourdine certains éléments idéologiques pour gagner les élections.
+Non parce qu’elle n’y croit plus, mais parce
+qu’elle est convaincue qu’il est contreproductif
+de s’appuyer sur l’ancienne stratégie du FN
+pour accéder au pouvoir. La mise en œuvre du
+programme politique viendra après. Ceci explique le discours en apparence mesuré de
+nombreux candidats frontistes à l’occasion de
+la campagne municipale.
+</p>
+
+<p>
+Cet émiettement produira une reconfiguration
+de la droite, parce qu’il ne saurait y avoir cinq
+ou six blocs électoraux en compétition dans un
+système majoritaire comme celui de la 5e République. La question est de savoir qui arrivera
+en tête des différents scrutins, pour organiser
+cette restructuration de la droite, autour d’un ou
+de plusieurs partis.
+</p>
+
+<p>
+<b>Justement, comment cette situation peut-elle
+évoluer dans les années qui viennent ?</b></p>
+
+<p>
+L’UMP a pour ambition de rester le bloc princi-
+pal, en confinant le FN dans un rôle de radicalité
+marginale le tenant éloigné du pouvoir. On voit
+pourtant que tel n’est pas le cas. Les logiques
+d’émiettement du front républicain, observées
+depuis les cantonales de 2011, ouvrent de
+réelles perspectives au FN en fragilisant l’UMP.
+Le risque est de voir Marine Le Pen attirer à elle
+des composantes croissantes de l’électorat de
+droite. Son objectif est de consolider ses sou-
+tiens électoraux, de contrôler des bastions pour
+pouvoir compter ensuite sur un noyau dur.
+Ce qui aide le FN, c’est qu’il n’assume pas le
+pouvoir et qu’il n’apparait pas comme respon-
+sable de la situation économique et sociale
+Ajoutons que le FN propose un discours très co-
+hérent idéologiquement, finement articulé qui
+séduit certaines composantes de l’électorat de
+droite en quête de certitudes.
+</p>
+
+<p>
+<b>Le discours du FN a lui-même évolué, empruntant certaines de ses thématiques à la
+gauche, de la préservation des services publics à la défense de la laïcité. Cette posture
+est-elle synonyme d’évolution idéologique ?
+Ne relève-t-elle pas plutôt d’une tentative de
+manipulation ?</b></p>
+
+<p>
+Je ne crois pas du tout dans un changement de
+posture, mais à une évolution de la communication propre au FN. Idéologiquement, ce discours
+n’emprunte rien de spécifique à la gauche, mais
+à l’histoire de l’extrême droite française. Il était
+déjà très présent dans les années 1920-1930, par
+exemple chez Victor Barthélémy, transfuge du
+Parti communiste et membre-fondateur du FN,
+en 1972, qui avait porté des éléments d’analyse
+des conflits sociaux au sein de l’extrême droite. Il
+y a eu aussi l’émergence de la mouvance Nationaliste Révolutionnaire autour de François Duprat, dans les années 1970-1980. Ce qui signifie,
+en clair, que le FN n’est pas en rupture avec son
+histoire, mais qu’il revient à ses fondations, avec
+un discours (implicitement) racialiste et nationaliste.
+</p>
+
+<p>
+L’avenir n’est donc pas à une compétition électorale avec la gauche, mais avec une droite plutôt libérale qui mobilise les classes supérieures et
+diplômées à laquelle fera face une droite nationaliste, ancrée dans les milieux populaires et aux
+prises avec l’immigration. La colonne vertébrale
+du FN reste la préférence nationale qui se décline,
+implicitement ou explicitement, en termes ethno-
+raciaux. Ceci est perceptible, en particulier, dans le
+discours sur les Roms. Le FN évolue donc dans sa
+stratégie, mais pas dans son idéologie. Les militants de gauche ignorent tout ou partie de cette
+histoire et il manque, à mon sens, un travail sur
+l’évolution idéologique qui s’est opérée à l’extrême
+droite, avec la régénérescence de cette mouvance
+Nationaliste Révolutionnaire parfaitement visible
+au sein du FN et dans les groupes satellites, tel
+Égalité et réconciliation d’Alain Soral.
+</p>
+
+<p>
+<b>Le FN n’est-il pas tenté à l’idée de gérer au mieux les
+villes qu’il a conquises, afin de se donner une image
+de probité et de bonne conduite ?</b></p>
+
+<p>
+Il a choisi quelques têtes d’affiches dont il pense
+qu’elles seront capables de gérer les communes
+qu’ils administrent, sans pour autant nuire à
+l’image et à la stratégie politique du parti. Le FN
+compte à sa tête un petit groupe très soudés de
+dirigeants soucieux de créer une vitrine servant à
+organiser la conquête du pouvoir à l’échelle nationale.
+</p>
+
+<p>
+<b>Quels sont les grands enjeux qui se présentent
+à nous ?</b></p>
+
+<p>
+L’essentiel est de comprendre comment la société
+française va être transformée par l’histoire migratoire. Il ne s’agit pas tant d’identifier les migrants
+d’aujourd’hui que de connaître la trajectoire des
+descendants de l’immigration, d’une immigration
+qui a déjà eu lieu. Cette évolution changera les
+rapports à la politique dans l’ensemble de la
+société française, en modifiant la structure des familles, le rapport au racisme et aux discriminations, avec une évolution très profonde qui se
+matérialisera de manière lente et inégale dans les
+quartiers.
+</p>
+
+<p>
+Ce mouvement est perceptible en Seine-Saint-Denis. Il s’agit là d’un signe annonciateur de ce qui
+pourrait se produire dans le reste du pays. On
+pourrait assister à une montée en puissance de
+l’extrême droite et de l’hostilité envers les migrants. Les tendances de fond indiquent cepen-
+dant qu’on se dirige vers une société qui se
+métisse et qui s’hybride, de manière assez profonde et rapide.
+</p>
+
+<p>Propos recueillis par B.T.</p>
+
+<h1><a id="230414">23 04 2014 - RFI</a></h1>
+<p>Le mariage pour tous a-t-il pesé sur les élections municipales ?</p>
+<a href="http://www.rfi.fr/emission/20140423-le-mariage-tous-il-pese-dernieres-elections-municipales/">http://www.rfi.fr/emission/20140423-le-mariage-tous-il-pese-dernieres-elections-municipales/</a>
+	
+<h1><a id="170414">17 04 2014 - Le Monde</a></h1>
+<p>« La banlieue apparaît plus à droite qu'on avait pu l'imaginer »</p>
+<a href="http://www.lemonde.fr/societe/article/2014/04/17/la-banlieue-apparait-plus-a-droite-qu-on-avait-pu-l-imaginer_4402851_3224.html">http://www.lemonde.fr/societe/article/2014/04/17/la-banlieue-apparait-plus-a-droite-qu-on-avait-pu-l-imaginer_4402851_3224.html </a>
+
+<p><b>Quelques jours après les élections municipales, quelles sont les grandes tendances du vote en banlieue ?</b></p>
+
+<p>La première évidence, c'est une très forte montée de l'abstention par rapport à l'élection présidentielle de 2012. On voit ainsi se développer un comportement récurent, celui du vote intermittent : les personnes votent une fois de temps en temps, le plus souvent à l'élection présidentielle, mais s'abstiennent lors des autres scrutins. On avait déjà noté ce déclin très fort de la participation lors des municipales et des régionales entre 2007 et 2012. Avant de constater à nouveau une remontée très forte lors de la présidentielle. 
+La configuration politique est un peu différente aujourd'hui. En 2008, on avait assisté à un vote de sanction contre la droite qui avait entraîné des victoires de la gauche dans de nombreuses villes de banlieue. Cette fois-ci, le mouvement d'abstention marque une vraie déception, une défiance à l'égard de la gauche au pouvoir. Le contraste est saisissant par rapport à 2008, où le nombre de villes à gauche était pratiquement sans précédent. La banlieue apparaît plus à droite qu'on avait pu l'imaginer. Pourtant, la gauche réitère et dépasse parfois ses scores de 2008 dans plusieurs communes (Sevran, Bagnolet, Saint Denis). A contrario elle chute dans des villes acquises à la droite (Le Raincy, Coubron, Gournay sur Marne ou encore Epinay sur Seine).</p>
+
+<p><b>On a beaucoup parlé d'un basculement à droite dans les quartiers populaires.</b></p>
+
+<p>Cette impression s'explique par ce repli de la participation. Comme on a beaucoup moins d'électeurs, le résultat peut être différent sans que le positionnement politique des électeurs n'ait changé. On a ainsi vu des villes basculer à droite à cause d'un différentiel de participation : des personnes qui étaient venues voter pour la présidentielle, ne sont plus venues cette fois-ci, et les électeurs qui ont voté à droite en 2012, sont restés mobilisés. D'autre part, on a trop tendance à assimiler le vote des cités au vote des descendants de l’immigration, et ce faisant, on confond des catégories de personnes très différentes. Même s'il y a une mémoire de cette immigration qui vote traditionnellement à gauche, il peut y avoir, pour ceux qui ont une ascension sociale, une évolution du vote vers le centre ou la droite. Mais cela reste minoritaire. </p>
+
+<p><b>Ce défaut de mobilisation vis-vis du PS a-t-il entraîné un report sur la gauche du PS ?</b></p>
+
+<p>A la marge car il y a eu peu de listes à la gauche du PS. Mais quand il y avait cette alternative à gauche, en concurrence avec PS, ces candidats ont souvent fait de très bons scores. Il est frappant de voir, que la défiance à l'égard du PS est manifeste, transversale, dans les banlieues comme ailleurs. On la constate dans les quartiers aisés à Grenoble où on vote écologiste, comme dans les villes  rouges où on continue à voter communiste. Ainsi, dans des villes telles Saint-Denis où on attendait un basculement du PCF vers le PS, le PCF résiste. Le mouvement est le même à Montreuil. Mais ce ne sont pas les habitants des cités qui vont élire un communiste contre un socialiste. Il faut y voir plutôt la permanence d'une fidélité électorale plus ancienne. </p>
+
+<p><b>Un autre phénomène a été souligné ces derniers jours, celui du vote FN dans les cités. </b></p>
+
+<p>Cette idée de la percée et de l'ancrage du Front national dans les cités se discute. On a eu un passage un peu en trompe l’œil entre 2007 et 2010, période durant laquelle on a eu l'impression que le FN allait disparaître à cause des recompositions internes du parti et de l'OPA de Nicolas Sarkozy sur son électorat. En réalité, le FN est revenu à des résultats comparables à ceux de 1995. En revanche, la géographie du vote FN a changé : il y avait en 1995 un certain nombre de villes de banlieues où le FN était très fortement implanté- je pense notamment à la Seine-Saint-Denis - où il est aujourd'hui très faible.  Cette décrue manifeste est, je crois, un indicateur avancé de ce qui se passe dans l'ensemble des banlieues. En seine saint denis, le FN a même reflué même dans les zones pavillonnaires. Phénomène qui ne se vérifie cependant pas en Seine-et-Marne. </p>
+
+<p><b>Comment expliquer alors ses scores dans la 7e circonscription de Marseille, celle des quartiers Nord ?</b></p>
+
+<p>Les quartiers où est élu Stéphane Ravier sont ceux où on votait déjà beaucoup Front national. En 1995, le FN y atteint 25%. En nombre de voix, la performance de Stéphane Ravier ne marque pas une évolution particulièrement nette mais la gauche s'y effondre beaucoup plus. Ce qu'on peut observer, c'est que la défiance à l'égard du PS a été d'autant plus forte qu'il y avait une opposition interne dans des primaires très âpres. Le fait que Samia Ghali, l'élue des quartiers Nord, ait été battue, a accentué l'effet de démobilisation des électeurs de gauche. Il faut ajouter à cela le fait que Marseille est une ville où la montée du chômage est forte et où, dans un contexte d'austérité, les électeurs ne voient pas de perspective d'amélioration de la situation. </p>
+
+<p><b>Autre territoire symbole, la Seine-Saint-Denis. La droite semble s'y être installée.</b></p>
+
+<p>En 2001, la droite était déjà implantée dans le 93. Son apparition lors du dernier scrutin n’est pas une nouveauté. Ce qui est marquant en revanche, c’est que la droite revient autour de candidatures locales, souvent centrées autour de l’UDI, et souvent avec des discours apparaissant plus ouverts de ceux de la droite au niveau national, notamment sur les questions d’immigration et d’emploi. S'il y avait eu un PCF fort, il aurait pu reconquérir des mairies. Mais comme il est affaibli, là où le PS avait pris le pouvoir ces dernières années, c'est la droite qui l'emporte. Ainsi le Parti Socialiste subit un revers lors de ces élections, en banlieue comme dans le reste du pays, mais sur le long terme sa progression dans le département ne semble pas menacée. En Seine Saint Denis, on vote toujours très nettement à gauche lors des élections présidentielles, celles qui mobilisent le plus.</p>
+
+<p><b>Il semblerait qu'il y ait eu, à droite, une tendance à mettre en avant la question du mariage pour tous pour tenter de gagner l'électorat de culture musulmane. Est-ce aussi votre constat ?</b></p>
+
+<p>La droite a tenté d'utiliser les facteurs religieux en mettant en avant des enjeux familiaux et sexuels. Mais au regard de l'abstention, on s'aperçoit qu'elle n'est pas parvenue à mobiliser sur l’opposition au mariage pour tous. La question posée en filigrane est celle de l’électorat musulman. Or il n'existe pas d'électorat musulman unifié : ce dernier est divisé en fonction des situations sociales, locales, de rapport à l’origine migratoire... En revanche, ce qui est certain, c’est que dans l’électorat populaire, les questions de liberté sexuelle sont rarement celles qui attirent vers la gauche. Elles ont même pu participer de la démobilisation. Ce qui revient souvent dans les enquêtes sur les banlieues, c’est la question de l’honneur et de la dignité. Et cela passe autant par les questions économiques et sociales, la question de la représentation ou des discours politiques portés sur ces populations ou ces quartiers. 
+Au final, comprendre le régime du vote en banlieue est complexe. Est-on est plutôt dans une tendance qui voit les électeurs déconnecter le vote présidentiel des autres scrutins ou celle d'un rattrapage lent qui fait que les gens qui ont voté une première fois en 2012 vont voter de plus en plus souvent ? C’est une question clé car on sait que les habitants qui passent par la banlieue, même lorsqu’ils déménagent ensuite ailleurs, vont représenter une part de l’électorat de plus en plus importante. </p>
+
+<p>Propos recueillis par Elise Vincent et Sylvia Zappi</p>
+ 
+
+
+<h1><a id="170214">Le Monde - 17/02/2014</a></h1>
+<p>Aux municipales, le difficile combat de la diversité</p>
+<a href="http://www.lemonde.fr/municipales/article/2014/02/17/aux-municipales-le-difficile-combat-de-la-diversite_4367846_1828682.html">http://www.lemonde.fr/municipales/article/2014/02/17/aux-municipales-le-difficile-combat-de-la-diversite_4367846_1828682.html </a>
+
+<h1><a id="270114">IPSOS - 27/01/2014</a></h1>
+<p>Défiance, Racisme, Rejet du système : regards croisés sur les Français face au monde extérieur</p>
+<a href="http://www.ipsos.fr/ipsos-public-affairs/actualites/2014-01-27-defiance-racisme-rejet-systeme-regards-croises-sur-francais-face-au-monde-exterieur">http://www.ipsos.fr/ipsos-public-affairs/actualites/2014-01-27-defiance-racisme-rejet-systeme-regards-croises-sur-francais-face-au-monde-exterieur</a>
+
+
+<p><b>Mi-janvier, Ipsos a rendu public les résultats de la vague 2 de l’enquête <a href="http://www.ipsos.fr/ipsos-public-affairs/actualites/2013-01-24-france-2013-nouvelles-fractures" title="Nouvelles Fractures" target="_blank">Nouvelles Fractures</a>, réalisée en partenariat avec Steria pour Le Monde, France Inter, le Cevipof et la Fondation Jean-Jaurès. Cette enquête confirme la très forte défiance des Français à l’égard du monde extérieur et d’autrui. Elle montre même une progression par rapport à l’année dernière de la défiance à l’égard du fonctionnement de la vie politique en France.</b></p>
+<p><span style="font-weight:bold;color:#00a7a7;">Vincent Dusseaux&nbsp;:</span> Le profond repli de l’opinion publique française mis en évidence par l’enquête Fractures Françaises se manifeste de plusieurs manières : <strong>un mécontentement à l’égard du système démocratique tel qu’il fonctionne actuellement, une défiance à l’égard des élites politiques et des médias, le sentiment qu’il y a « trop d’étrangers en France », « qu’on ne se sent plus chez soi comme avant » et une forte crispation autour de l’Islam</strong>. Avec cette enquête, nous avions mesuré un niveau de défiance totalement inédit.</p>
+<p>Aujourd’hui, le clivage « ouvert/fermé », dont la meilleure illustration est sans doute l’attitude à l’égard de l’immigration, est le premier point clivant de la société française. Il l’est davantage que d’autres thèmes plus traditionnels comme la politique économique par exemple.</p>
+<p>Pour schématiser, nous avons d’un côté ceux qui voient dans l’immigration une opportunité pour la France et une source d’enrichissement culturel. De l’autre, ceux qui la considèrent comme une menace pour la société française.<strong> </strong>De façon concomitante, on observe dans nos enquêtes une forte demande d’autorité face à ce que beaucoup perçoivent comme un déclin de la société française, un déclin qui est tout à la fois économique, culturel et identitaire.</p>
+<p><span style="font-weight:bold;color:#00a7a7;">Antoine Jardin&nbsp;: </span>La défiance des français est profonde. Elle se décline dans de multiples dimensions. <strong>Elle est particulièrement forte à l'égard de la mondialisation perçue comme une menace, notamment dans ses effets économiques et vis-à-vis des migrants qui l'incarnent partiellement.</strong> Le rapport à l'immigration est marqué par la convergence de deux dynamiques. L’une relevant de l'hostilité aux individus sur la base de leur nationalité étrangère, de leur trajectoire migratoire, de leur couleur de peau ou de la langue qu'ils parlent.</p>
+<p>Il existe d’autre part un effet dérivé, associé aux difficultés économiques, qui contribue au renforcement d'un nationalisme économique, particulièrement en matière de protection sociale. La confluence de la xénophobie, de l'ethnocentrisme et du «&nbsp;welfare chauvinism&nbsp;» donne une tonalité particulière à l'évolution des attitudes qui s'expriment toujours par un rejet.</p>
+<p><span style="font-weight:bold;color:#00a7a7;">Matthieu Tardis&nbsp;:</span> Association de défense des réfugiés, <strong>France Terre d’Asile observe une détérioration de l’image du réfugié en France d’autant plus inquiétante que notre pays possède une longue tradition d’accueil des populations persécutées.</strong> Sans idéaliser le passé, dans la mesure où la méfiance, voire l’hostilité, à l’égard des étrangers est un phénomène récurrent de l’histoire, on peut s’étonner de constater l’absence de lien qui est effectué entre la situation sécuritaire dans le monde, telle que nous la voyons tous les jours à la télévision, et les personnes qui cherchent refuge dans notre pays.</p>
+<p>La question des réfugiés Syriens, plus grande catastrophe humanitaire depuis le Rwanda selon le Haut-Commissaire des Nations unies pour les réfugiés (UNHCR), illustre bien ce phénomène. En effet, la volonté de la France d’accueillir 500 réfugiés syriens est-elle à la mesure de l’enjeu des 2 millions de personnes qui ont fui la Syrie depuis le début du conflit&nbsp;? Il convient par ailleurs de s’interroger sur l’existence de fractures au sein de la société française sur les questions migratoires, entre, d’un côté, une partie de la population qui vit dans les grandes villes mondialisée et qui profite de manière croissante de la mobilité internationale et, d’un autre côté, ceux qui sont laissés à l’écart de ces mouvements. Ces fractures semblent plus profondes que les frontières qui nous séparent du reste du monde.</p>
+<p>Observe-t-on une progression du racisme <br /> au sein de l’opinion française ?</p>
+<p><span style="font-weight:bold;color:#00a7a7;">V. D.&nbsp;:</span> Il est difficile de répondre à cette question tant la notion de racisme est polysémique. Lorsqu’on pose très directement la question à un échantillon de Français, un peu moins de trois personnes sur dix nous disent être « plutôt » ou « un peu racistes ». C’est beaucoup certes, mais c’est moins qu’il y a une dizaine d’années. En 2000, ce niveau atteignait plus de 40% dans le baromètre annuel de la CNCDH.</p>
+<p>La question qui se pose aujourd’hui est d’évaluer l’impact sur l’opinion publique de notre pays des insultes proférées récemment à l’encontre de la Ministre de la Justice. Les risques sont multiples : banalisation des propos racistes, renforcement des clivages, etc. A cet égard, la prochaine vague de l’enquête Nouvelles Fractures devrait apporter des éléments de réponse.</p>
+<p><span style="font-weight:bold;color:#00a7a7;">M. T.&nbsp;:</span> Il est difficile de l’affirmer à partir du poste d’observation occupé par France terre d’asile. Les scores du Front national aux élections municipales et européennes seront un indicateur de cette montée du racisme et de l’intolérance de l’opinion française.</p>
+<p><span style="font-weight:bold;color:#00a7a7;">A. J.&nbsp;:</span> L'évolution du racisme en France est difficile a mesurer. En effet, on dispose de peu d'indicateurs mesurant spécifiquement cette attitude. Les meilleures données proviennent probablement de la CNCDH qui produit une enquête annuelle sur l'évolution du racisme et de la xénophobie.
+Celle-ci indique deux phénomènes qui peuvent paraître à première vue contradictoires.</p>
+<p>On assiste d'une part à une baisse tendancielle sur le long terme des attitudes ethnocentristes. Ce mouvement est la double conséquence du renouvellement des générations et de la hausse du niveau d'éducation.
+Dans un deuxième temps, on note, depuis le début de la crise économique et la fin du mandat de Nicolas Sarkozy, une hausse conjoncturelle des attitudes d'hostilités à l'égard de certains groupes. Cela est évalué par le fait d'affirmer que certaines personnes forment "un groupe a part dans la société".</p>
+<p>De plus, la polarisation politique autour des questions de genre et de permissivité sexuelle a influencé les attitudes ethno-autoritaires dont elles sont également une composante, au même titre que le racisme ou la xénophobie.
+Enfin, dans ce contexte global, plusieurs mouvements sociaux structurés autour des groupes les plus militants ont renforcé la visibilité de ces attitudes en renforçant la fréquence de leur expression dans la société française.</p>
+<p> <b>N’y a-t-il pas un paradoxe entre la volonté d’intégration des <br /> migrants et la méfiance des Français à leur égard ?</b></p>
+<p><span style="font-weight:bold;color:#00a7a7;">V. D.&nbsp;:</span> Les Français s’interrogent surtout sur la capacité de la société française à accueillir ces populations. Ils sont sans doute davantage favorables à une politique d’assimilation, c'est-à-dire par la pleine adhésion des immigrés aux normes de la société d’accueil. De ce point de vue, la question de l’Islam est particulièrement révélatrice. Même si il est en baisse dans la deuxième vague de l’enquête Fractures Françaises, le sentiment que l’Islam n’est pas compatible avec les valeurs de la société française est toujours majoritaire (à 63%, -11).</p>
+<p><span style="font-weight:bold;color:#00a7a7;">A. J.&nbsp;:</span> De nombreux migrants arrivent en France en quête d'une vie meilleure pour eux même et pour leurs enfants. Ils témoignent d'une forte volonté de participer à la vie sociale ordinaire. Pouvoir se sentir « installé » est l'une des demandes les plus importantes. <strong>Cette volonté se traduit notamment par le désir de participation politique, la confiance en l'apport des institutions telles que l'école, et la croyance en la portée de la promesse républicaine.</strong> En outre, dans la population française, le poids démographique des descendants est plus important que celui des migrants eux-mêmes. C'est un cas particulier en Europe, qui influence les perceptions et traduit l'histoire coloniale et migratoire du pays. On observe, depuis longtemps, une défiance importante à l'égard de l'immigration. Si malgré tout cet enjeu est loin d'être une priorité des Français, il s'agit de l'une des thématiques les plus polarisantes politiquement. Il faut donc être prudent et distinguer les attitudes en fonction des proximités politiques. La volonté d'intégration des migrants peut aussi être perçue comme une menace par ceux qui dans la société française ne souhaitent pas que l'on évolue vers davantage d'égalité en matière de protection sociale, d'accès à l'emploi ou de droits civiques. C'est d'ailleurs le projet fondamental du Front National que d'établir la préférence nationale, c'est à dire l'inégalité des droits sur la base de la nationalité des individus.</p>
+<p><span style="font-weight:bold;color:#00a7a7;">M. T.&nbsp;:</span> La grande majorité des migrants en France poursuivent les mêmes objectifs que n’importe qui&nbsp;: améliorer leur condition de vie et vivre en bonne entente avec leur environnement. <strong>S’il y a un paradoxe, il réside avant tout entre cette volonté d’intégration et l’inflation législative dans le domaine de l’immigration depuis 10 ans qui a multiplié les obstacles et les contraintes administratives à toutes les étapes du parcours des primo-arrivants en France.</strong> Ils adressent un signal fort de dissuasion. Ils créent surtout un sentiment d’arbitraire parfaitement illustré dans l’enquête sur les citoyens immigrés publiée en 2012. À cet égard, le très sérieux rapport du député Matthias Fekl relatifs au traitement des demandes de titre de séjour souligne les besoins de transparence, d’uniformité et de modernisation du traitement des étrangers en préfectures. Les propositions de ce rapport permettraient d’améliorer de manière concrète la vie des étrangers et de renforcer leur sentiment d’appartenance à la France.</p>
+<p>Quant à la méfiance des Français, il est toujours intéressant d’observer sa relativité lorsqu’ils sont confrontés à l’étranger dans leur vie quotidienne. La frénésie autour de l’affaire Léonarda en octobre 2013 est un exemple des malentendus, des approximations et des fantasmes véhiculés par les questions migratoires en France. Dans ce contexte, la question de la responsabilité du personnel politique et des médias dans l’instrumentalisation des questions migratoires en France, et donc dans la croissance du sentiment de méfiance envers les migrants, est à soulever de toute urgence.</p>
+<p><b>Retrouve-t-on ces tendances à l’échelle de l’Europe?</b></p>
+<p><span style="font-weight:bold;color:#00a7a7;">V. D.&nbsp;: </span>L’immigration n’est pas une préoccupation majeure dans les pays européens. C’est surtout les thèmes économiques (chômage, pouvoir d’achat…) qui inquiètent aujourd’hui sur le Vieux Continent. Toutefois, certains pays se démarquent. A commencer par la Grande-Bretagne. Comme le montrent les résultats d’un sondage que nous avons mené en octobre dans plus de 20 pays. Près d’un britannique sur trois se déclare préoccupé par l’immigration, contre 17% en moyenne dans les pays européens interrogés dans l’enquête. En France, 30% des personnes interrogées indiquent que l’immigration fait partie de leurs craintes pour l’avenir. C’est un niveau élevé mais qui doit être relativisé dans la mesure où cette crainte a été très fortement réactivée par l’affaire Léonarda qui précédait le terrain de cette enquête.<strong> Sur le long terme, la préoccupation pour l’immigration en France se place plutôt dans la moyenne européenne</strong>.</p>
+<p><span style="font-weight:bold;color:#00a7a7;">A. J.&nbsp;:</span> En Europe, les configurations varient selon l'histoire nationale spécifique des pays, notamment en matière de passé colonial. On observe ainsi des formes d'hostilité spécifiques, selon les contextes nationaux. Les antagonismes, discriminations et représentations péjoratives ciblent particulièrement les descendants de cette histoire. Ainsi, selon les pays, ce sont des groupes différents qui font l'objet de tensions spécifiques. Ce n'est qu'à un certain niveau de généralité que l'on trouve les trames globales à l'œuvre derrière les spécificités nationales. Ainsi, <strong>malgré les particularités des configurations spécifiques à chaque pays, l'Europe partage les mêmes défis issus de son histoire, de la désindustrialisation, de la fragilisation de ses régimes de protection sociale, et d'une mise à l'épreuve de ses valeurs d'égalités et de démocratie sous l'effet d'une poussée transnationale des partis d'extrême droite</strong>.</p>
+<p><span style="font-weight:bold;color:#00a7a7;">M. T.&nbsp;:</span> Les contextes migratoires européens sont extrêmement variés. Les liens historiques et coloniaux, l’ancienneté et l’origine des flux migratoires sont autant de facteurs qui distinguent les pays européens les uns des autres. Les situations économiques et démographies sont également à prendre en considération. Enfin, chaque Etat est traversé par des questions identitaires différentes avec notamment des tentations autonomistes chez plusieurs de nos voisins. Il en résulte que la perception de l’étranger et de l’immigration diverge. Toutefois, les partenaires associatifs européens de France Terre d’Asile sont unanimes : <strong>il est aujourd’hui de plus en plus difficile de défendre les droits des étrangers en Europe</strong>.</p>
+
+
+<h1><a id="270713">Le Journal des Banlieues - 27/07/2013 </a></h1>
+<p>« On cherche à faire éclater la notion de diversité »</p>
+<a href="http://www.presseetcite.info/journal-officiel-des-banlieues/societe/cherche-faire-eclater-la-notion-de-diversite"> http://www.presseetcite.info/journal-officiel-des-banlieues/societe/cherche-faire-eclater-la-notion-de-diversite </a>
+
+<p><b>La première chose qui frappe, c’est le décalage entre le vote, plutôt à gauche dans ces quartiers, et certaines valeurs, que l’on juge traditionnellement de droite. Comment l’expliquer ?</b></p>
+
+<p>
+On s’attendait à ce décalage. Il y a un attachement envers la gauche et en faveur d’une redistribution économique, sociale. Mais sur les questions culturelles, notamment sexuelles, il y a un comportement parfois plus conservateur : une certaine hostilité sur l’homosexualité, une vision plus traditionnelle des rôles hommes - femmes. Mais ce clivage n’est pas nouveau : on l’observait déjà il y a longtemps dans l’électorat ouvrier de la banlieue rouge traditionnel. Inversement, dans la droite modérée, on remarque qu’il y a une certaine ouverture. Ce n’est donc pas une anomalie. Mais, par exemple, tous les musulmans ne sont pas conservateurs. On peut distinguer environ 20% de conservateurs, 50% de libéraux modérés, et le reste fluctuant en fonction des thématiques. La question est : qu’est-ce qui est décisif dans le choix électoral ? Si le sujet prioritaire reste l’économie, ce sont les questions culturelles, liées à l’immigration, au racisme qui dominent comme marqueurs pour influencer un vote plutôt vers la droite ou la gauche.La religion ou à la sexualité, l’autorité sont aussi des marqueurs. 
+ </p>
+
+<p><b>En ce qui concerne le comportement l’électorat ouvrier, ce dernier a-t-il vraiment changé ?</b></p>
+
+<p>
+Il y a toujours eu un vote conservateur dans le monde ouvrier. Il existe encore dans ces quartiers, mais avec moins de poids. Ce qui le divise, c’est le rapport aux discriminations, réelles ou ressenties. Avoir le sentiment d’être discriminé oriente le vote à gauche. Avec parfois un tropisme par rapport à l’expérience migratoire. La mémoire de l’immigration pèse sur le vote des générations suivantes. Mais cet effet diminue progressivement avec le temps.
+</p>
+ 
+<p><b>Ce qui est nouveau, dans cette étude, c’est que vous y faites une approche par quartiers : on ne s’intéresse pas aux individus comme s’ils n’avaient aucun enracinement dans leur environnement.</b></p>
+
+<p>Oui. Etre jeune marginalisé et diplômé ne donne pas la même vision de la société selon que vous êtes à Clichy-sous-bois ou à Ivry. Avant, être ouvrier dans une ville catholique de droite ou dans une cité ouvrière du Nord n’était déjà pas la même chose : les discussions avec la famille, les voisins, les collègues, les amis, importent dans votre perception de la société, et votre vote en découle. L’environnement joue un rôle énorme. La région d’origine de l’immigration pèse-t-elle dans les comportements, politiques notamment ? Ces comportements sont-ils les mêmes chez tous les immigrés, selon leur lieu d’origine et d’habitation ? Les personnes dites « de la diversité » n’habitant pas, en majorité, dans des quartiers dégradés, c’est seulement vrai pour les migrants ou leurs descendants (ndlr : de la « première génération »). On cherche à faire éclater la notion de diversité, qui amalgame des notions différentes liées à l’immigration, la couleur de peau, la religion, notamment. Cela plaide pour des statistiques non traditionnelles, publiques, expérimentales. On a maintenant besoin d’études qui croisent une approche par groupes et par territoires.</p>
+ 
+<p><b>Et donc des statistiques « ethniques » aussi ?</b></p>
+
+<p>Je ne parlerai pas de « statistiques ethniques ». Il est très difficile de mesurer l’ethnicité. Aux Etats-Unis, ces études disent que l’ethnicité n’existe pas, les catégorisations sont très floues. Dans ces études, les « Irlandais » sont une ethnie... En Grande-Bretagne, on regroupe des variables aussi différentes que la couleur de peau (« black »…), la région d’origine (« caribbean »…), la nation d’origine (Pakistan…). On mélange donc des choses qu’en théorie on essaie pourtant de différencier pour mieux les étudier ! Des statistiques sur les Noirs en France n’ont pas de sens. On étudie la couleur ? On assigne les gens à une catégorie ? Regardons ce qui se passe aux Etats-Unis : on peut choisir, quand on répond à ces statistiques, de cocher les cases « Blanc » ou « Noir », ou plusieurs cases à la fois. Mais on remarque que les gens ne cochent pas Blanc + Noir. Or il y a quand même beaucoup de métisses. Mais ils se considèrent comme Noirs. On ne mesure donc que la représentation. La perception, le sentiment. Pas la réalité d’une diversité. </p>
+
+<p><b>Il semble que le regard de la société française sur elle-même change, s’ethnicise…</b></p>
+
+<p>En France, on a longtemps pensé que seules les inégalités de classes sociales existaient. Les migrants et leurs descendants ont été perçus comme n’entrant pas dans ces catégories sociales. On passe à une grille de lecture plus « ethnique ». On dit : « il est immigré » ou « étranger », et moins « ouvrier ». On peut être les deux ! Aux Etats-Unis, depuis trente ans, il y a un gros débat sur le poids des facteurs culturels par opposition aux facteurs structurels dans les comportements électoraux. Mais les deux se mélangent.   </p> 
+
+<p><b>La population que vous étudiez est-elle finalement si différente du reste de la population française ?</b></p>
+
+<p>Il y a des différences. Plus de jeunes, plus d’étrangers… Il y a aussi une expérience particulière de vie du fait de l’enclavement du quartier. Mais la population n’y a pas de comportement politique différent : elle a un désir d’appartenir à la société française. 65% des sondés disent qu’il faut traiter tous les Français de la même façon, et non de manière préférentielle. Il y a des demandes d’égalité, même si on sait qu’il n’y a pas forcément de possibilité d’y accéder immédiatement. Mais par exemple, en matière d’école, on voudrait quand même pouvoir accéder à d’autres établissements… C’est-à-dire, pouvoir être différencié !</p>
+ 
+ 
+<p>Propos recueillis par Erwan Ruty</p>
+
+<h1><a id="180414">Le Bondy Blog - 18/04/2014</a></h1>
+<p>« La participation pourrait être plus forte en banlieue »</p>
+<a href="http://www.bondyblog.fr/201204181411/%C2%AB-la-participation-pourrait-etre-plus-forte-en-banlieue-%C2%BB/#.U1U1YFdtWHQ"> http://www.bondyblog.fr/201204181411/%C2%AB-la-participation-pourrait-etre-plus-forte-en-banlieue-%C2%BB/#.U1U1YFdtWHQ </a>
+
+<p><b>D’après votre enquête, 80% des jeunes des quartiers marginalisés auraient l’intention de voter à l’élection présidentielle. Le niveau potentiel de participation dans les banlieues serait donc très élevé… Est-ce crédible ?</b></p>
+
+<p>Antoine Jardin : Chez les personnes bien inscrites sur les listes électorales, le souhait d’aller participer aux élections atteint même 96%. Ces chiffres ne sont pas improbables. En 2007, il y a eu 82% de participation à Clichy-sous-Bois ou à Bondy. La participation pourrait être plus forte en banlieue que dans les autres secteurs de l’électorat. L’élection présidentielle est une élection particulière. Lors des élections intermédiaires, la démobilisation est plus forte en banlieue que dans le reste du territoire. Pour cette présidentielle, les chiffres montrent que la tendance pourrait s’inverser. Cela ne traduit pas forcément une espérance. Beaucoup de gens votent sans avoir confiance dans leurs responsables politique. Seuls 42% des répondants estiment que la démocratie fonctionnent « très bien » ou « assez bien ». Mais leur défiance politique ne les conduit pas forcément à s’abstenir.</p>
+
+<p>Leyla Arslan : Oui, malgré le manque de confiance dans les dirigeants, les habitants des quartiers populaires souhaitent souvent faire la preuve de leur engagement civique. Il s’agit ainsi de montrer qu’on est quelqu’un d’impliqué, faisant usage de ses droits. Pour ce qui est des jeunes issus de l’immigration, il y a aussi la volonté de voter pour leurs parents.</p>
+
+<p><b>Le fort taux de participation en 2007 était-il lié au rejet de Nicolas Sarkozy ?</b></p>
+
+<p>Antoine Jardin : Il y a certainement un phénomène d’opposition à Nicolas Sarkozy. Pour autant, cela ne suffit pas à tout expliquer. Il y a eu une mobilisation plus forte dans les milieux populaires pour Ségolène Royal en 2007 que pour Lionel Jospin en 2002. Mais, il y avait peut-être aussi un effet 21 avril. Par ailleurs, il y a une vraie politisation des habitants des quartiers populaires et pas seulement une politisation en creux, uniquement par opposition à Nicolas Sarkozy.</p>
+
+<p><b>Si le taux de participation promet d’être élevé, le problème des non-inscrits subsiste…</b></p>
+
+<p>Antoine Jardin : Effectivement, 25% des enquêtés ne sont pas inscrits sur les listes électorales, soit 4 fois plus que le niveau moyen national observé. C’est un problème qui est connu depuis longtemps et c’est une barrière assez énorme dans la participation. Il y a eu un certain rattrapage avec les élections de 2007. Ce mouvement s’est poursuivi dans certaines banlieues entre 2007 et 2010. Mais, ça ne suffit pas pour l’instant. Il y a un effet particulier du quartier qui éloigne de la participation. Cela est aussi en partie lié à la sociologie des quartiers : pauvreté, faible niveau d’éducation…</p>
+
+<p><b>Les banlieues votent-elles systématiquement à gauche ?</b></p>
+
+<p>Antoine Jardin : Lorsqu’on regarde les résultats des élections, on peut avoir le sentiment que les habitants des banlieues votent mécaniquement plus à gauche que le reste de la population. Mais il faut contrôler l’ensemble des caractéristiques sociologiques et politiques de la population. Et là, on peut voir qu’il n’y a pas forcément un vote spécifique des banlieues. Par ailleurs, les banlieues sont toujours encastrées dans un environnement géographique particulier. La banlieue de Strasbourg et de Rennes n’est pas la même que celle de Seine-Saint-Denis. Il faut toujours tenir compte du contexte. D’une manière plus subtile, on peut noter un mélange entre une hostilité personnelle à Nicolas Sarkozy et  une défiance à l’égard des partis politiques institutionnels, notamment le PS et le PC. Cela se traduit parfois, notamment comme lors des régionales de 2010, par une proximité plus forte avec des partis moins institutionnels comme le MoDem ou Europe-Ecologie.</p>
+
+<p><b>D’après votre rapport, les habitants des quartiers ont une grande foi en  l’école, mais font le constat d’une forte persistance des inégalités face au système éducatif. Comment expliquez-vous ce paradoxe ?</b></p>
+
+<p>Leyla Arslan : 80% des habitants sondés ont une grande confiance dans l’école. Elle apparaît toujours aujourd’hui comme la seule institution qui peut permettre l’ascension sociale. Du moins, dans le discours théorique. Beaucoup de parents, y compris ceux qui n’ont pas beaucoup de bagage scolaire, estiment que faire des études longues reste la seule manière d’échapper au chômage. Ce point de vue est souvent partagé par les jeunes eux-mêmes. A Clichy-sous-Bois, même les jeunes qui ont eu des parcours compliqués, qui ont été orientés dans le professionnel et ont vécu ça comme une relégation, ont souvent une posture assez légitimiste vis à vis de l’école. Dans le même temps, ils ont aussi un discours très dur, parlant même parfois de racisme institutionnel. Pour autant, l’école reste, pour eux, le seul moyen de s’en sortir.</p>
+
+<p>Antoine Jardin : On valorise aussi l’école telle qu’on la perçoit existant ailleurs. Celle qui permet d’accéder aux grandes écoles notamment. Celle qui ne catalyse pas les problèmes scolaires existant dans les banlieues. On valorise l’école dans l’absolu, mais pas telle qu’elle existe localement et que l’on a expérimentée.
+«On ne veut pas de quotas, on n’est pas des animaux !»</p>
+
+<p><b>Autre paradoxe, la majorité des habitants des quartiers indiquent avoir déjà été discriminés mais sont hostiles à  une politique de « discrimination positive ». Quelle lecture en faites-vous ?</b></p>
+
+<p>Antoine Jardin : Seuls 36% des enquêtés soutiennent une politique de « discrimination positive ».  Les personnes ayant eu le sentiment d’être discriminées souhaite davantage d’égalité de traitement que des mesures de « réparation » ou de correction des effets des discrimination. Ils sont hostiles au modèle américain fondé sur l’ethnicité, et plébiscitent, au contraire, un rétablissement du modèle républicain.</p>
+
+<p>Leyla Arslan : Les propos des habitants sur l’école, sur l’emploi ou sur le transport, témoignent d’un sentiment d’exclusion. Il y a l’idée que les habitants des quartiers ne sont pas au cœur du regard politique, mais à côté. Les déséquilibres en terme de service public et de politique publique sont perçus comme une forme de discrimination. Pour autant, le discours des habitants des quartiers populaires reste extrêmement républicain. Les notions de « discrimination positive » et de « diversité » sont très majoritairement rejetées. A Clichy-sous-Bois, les jeunes me disaient : « On ne veut pas de quotas, on n’est pas des animaux! » Ils refusent d’être assimilés par les autorités publiques à une catégorie essentialiste du type « ethnique » ou « religieuse ». Dans l’échantillon d’étudiants que j’ai interrogé, certains ont fait Sciences-Po et sont passés par une « convention d’éducation prioritaire », qui est une forme de discrimination positive. Paradoxalement, même eux sont hostiles aux quotas. Ils y consentent, mais uniquement sur critères sociaux.</p>
+
+<p><b>Il y a aussi une demande d’autorité ?</b></p>
+
+<p>Antoine Jardin : 65 % des répondants pensent que les personnes condamnées à faire de la prison ne devraient jamais sortir avant la fin de leur peine. A contrario, seulement 25% d’entre-eux sont favorables au rétablissement de la peine de mort. Ce n’est pas une demande de politique autoritariste de contrôle social, mais une demande d’ordre dans l’espace public : une demande de service public, y compris à travers la présence de la police. La question de la police comme celle de l’école est en tension, entre une valorisation de principe et des relations pratiques plus compliquées et plus aléatoires.</p>
+
+<p>Leyla Arslan : Dans le cas de Clichy-sous-Bois, l’arrivée du commissariat a été perçue de manière très positive. Pour les habitants, Clichy-sous-Bois était enfin considérée comme une vraie ville.</p>
+
+<p>Propos  recueillis par Alexandre Devecchio</p>
+
+
+
+<h1><a id="010314">Stata - Utiliser la commande Outreg - 01/03/2014 </a></h1>
+
+<pre>
+* Installer outreg
+
+ssc install outreg
+
+* Spécification : 
+* Régression linéaire : coef, R2, N, étoiles (***)
+* Régression logistique : Odds ratios, R2, N, étoiles (***)
+
+
+// Régression linéaire
+
+regres blablabla
+
+outreg using nom_du_fichier , stats(b ) summstat(r2 \ N)  starlevels(5 1 .1) starloc(1)
+
+
+// fusion des modèles dans une table 
+
+regres blablabla (modèle 2 )
+
+outreg using nom_du_fichier , stats(b ) summstat(r2 \ N)  starlevels(5 1 .1) starloc(1) merge
+
+* Exporte en Word / excel dans un fichier créé dans le répertoire de travail.
+
+
+// Régression logistique
+
+logistic blablabla
+
+outreg using nom_fichier , stats(e_b ) summstat(r2_p \ N)  starlevels(5 1 .1) starloc(1) 
+</pre>
+
+<h1><a id="010214">Stata - Syntaxte pour les graphiques de corrélation incluant une pondération - 01/02/2014</a> </h1>
+<pre>
+* Graphique classique
+sc  c2 p12_sarkozy
+
+* Affichage des points par des cercles proportionnels à la population
+sc  c2 p12_sarkozy [w=pop], ms(oh) msize(tiny)
+
+* Affichage du nom de toutes les villes (variable des labels = "ville") 
+sc  c2 p12_sarkozy [w=pop], ms(oh) msize(tiny) || sc  c2 p12_sarkozy [w=pop], msize(zero) mlabel (ville) mlabsize(tiny)
+
+* Affichage du nom des villes selon une condition (on affiche tous les points mais les noms seulement des villes de + de 30 000 habs)
+sc  c2 p12_sarkozy [w=pop], ms(oh) msize(tiny) || sc  c2 p12_sarkozy [w=pop] if pop >30000 , msize(zero) mlabel (ville) mlabsize(tiny)
+
+* Une autre
+sc  c2 p12_sarkozy [w=pop], ms(oh) msize(tiny) || sc  c2 p12_sarkozy [w=pop] if pop > 100000, msize(zero) mlabel (ville) mlabsize(tiny)
+
+
+* Combinaison de conditions
+sc  c2 p12_sarkozy [w=pop], ms(oh) msize(tiny) || sc  c2 p12_sarkozy [w=pop] if pop >30000 &   p12_fn>15 , msize(zero) mlabel (ville) mlabsize(tiny)
+
+* Look
+sc  c2 p12_sarkozy [w=pop], ms(oh) msize(tiny) mc(blue) || sc  c2 p12_sarkozy [w=pop] if pop >30000 &   p12_fn>15 , msize(zero) mlabel (ville) mlabsize(tiny) mlabc (red)
+
+
+* Avec droite de régression
+sc  c2 p12_sarkozy [w=pop], ms(oh) msize(tiny) mc(blue) || sc  c2 p12_sarkozy [w=pop] if pop >30000 &   p12_fn>15 , msize(zero) mlabel (ville) mlabsize(tiny) mlabc (red) || lfitci  c2 p12_sarkozy [w=pop], fc(none) 
+</pre>
+
+<h1><a id="150114">Stata - Regression ESS fichier cumulé - 15/01/2014</a></h1>
+
+<pre>
+use C:\Users\Antoine\Desktop\ESS\ESS_1-5.dta 
+tab cntry
+keep if inlist(cntry,"FR","GB","SP")
+tab cntry
+clear all
+use C:\Users\Antoine\Desktop\ESS\ESS_1-5.dta 
+keep if inlist(cntry,"FR","GB","ES")
+tab cntry
+save "C:\Users\Antoine\Desktop\ESS\ESS_1-5_uk_fr_sp.dta"
+tab cntry
+encode cntry, gen (pays)
+tab pays
+numlabel _all, add
+lookfor educ
+tab eisced essround
+tab eisced
+lookfor eduyrs
+tab eduyrs
+recode eduyrs (77 88 99 =.) , gen (eduy)
+tab eduy
+xtile educ = eduy, nq(4)
+tab educ
+save "C:\Users\Antoine\Desktop\ESS\ESS_1-5_uk_fr_sp.dta", replace
+lookfor age
+tab agea
+recode agea (999=.), gen (age)
+tab age
+recode age (14/17 = .) (18/24 = 1 "18-24" ) (25/39 =2 "25-39" ) (39/54=3 "39-54") (55/130=5 "55 et plus"), gen (agecod)
+tab agecod
+save "C:\Users\Antoine\Desktop\ESS\ESS_1-5_uk_fr_sp.dta", replace
+lookfor inscrit
+lookfor regis
+lookfor vote
+tab vote
+recode vote (1=1 "yes") (2=2 "no") (3=3 "not eligible") (7 8 9=.), gen (vote3)
+recode vote (1=1 "yes") (2=0 "no") (3 7 8 9=.), gen (vote2)
+tab vote2
+save "C:\Users\Antoine\Desktop\ESS\ESS_1-5_uk_fr_sp.dta", replace
+lookfor citiz
+tab ctzcntr
+recode ctzcntr (1=1) (2=0) (7 8 =.), gen(citiz)
+tab citiz
+lookfor cntry
+lookfor born
+tab1 brncntr facntr mocntr
+recode brncntr facntr mocntr (1=1) (2=0) ( 7 8 9 =.), gen (bornego bornf bornm)
+tab1 bornego bornf bornm
+gen orig = .
+replace orig = 1  if bornego==0
+replace orig = 2  if bornf==0 | bornm ==0
+replace orig = 3  if bornf==0 & bornm ==0
+replace orig = 4  if bornf==1 & bornm ==1
+tab orig
+drop orig
+gen orig =.
+replace orig = 4  if bornf==1 & bornm ==1
+replace orig = 3  if bornf==0 | bornm ==0
+replace orig = 2  if bornf==0 & bornm ==0
+replace orig = 1  if bornego==0
+tab orig
+recode orig (1=1 "immigré") (2=2 "2 parents immigrés") (3=3 "1 parent immigré") (4=4 "sans origine"), gen (origine)
+tab origine
+lookfor relig
+tab1 rlgblg rlgdnm rlgdgr
+recode rlgdnm (1 2 3 4 5 = 1 "religion majo") (6 7 8 = 2 "autres relig") (66 = 3 "ss relig") (77 99=.), gen (regli)
+ren regli relig
+tab relig
+tab relig rlgdgr
+recode rlgdgr (77 88 =.), gen (intrelig)
+tab intrelig
+lookfor job
+tab ipjbini
+recode ipjbini ( 1 2 = 1 "not important") (3 = 2 "neither") (4 = 3 "important") (5=4 "very important") (6/9=.) , gen (stablejob)
+tab essround stablejob
+tab essround stablejob, row nof
+tab gndr
+recode gndr ( 1=1 "male") (2=2 "female") (9=.), gen (sex)
+save "C:\Users\Antoine\Desktop\ESS\ESS_1-5_uk_fr_sp.dta", replace
+tab marital
+tab maritalb
+lookfor income
+tab hinctnt
+lookfor class
+lookfor job
+lookfor work
+lookfor isco
+tab iscoco
+tab pays iscoco if iscoco==.
+tab iscoco if pays==1
+tab iscoco if pays==2
+tab iscoco if pays==3
+tab essround
+tab iscoco
+recode iscoco (100 = 11 "army") (1000/1999=1 "Level 1")(2000/2999 =2 "Level 2") (3000/3999 = 3 "Level 3") (4000/4999 = 4 "Level 4") (5000/5999 = 5 "Level 5") (6000/6999 = 6 "Level 6") (7000/7999 = 7 "Level 7") (8000/8999 =8 "Level 8") (9000/9999=9 "Level 9") (66666 = 10 "Not in a paid job") (77777/99999=.), gen(class)
+tab class
+tab iscoco
+save "C:\Users\Antoine\Desktop\ESS\ESS_1-5_uk_fr_sp.dta", replace
+tab class
+numlabel class, add
+tab class
+recode class ( 1 2 = 1 "Professionals") ( 3 = 2 "Associate professionals") (4 5 6 7 8 11 = 3 "Qualified working class") (9 = 4 "Not qualified working class") (10=5 "Not in paid job"), gen (pcs)
+tab pcs
+order pays educ agecod vote2 citiz origine relig intrelig sex pcs
+order pays educ agecod vote2 citiz origine relig intrelig sex pcs, after( class)
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.pays i.essround
+tab essround
+gen wave= essround
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.pays i.essround i.wave
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.pays i.wave
+lookfor weight
+gen w = dweight * pweight
+list w
+gen wok = w * 10000
+list wok
+help recast
+recast int wok
+gen wok2 = wok
+recast int wok2 , force
+list wok2
+list wok wok2
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.pays i.wave
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.pays i.wave if citiz==1
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==2
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==3
+tab pays
+tab wave pays
+keep if wave >=3
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==2
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==3
+save "C:\Users\Antoine\Desktop\ESS\ESS_1-5_uk_fr_sp_w3.dta"
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==2
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==3
+tab pays
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+cd "C:\Users\Antoine\Desktop\esscumulative1_5"
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+outreg using reg, stats(e_b ) summstat(r2_p \ N)  starlevels(5 1 .1) starloc(1)
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==2
+outreg using reg, stats(e_b ) summstat(r2_p \ N)  starlevels(5 1 .1) starloc(1) merge
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==3
+outreg using reg, stats(e_b ) summstat(r2_p \ N)  starlevels(5 1 .1) starloc(1) merge
+tab agecod
+tab educ
+sum educ, d
+sum eduy, d
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==2
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==3
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+margins , atmeans
+margins pcs , atmeans
+marginsplot
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+margins educ , atmeans
+marginsplot
+margins pcs educ , atmeans
+marginsplot
+marginsplot, recast (line)
+margins pcs educ
+marginsplot, recast (line)
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+margins educ , at (pcs = (1 2 3 4 5))
+marginsplot, recast (line)
+margins relig , at (pcs = (1 2 3 4 5))
+marginsplot, recast (line)
+margins origine , at (pcs = (1 2 3 4 5))
+marginsplot, recast (line)
+help marginsplot
+marginsplot, recast (line) recastci(rarea)
+logistic vote2 i.sex i.age i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+logistic vote2 i.sex age i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+logistic vote2 i.sex age i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+margins relig , at (age= (20 (5) 80))
+marginsplot, recast (line) recastci(rarea)
+margins relig , at (age= (20 (5) 80))
+logistic vote2 i.sex i.age i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==1
+predict vote_es
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==2
+predict vote_fr
+logistic vote2 i.sex i.agecod i.educ i.pcs i.origine i.relig i.wave if citiz==1 & pays==3
+predict vote_uk
+sc vote_es age
+twoway lpolyci vote_es age
+twoway lpolyci vote_es age ||  lpolyci vote_fr age ||lpolyci vote_uk age
+</pre>
+
+
+<h1><a id="150214">Stata - Utiliser la commande Margins - 15/02/2014</a></h1>
+
+<pre>
+** Note : il faut utiliser Stata 12 minimum pour avoir marginsplot, twoway contour et _marg_save
+
+** Probabilités théoriques **
+
+* Régression avec des interations (logisitique, linéaire, peu importe)
+
+regress evo_to0912 c.c2##c.d2##c.i2 [w=pop] if reg==11
+
+* Margins calcule les "predictive margins" pour chaque variable explicative
+* On peut aussi calculer les effets marginaux [avec margins, dydx (var1) at ( var2 = ( ...) var3 = (...))
+
+margins, at (d2 = (-2 (1) 2)  i2 = (-2 (1) 2) c2 =( -2 (1) 2 ))
+
+* Sauvegarder les valeurs  de la commande margins dans un fichier "forContour.dta")
+
+_marg_save, saving(forContour.dta, replace)
+
+* Utiliser ce fichier
+
+use forContour.dta, clear
+
+* Liste les valeurs des effets spécifiques de chacun des prédicteurs selon la valeurs des 3 variables indépendantes ( _at1 _at2 _at3)
+
+list _margin _at1 _at2 _at3
+
+* Graphique des effets pour chaque valeur des variables prédictives _at1 et _at3 (en 10 niveaux de nuance ici)
+
+twoway contour   _margin _at1 _at3, level(10)
+
+* Cette commande permet de voir l'hétérogénéité des effets des variables indépendantes sur la variable dépendante, tout en tenant compte de l'ensemble des intéractions à deux variables et à 3 variables.
+
+** Effets Marginaux **
+
+margins, dydx (c2) at ( d2 = (-2 (1) 2)  i2 = (-2 (1) 2))
+
+* Sauvegarder les valeurs  de la commande margins dans un fichier "forContour.dta")
+
+_marg_save, saving(forContour.dta, replace)
+
+* Utiliser ce fichier
+use forContour.dta, clear
+
+twoway contour   _margin _at2 _at3, level(100)
+
+* (ici _at1 est la valeur dont on regarde les effets marginaux. 
+* _margin ne correspond plus aux valeurs théoriques de la variable dépendante mais aux effets marginaux de la variable étudiée (introduite après "dydx ()")
+
+
+* Documentation
+http://www.ssc.wisc.edu/sscc/pubs/stata_margins.htm
+http://www.timberlake.co.uk/common/pdf/stata-uk-12-ugm/uk12_rising.pdf
+http://www.stata.com/meeting/germany13/abstracts/materials/de13_jann.pdf
+https://www.amstat.org/sections/srms/Proceedings/papers/1997_111.pdf
+https://www3.nd.edu/~rwilliam/stats/Margins01.pdf
+
+*help margins
+*help marginsplot
+*help contour
+</pre>
+
+
+</div>
+<div id="footer">
+<i>On voit, dans les époques de réaction triomphante, MM. les démocrates, sociaux-démocrates, anarchistes et autres représentants de la gauche, sécréter de la morale en quantité double, de même que les gens transpirent davantage quand ils ont peur.</i>
+</div>
+</body>
+</html>
+
+
+
