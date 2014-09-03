@@ -115,6 +115,42 @@ On ouvre un compositeur d'impression pour exporter la carte comme tout autre mod
 ***** NB : ces opérations sont possibles mais plus complexes sous R et feront l'objet d'un prochain post *****
 </pre>
 
+<pre>
+
+Syntaxe Stata à partir des données calculsées sous Geoda :
+
+	
+destring x_popn100, replace force
+sc lisa_p2n187 lisa_i2n187 [w= x_popn100], ms(oh)msize(tiny)
+
+destring lisa_cl2n180, replace force
+sc  lisa_cl2n180 lisa_i2n187 [w= x_popn100], ms(oh)msize(tiny)
+
+sc   lisa_i2n187 x_p_cs3n2415 [w= x_popn100], ms(oh)msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\site\cs3.gph"
+
+sc   lisa_i2n187  x_p_pop_etn2415 [w= x_popn100], ms(oh)msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\site\etr.gph"
+
+graph combine "C:\Users\Antoine\Desktop\site\etr.gph" "C:\Users\Antoine\Desktop\site\cs3.gph", xcommon ycommon
+
+sc   lisa_i2n187  x_p_pop_etn2415 [w= x_popn100], ms(oh)msize(tiny) by( lisa_cl2n180)
+
+regress x_to09n2415 i.lisa_cl2n180 [w= x_popn100]
+regress x_to09n2415 i.lisa_cl2n180##c.x_p_cs3n2415##c.x_p_pop_etn2415 [w= x_popn100]
+
+sum  x_p_cs3n2415   x_p_pop_etn2415 , d
+margins, at (lisa_cl2n180 = (0 1 2 3 4 5)   x_p_cs3n2415 = (0 (5) 60)  x_p_pop_etn2415 = (0 (5) 45))
+
+ls
+_marg_save, saving(forContour.dta, replace)
+use forContour.dta, clear
+
+graph dot _margin, over( _at1)
+twoway contour _margin _at2 _at3, ccuts(10 20 30 40 50 60 70 80 90)
+
+</pre>
+
 <h1><a id="060814"> R : Convertir des fichier.dbf en fichier.csv</a></h1>
 <pre>
 # Les analyses cartographiques demandent d'utiliser des fichiers shapefile.
