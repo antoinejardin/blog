@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Edited by XMLSpy -->
+<rss version="2.0">
+<channel>
+
+  <title>Antoine JARDIN</title>
+  <link>http://antoinejardin.github.io/blog/</link>
+  <description>A blog on political science and data analysis</description>
+  
+  <item>
+    <title>Bivariate LISA Index</title>
+    <link>http://antoinejardin.github.io/blog/#030914</link>
+    <description>Geoda et QGIS : Calculer des indices Bivariate Lisa et exporter les résultats</description>
+  </item>
+  
+</channel>
+</rss>
