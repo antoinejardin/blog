@@ -8,6 +8,12 @@
   <description>A blog on political science and data analysis</description>
   
   <item>
+    <title>Coloration syntaxique en HTML pour R</title>
+    <link>http://antoinejardin.github.io/blog/#040914</link>
+    <description>Un utilitaire pour la présentation du code R en ligne</description>
+  </item>
+  
+  <item>
     <title>Bivariate LISA Index</title>
     <link>http://antoinejardin.github.io/blog/#030914</link>
     <description>Geoda et QGIS : Calculer des indices Bivariate Lisa et exporter les résultats</description>
