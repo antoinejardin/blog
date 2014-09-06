@@ -1,6 +1,6 @@
 
 body {
-  margin-top: 5%;
+  	margin-top: 5%;
 	background-color: #fdf6e3;
 	color:  #839496;
 	font-family:serif;
@@ -10,7 +10,7 @@ h1{
 	margin: 2%;
 	font-size: 1em;
 	font-family:sans-serif;
-  text-decoration:underline;
+  	text-decoration:underline;
 	background-color: #fdf6e3;
 	color: #268bd2;
 }
@@ -34,7 +34,7 @@ pre {
     white-space: pre-wrap;
     text-align: justify;
     background-color : #073642;
-    color: #93a1a1;
+    color: #268bd2;
     padding-top : 1em;
     padding-left : 1em;
     padding-right : 1em;
