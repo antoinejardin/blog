@@ -33,6 +33,7 @@
 
 <div id="history">
 <ul>
+<li><a href="#060914">06/09/2014 - Stata - Margins et analyse de régression</a></li>
 <li><a href="#040914">04/09/2014 - Coloration syntaxique en HTML pour R</a></li>
 <li><a href="#030914">03/09/2014 - Geoda et QGIS : Calculer des indices Bivariate Lisa et exporter les résultats</a></li>
 <li><a href="#060814">06/08/2014 - R : Convertir des fichier.dbf en fichier.csv</a></li>
@@ -76,6 +77,54 @@
 </div>
 
 <div id="main">
+
+<h1><a id="060914">Stata - Margins et analyse de régression</a></h1>
+<pre>
+	
+On suppose avoir déja réalisé une régression linéaire avec 3 variables indépendantes quantitatives.
+
+Margins et marg_save nous donnent alors une table de ce type.
+On lit les valeurs théoriques pour chaque combinaison des valeurs des régresseurs.
+
+  +-----------------------------+
+  |   m09_05   etr   cs6   ndip |
+  |-----------------------------|
+  | 53.90072     0     0      5 |
+  | 48.69122     0     0     10 |
+  | 43.48172     0     0     15 |
+  | 38.27222     0     0     20 |
+  | 33.06273     0     0     25 |
+  |-----------------------------|
+  | 27.85323     0     0     30 |
+  | 22.64373     0     0     35 |
+  | 17.43423     0     0     40 |
+  | 12.22473     0     0     45 |
+  | 51.98055     0     5      5 |
+  |-----------------------------|
+  | 47.25717     0     5     10 |
+  | 42.53379     0     5     15 |
+  | 37.81041     0     5     20 |
+  | 33.08703     0     5     25 |
+  | 28.36365     0     5     30 |
+  |-----------------------------|
+  | 23.64027     0     5     35 |
+  | 18.91689     0     5     40 |
+  | 14.19351     0     5     45 |
+  | 50.06038     0    10      5 |
+  | 45.82312     0    10     10 |
+  |-----------------------------|
+  
+  On peut alors donner une représenation graphique des effets propres d'une variable, en laissant les autres facteurs varier.
+  
+  twoway kdensity m07_05 if cs6==0 || kdensity m07_05 if cs6==5 || kdensity m07_05 if cs6==10 || 
+  kdensity m07_05 if cs6==15 || kdensity m07_05 if cs6==20 || kdensity m07_05 if cs6==25 || 
+  kdensity m07_05 if cs6==30 || kdensity m07_05 if cs6==35 || kdensity m07_05 if cs6==40 
+  
+  Ici l'effet propre du taux de population ouvrière dans le quartier, en faisant varier la part d'étrangers et de non diplômés.
+  
+  <img src="https://lut.im/DsPp4fXw/PvTihhSt" width="800">
+
+</pre>
 
 <h1><a id="040914"> Coloration syntaxique en HTML pour R</a></h1>
 
