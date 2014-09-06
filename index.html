@@ -123,6 +123,46 @@ On lit les valeurs théoriques pour chaque combinaison des valeurs des régresse
   Ici l'effet propre du taux de population ouvrière dans le quartier, en faisant varier la part d'étrangers et de non diplômés.
   
   <img src="https://lut.im/DsPp4fXw/PvTihhSt" width="800">
+  
+  On peut ensuite aller plus loin avec R
+  
+  On sauvegarde le fichier des probabilités théoriques
+  Puis on le charge
+  
+  # Librairies utiles
+  library(sm)
+  library(rpanel)
+  
+  # Ouverture des données
+  t <- read.csv("C:/Users/Antoine/Desktop/site/t.csv")
+
+  # Data frame avec les valeurs fixées pour un régresseur parmi les trois.
+
+  # Ici on fait varier le taux de population ouvrière de 10 à 30 puis 50 % du quartier.
+  # On va projeter un effet propre du revenu à ces différents seuils.
+  sub10 <- subset(t, X_at3==10)
+  sub30 <- subset(t, X_at3==30)
+  sub50 <- subset(t, X_at3==50)
+  
+  # On en produit 3 Data frame
+
+  d10 <- data.frame(sub10$X_at1, sub10$X_margin, sub10$X_at2)
+  d30 <- data.frame(sub30$X_at1, sub30$X_margin, sub30$X_at2)
+  d50 <- data.frame(sub50$X_at1, sub50$X_margin, sub50$X_at2)
+  
+  # On produit les graphiques associés
+  
+  sm.density(d50)
+  sm.density(d10)
+  sm.density(d30)
+
+
+  # Résultats de 10 à 50 % de population ouvrière
+  
+  <img src="https://lut.im/WtBr9yEC/c6r4giKo" width="800">
+  <img src="https://lut.im/JwjEYxa1/cGNyP6Dr" width="800">
+  <img src="https://lut.im/9oVPDF3z/2de2bd39" width="800">
+
 
 </pre>
 
