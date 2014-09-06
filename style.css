@@ -34,6 +34,7 @@ pre {
     white-space: pre-wrap;
     text-align: justify;
     background-color : #eee8d5;
+    color: #93a1a1;
     padding-top : 1em;
     padding-left : 1em;
     padding-right : 1em;
@@ -61,16 +62,15 @@ pre {
 }
 
 #main {
-  margin : 2% ;
-  margin-left:15%;
-  margin-right:25%;
-  text-align: justify;
-  font-size: 0.9em;
+  	margin : 2% ;
+  	margin-left:15%;
+  	margin-right:25%;
+  	text-align: justify;
+  	font-size: 0.9em;
 }
 
 #nav {
-	background-color: #eee8d5;
-  	color: #07B;
+  	color: #268bd2;
 	font-size: 1em;
 	font-family:sans-serif;
 	text-align: right;
@@ -81,8 +81,7 @@ pre {
 }
 
 #history {
-	background-color: #eee8d5;
-  	color: #07B;
+  	color: #268bd2;
 	font-size: 0.7em;
 	font-family:sans-serif;
 	text-align:justify;
@@ -112,7 +111,7 @@ pre {
 #footer {	
 	text-align: justify;
 	font-size: 1em;
-	color: #222;
+	color: #268bd2;
 	margin-top: 2%;
   	margin-left:15%;
   	margin-right:25%;
