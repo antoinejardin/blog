@@ -134,11 +134,74 @@ rgl.surface(akima.li$x,akima.li$y,akima.li$z,color="green",alpha=c(0.5))
                     
 # NB : par défaut, linear=TRUE et interp est impossible sous cette condition.
 
+
+
+### Mise en Forme du graphique de surface ###
+
+# Rgl est très intuitif et rapide à manipuler
+# Mais il est difficile à légender et à exporter
+
+# Une solution de rechange est persp()
+# Perps() prend les valeurs des axes x et y de la liste akima.li et utilise la matrice des valeurs z pour tracer la surface 3D
+
+# Ici un exemple complet avec des données réelles :
+# Import des données
+
+bk <- read.csv("C:/Users/Antoine/Desktop/site/bk.csv")
+
+# Visualisation du data.frame
+
+View(bk)
+
+# Visualisation des points en 3D
+
+rgl.spheres(bk$etr, bk$to09, bk$cs6, 0.5)
+
+# Interpolation avec Akima
+
+a <- interp(x = bk$etr, y = bk$cs6, z = bk$to09, xo =seq(min(bk$etr), max(bk$etr), length = 100), yo=seq(min (bk$cs6), max(bk$cs6), length = 100), extrap=TRUE, linear=FALSE)
+
+# Graphique de surface
+
+rgl.surface(a$x, a$y, a$z)
+
+# On va réduire progressivement la grille pour simplifier et lisser les résultats :
+
+a <- interp(x = bk$etr, y = bk$cs6, z = bk$to09, xo =seq(min(bk$etr), max(bk$etr), length = 40), yo=seq(min (bk$cs6), max(bk$cs6), length = 40))
+rgl.surface(a$x, a$y, a$z)
+a <- interp(x = bk$etr, y = bk$cs6, z = bk$to09, xo =seq(min(bk$etr), max(bk$etr), length = 20), yo=seq(min (bk$cs6), max(bk$cs6), length = 20))
+rgl.surface(a$x, a$y, a$z)
+a <- interp(x = bk$etr, y = bk$cs6, z = bk$to09, xo =seq(min(bk$etr), max(bk$etr), length = 10), yo=seq(min (bk$cs6), max(bk$cs6), length = 10))
+rgl.surface(a$x, a$y, a$z)
+
+# On assigne des valeurs des vecteurs x et y et de la matrice z
+
+x <- a$x
+y <- a$y
+z <- a$z
+
+# Graphique avec persp
+
+persp(x=x, y=y, z=z)
+
+# Labellisation
+
+persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009")
+persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed")
+
+# Rotation 3D
+
+persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed", theta=135)
+persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed", theta=135, phi=30)
+
+# Colorisation et ombre
+
+persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed", theta=135, phi=20, col="lightblue")
+persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed", theta=135, phi=20, col="lightblue", shade=0.75)
 ###########
 
 
 A suivre : bipolate sous Stata dès que le module est diffusé sous SSC
-	   affichage des axes pour les modules RGL
 
 </pre>
 
