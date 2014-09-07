@@ -120,6 +120,9 @@ data(akima)
 
 rgl.surface(akima.li$x,akima.li$y,akima.li$z,color="green",alpha=c(0.5))
 
+<img src="https://lut.im/EDDScejV/Kq7RBS1k" width="800">
+
+
 # on indique bien x , y et z, tirés de la liste akima.li
 
 ## Options
@@ -133,6 +136,10 @@ rgl.surface(akima.li$x,akima.li$y,akima.li$z,color="green",alpha=c(0.5))
                     linear=FALSE, interp=TRUE)
                     
 # NB : par défaut, linear=TRUE et interp est impossible sous cette condition.
+
+Avec l'interpolation non linéaire
+
+<img src="https://lut.im/DUB1kgN0/bT0hRtPq" width="800">
 
 
 
@@ -157,6 +164,8 @@ View(bk)
 
 rgl.spheres(bk$etr, bk$to09, bk$cs6, 0.5)
 
+<img src="https://lut.im/mTaROm73/6GAk1y9q" width="800">
+
 # Interpolation avec Akima
 
 a <- interp(x = bk$etr, y = bk$cs6, z = bk$to09, xo =seq(min(bk$etr), max(bk$etr), length = 100), yo=seq(min (bk$cs6), max(bk$cs6), length = 100), extrap=TRUE, linear=FALSE)
@@ -164,6 +173,9 @@ a <- interp(x = bk$etr, y = bk$cs6, z = bk$to09, xo =seq(min(bk$etr), max(bk$etr
 # Graphique de surface
 
 rgl.surface(a$x, a$y, a$z)
+
+<img src="https://lut.im/hjQmdgcR/kRwMXdgF" width="800">
+
 
 # On va réduire progressivement la grille pour simplifier et lisser les résultats :
 
@@ -173,6 +185,8 @@ a <- interp(x = bk$etr, y = bk$cs6, z = bk$to09, xo =seq(min(bk$etr), max(bk$etr
 rgl.surface(a$x, a$y, a$z)
 a <- interp(x = bk$etr, y = bk$cs6, z = bk$to09, xo =seq(min(bk$etr), max(bk$etr), length = 10), yo=seq(min (bk$cs6), max(bk$cs6), length = 10))
 rgl.surface(a$x, a$y, a$z)
+
+<img src="https://lut.im/YV3hQgRC/ZtH9JBOz
 
 # On assigne des valeurs des vecteurs x et y et de la matrice z
 
@@ -184,20 +198,39 @@ z <- a$z
 
 persp(x=x, y=y, z=z)
 
+<img src="https://lut.im/6PBZJqV2/HTYiOhrs
+
+
 # Labellisation
 
 persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009")
 persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed")
+
+<img src="https://lut.im/VvZzIwdt/wF2JUax0" width="800">
+
 
 # Rotation 3D
 
 persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed", theta=135)
 persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed", theta=135, phi=30)
 
+<img src="https://lut.im/aVi2P26W/ha9cNYwU" width="800">
+
+
 # Colorisation et ombre
 
 persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed", theta=135, phi=20, col="lightblue")
 persp(x=x, y=y, z=z, xlab="% d'étrangers", ylab="% d'ouvriers", zlab="Taux de participation en 2009", ticktype="detailed", theta=135, phi=20, col="lightblue", shade=0.75)
+
+
+<img src="https://lut.im/27BrQRle/7eLoAiC6" width="800">
+
+<img src="https://lut.im/IQ5xzgDH/1xLrQ37h" width="800">
+
+<img src="https://lut.im/WANNp6i2/tGDN7WyQ" width="800">
+
+<img src="https://lut.im/9QIvZKDY/fpQrCXQ7" width="800">
+
 ###########
 
 
