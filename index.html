@@ -33,6 +33,7 @@
 
 <div id="history">
 <ul>
+<li><a href="#070914">07/08/2014 - R - Retour sur le module Akima</a></li>
 <li><a href="#060914">06/09/2014 - Stata et R - Margins et analyse de régression</a></li>
 <li><a href="#040914">04/09/2014 - Coloration syntaxique en HTML pour R</a></li>
 <li><a href="#030914">03/09/2014 - Geoda et QGIS : Calculer des indices Bivariate Lisa et exporter les résultats</a></li>
@@ -77,6 +78,69 @@
 </div>
 
 <div id="main">
+
+<h1><a id="070914">R - Retour sur le module Akima</a></h1>
+<pre>
+
+# Le module akima est très utile pour créer des analyses de surfaces
+# Il permet de calculer, à partir de données en coordonnées x,y,z une matrice des coordonnées à représenter en une surface 3D
+# Cette fonction n'est pas encore disponible sous stata
+# Mais Bipolate va l'intégrer à cours terme en reprenant le code initial du module Akima
+
+# La documentation n'est pas simple, voici l'exemple de base commenté.
+
+# On importe un data.frame avec 3 variables x,y,z. Les trois variables doivent porter sur le même nombre d'individus.
+# /!\ Pas de valeurs manquantes /!\
+
+library(akima)
+library(rgl)
+
+data(akima)
+
+# Ca se complique
+
+ akima.li <- interp(akima$x, akima$y, akima$z, 
+                    xo=seq(min(akima$x), max(akima$x), length = 100),
+                    yo=seq(min(akima$y), max(akima$y), length = 100))
+                    
+# Ici on fait plusieurs choses en une seule commande : 
+
+# - On indique les variables du fichiers akima : x, y et z
+# - On indique que la dimension xo varie du min(x) au max(x) avec 100 points entre les deux
+# - On indique que la dimension yo varie du min(y) au max(y) avec 100 points entre les deux
+
+## On peut faire varier le nombre de points, plus on en ajoute, plus le résultat est fin mais aussi complexe.
+
+# Encore moins intuitif
+# On dispose maintenant de la liste akima.li
+# Cette liste comporte les valeurs x et y, ainsi que la matrice des valeurs de Z.
+# On a donc deux vecteurs (les dimensions x et y) et une matrice (les valeurs de Z selon x et y)
+
+# On afficher la surface sous RGL
+
+rgl.surface(akima.li$x,akima.li$y,akima.li$z,color="green",alpha=c(0.5))
+
+# on indique bien x , y et z, tirés de la liste akima.li
+
+## Options
+
+# Dans la procédure d'interpolation, on peut choisir une méthode non linéaire.
+# Et d'accepter ou non le recyclage des valeurs manquantes dans la matrice des Z
+
+ akima.li <- interp(akima$x, akima$y, akima$z, 
+                    xo=seq(min(akima$x), max(akima$x), length = 100),
+                    yo=seq(min(akima$y), max(akima$y), length = 100),
+                    linear=FALSE, interp=TRUE)
+                    
+# NB : par défaut, linear=TRUE et interp est impossible sous cette condition.
+
+###########
+
+
+A suivre : bipolate sous Stata dès que le module est diffusé sous SSC
+	   affichage des axes pour les modules RGL
+
+</pre>
 
 <h1><a id="060914">Stata et R - Margins et analyse de régression</a></h1>
 <pre>
