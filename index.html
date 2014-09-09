@@ -155,8 +155,7 @@ persp(x=akima$x, y=akima$y, z= akima$z, xlab="Précarité", ylab="% français im
 
 # On peut utiliser akima, persp et rgl pour la visualisation des estimations et des données originales.
 # Dans le premier cas on obtient un plan (une valeur prédite et des dimensions linéaires)
-# Dans le second une surface plus complexe qu'on peut choisir de lisser (avec mspline par exemple)
-
+# Dans le second une surface plus complexe qu''on peut choisir de lisser (avec mspline par exemple)
 
 # Résultats avec lattice
 
@@ -170,6 +169,43 @@ persp(x=akima$x, y=akima$y, z= akima$z, xlab="Précarité", ylab="% français im
 
 # Modèle
 <img src="https://lut.im/dQxeXUom/pfDTCphT" width="800">
+
+
+## Scatter 3D : visualiser des données et leur modélisation ##
+
+# Import des données
+
+c <- read.csv("C:/Users/Antoine/Desktop/c.csv")
+
+# Graphique simple (linear fit)
+
+scatter3d (to09 ~ preca + etr, fill=FALSE, data = c)
+
+# Linear fit avec options de visualisation des points et de l''écart au modèle
+
+scatter3d (x=c$preca, y=c$to09, z=c$etr, fill=FALSE, fit="linear", point.col="black", neg.res.col="green", pos.res.col="blue")
+
+<img src="https://lut.im/Beg7KSiR/CenvofnF" width="800">
+
+# Quadratic fit
+
+scatter3d (x=c$preca, y=c$to09, z=c$etr, fill=FALSE, fit="quadratic", point.col="black", neg.res.col="green", pos.res.col="blue")
+
+<img src="https://lut.im/TfvuDJgu/rwkZ3ixF" width="800">
+
+# Additive model
+
+scatter3d (x=c$preca, y=c$to09, z=c$etr, fill=FALSE, fit="additive", point.col="black", neg.res.col="green", pos.res.col="blue")
+
+<img src="https://lut.im/UBWhcIFO/u5nLjwjY" width="800">
+
+# Smoothed grid
+
+scatter3d (x=c$preca, y=c$to09, z=c$etr, fill=FALSE, fit="smooth", point.col="black", neg.res.col="green", pos.res.col="blue")
+
+<img src="https://lut.im/eOHHlqgB/UMknVnDg" width="800">
+
+# La suite plus tard
 </pre>
 
 <h1><a id="070914">07/08/2014 - R - Retour sur les modules Akima et Persp</a></h1>
