@@ -33,6 +33,7 @@
 
 <div id="history">
 <ul>
+<li><a href="#090914">09/09/2014 - Stata et R : visualisation des données réelles et des predictions</a></li>
 <li><a href="#070914">07/08/2014 - R - Retour sur les modules Akima et Persp</a></li>
 <li><a href="#060914">06/09/2014 - Stata et R - Margins et analyse de régression</a></li>
 <li><a href="#040914">04/09/2014 - Coloration syntaxique en HTML pour R</a></li>
@@ -78,6 +79,98 @@
 </div>
 
 <div id="main">
+
+<h1><a id="090914">09/09/2014 - Stata et R : visualisation des données réelles et des predictions</a></h1>
+<pre>
+	
+# Régression sous Stata et visualisation 3D des données et du modèle avec R
+
+*** Analyse de régression ***
+
+# Dans cette première étape on produit les scores théoriques du taux de participation aux européennes de 2009
+
+use C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\idf.dta 
+
+regress to09 c.preca##c.p_pop_etr [w= pop]
+
+# Description des indicateurs
+
+sum preca p_pop_etr, d
+
+cd "C:\Users\Antoine\Desktop"
+
+# Production des estimations
+
+margins, at (preca = (9 (2) 45) p_pop_etr = (0 (2) 55))
+
+# Sauvegarde (en .dta et en .csv)
+
+_marg_save, saving (c.dta)
+
+use c.dta, replace
+
+outsheet using "C:\Users\Antoine\Desktop\c.csv", comma replace
+
+
+*** Visualisation sous R  ***
+
+# Import des données
+
+c <- read.csv("C:/Users/Antoine/Desktop/c.csv")
+
+View(c)
+
+# Sélection des variables 
+
+x <- c$preca
+y <- c$etr
+z <- c$to09
+
+# Chargement des modules
+
+library(akima)
+library(rgl)
+
+# Interpolation
+
+akima <- interp(x=x, y=y, z=z, xo = seq (min(x), max(x), length = 40), yo = seq (min(y), max(y), length = 40))
+
+# Présentation graphique
+
+persp(x=akima$x, y=akima$y, z= akima$z, xlab="Précarité", ylab="% français immigés", zlab="% participation 2009", ticktype="detailed", theta=230, phi=10, col="red", shade=0.5)
+
+# Alternative
+
+library(lattice)
+
+wireframe(akima$z)
+
+Extension : on réplique ici la projection pour le taux de participation en 2007
+
+z <- c$to07t1
+akima <- interp(x=x, y=y, z=z, xo = seq (min(x), max(x), length = 40), yo = seq (min(y), max(y), length = 40))
+persp(x=akima$x, y=akima$y, z= akima$z, xlab="Précarité", ylab="% français immigés", zlab="% participation 2009", ticktype="detailed", theta=230, phi=10, col="red", shade=0.5)
+
+*** NB ***
+
+# On peut utiliser akima, persp et rgl pour la visualisation des estimations et des données originales.
+# Dans le premier cas on obtient un plan (une valeur prédite et des dimensions linéaires)
+# Dans le second une surface plus complexe qu'on peut choisir de lisser (avec mspline par exemple)
+
+
+# Résultats avec lattice
+
+<img src="https://lut.im/CtJcbqje/mTB2Vvag" width="800">
+
+# Résultats avec persp
+<img src="https://lut.im/ua6sNSzN/awoOj0TX" width="800">
+
+# Données rélles
+<img src="https://lut.im/BwPLZDcu/0aOJuxpu" width="800">
+
+# Modèle
+<img src="https://lut.im/dQxeXUom/pfDTCphT" width="800">
+</pre>
 
 <h1><a id="070914">07/08/2014 - R - Retour sur les modules Akima et Persp</a></h1>
 <pre>
