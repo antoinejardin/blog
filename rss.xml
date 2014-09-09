@@ -8,25 +8,30 @@
   <description>A blog on political science and data analysis</description>
   
   <item>
+  <title>Stata et R : visualisation des données réelles et des predictions</title>
+  <link>http://antoinejardin.github.io/blog/#090914</link>
+  </item>
+  
+  <item>
   <title>R - Retour sur les modules Akima et Persp</title>
   <link>http://antoinejardin.github.io/blog/#070914</link>
   </item>
   
-   <item>
-    <title>Stata et R - Margins et analyse de régression</title>
-    <link>http://antoinejardin.github.io/blog/#060914</link>
-</item>
+  <item>
+  <title>Stata et R - Margins et analyse de régression</title>
+  <link>http://antoinejardin.github.io/blog/#060914</link>
+  </item>
 
   <item>
-    <title>Coloration syntaxique en HTML pour R</title>
-    <link>http://antoinejardin.github.io/blog/#040914</link>
-    <description>Un utilitaire pour la présentation du code R en ligne</description>
+  <title>Coloration syntaxique en HTML pour R</title>
+  <link>http://antoinejardin.github.io/blog/#040914</link>
+  <description>Un utilitaire pour la présentation du code R en ligne</description>
   </item>
   
   <item>
-    <title>Bivariate LISA Index</title>
-    <link>http://antoinejardin.github.io/blog/#030914</link>
-    <description>Geoda et QGIS : Calculer des indices Bivariate Lisa et exporter les résultats</description>
+  <title>Bivariate LISA Index</title>
+  <link>http://antoinejardin.github.io/blog/#030914</link>
+  <description>Geoda et QGIS : Calculer des indices Bivariate Lisa et exporter les résultats</description>
   </item>
   
 </channel>
