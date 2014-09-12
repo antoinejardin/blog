@@ -80,6 +80,19 @@
 
 <div id="main">
 
+<h1><a id="120914">12/09/2014 - Stata : Boucles simples</a></h1>
+<pre>
+
+# boucle pour l'analyse de la composition en IRIS des communes.
+# Typologie Edmond Préteceille
+
+foreach x of varlist ( tMAC-tSCS) {
+gen sc_`x' = (`x' /  totIRIS )* 100
+}
+
+
+</pre>
+
 <h1><a id="090914">09/09/2014 - Stata et R : visualisation des données réelles et des predictions</a></h1>
 <pre>
 	
