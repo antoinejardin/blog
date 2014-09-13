@@ -291,7 +291,29 @@ qualidemo:4_pas_bien~t   .02641739   .00858563   .01948305  -.04745203   .001492
 
 # Notes que les modalités des variables supplémentaires ne contribuent pas aux dimensions 
 	
-	
+
+************* Autre Exemple *******************
+
+# MCA
+
+mca relig agecod educ isco place, supp(pays)
+
+# Prédiction
+
+predict a1 a2
+
+# Ellipses larges : c = 10
+
+ellip a2 a1, plot (sc a2 a1, msize(vtiny)) by (educ) overlay c(10)
+ellip a2 a1, plot (sc a2 a1, msize(vtiny)) by (place) overlay c(10)
+ellip a2 a1, plot (sc a2 a1, msize(vtiny)) by (pays) overlay c(10)
+
+# Ellipses serrées : c = 1 
+
+ellip a2 a1, plot (sc a2 a1, msize(vtiny)) by (educ) overlay c(1)
+ellip a2 a1, plot (sc a2 a1, msize(vtiny)) by (place) overlay c(1)
+ellip a2 a1, plot (sc a2 a1, msize(vtiny)) by (pays) overlay c(1)
+
 </pre>
 
 <h1><a id="120914">12/09/2014 - Stata : Boucles simples</a></h1>
