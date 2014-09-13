@@ -82,8 +82,53 @@
 
 <div id="main">
 
+<h1><a id="130914_2">R - Analyse en Composantes Principales</a></h1>
 
-<h1><a id="130914">12/09/2014 - Stata : Analyse des correspondances multiples</a></h1>
+<pre>
+	
+# Librairies
+
+library(foreign)
+library(car)
+library(FactoMineR)
+
+# Données
+
+setwd("C:/Users/Antoine/Desktop/GLM")
+read.dta("London.dta")
+a <- read.dta("London.dta")
+
+# Préparation
+
+colnames(a)
+b <- subset(a, select = scwhite : scnorel)
+View(b)
+
+# PCA
+
+# (1) - Complete
+
+res.pca = PCA(b, scale.unit=TRUE, ncp=2, graph=T)
+
+ <img src="https://lut.im/GJmT3O0T/oYl3JjaD" width="800">
+
+# (2) - Ethnoraciale
+
+res.pca = PCA(b [, 1:5], scale.unit=TRUE, ncp=2, graph=T)
+
+ <img src="https://lut.im/XdguR3N1/xG9j5bMg" width="800">
+
+# (3) - Religieuse
+
+res.pca = PCA(b [, 6:13], scale.unit=TRUE, ncp=2, graph=T)
+
+ <img src="https://lut.im/zEXhk2FR/igA3FVO2" width="800">
+
+</pre>
+
+
+
+<h1><a id="130914">13/09/2014 - Stata : Analyse des correspondances multiples</a></h1>
 
 <pre>
 
