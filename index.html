@@ -119,8 +119,64 @@ res.pca = PCA(a1 [, 5:9], scale.unit=TRUE, ncp=2, graph = T, )
 
 res.pca = PCA(a1 [,c('a.uk1', 'a.uk2')], scale.unit=TRUE, ncp=2, graph = T, )
 res.pca = PCA(a1 [,c('a.uk1', 'a.uk2', 'a.Turn10', 'a.Turn05')], scale.unit=TRUE, ncp=2, graph = T, )	
-	
+
+
+**** Régression écologique ****
+
+
+library(car)
+library(rgl)
+library(FactoMineR)
+library(eiPack)
+
+eiuk <- read.csv("C:/Users/Antoine/Desktop/eiuk.csv")
+View(eiuk)
+
+auk <- subset(eiuk / 100)
+
+View(auk)
+
+formula <- cbind(Turn10, r10) ~ cbind(ACORN_1p, ACORN_2p, ACORN_3p, ACORN_4p ,ACORN_5p , rac)
+ei.reg(formula, auk)
+ei.reg.bayes(formula, auk, sample = 1000)
+
+* Taux de participation 2010
+
+Formula:  formula 
+Total sims:  1000 
+
+Estimated internal cells: (averaged across simulations)
+          Turn10  r10  
+ACORN_1p  0.752   0.249
+ACORN_2p  0.690   0.310
+ACORN_3p  0.694   0.306
+ACORN_4p  0.603   0.397
+ACORN_5p  0.468   0.532
+rac       0.245   0.754
+
+
+formula <- cbind(Turn05, r05) ~ cbind(ACORN_1p, ACORN_2p, ACORN_3p, ACORN_4p ,ACORN_5p , rac)
+ei.reg(formula, auk)
+ei.reg.bayes(formula, auk, sample = 1000)
+
+* Taux de participation 2005
+
+Formula:  formula 
+Total sims:  1000 
+
+Estimated internal cells: (averaged across simulations)
+          Turn05  r05  
+ACORN_1p  0.729   0.272
+ACORN_2p  0.608   0.392
+ACORN_3p  0.647   0.352
+ACORN_4p  0.580   0.421
+ACORN_5p  0.413   0.588
+rac       0.339   0.658
+
 </pre>
+
+
+
 <h1><a id="140914">14/09/2014 - Stata - Surface 3D</a></h1>
 
 <pre>
