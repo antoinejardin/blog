@@ -83,6 +83,44 @@
 
 <div id="main">
 
+<h1><a id="150915">15/09/2014 - R - PCA et sélections de variables </a></h1>
+
+<pre>
+
+# Import 
+
+`g2010` <- read.csv("C:/Users/Antoine/Desktop/g2010.csv")
+View(`g2010`)
+a <- g2010
+
+# Sélection 1
+
+a1 <- data.frame (a$uk1, a$uk2, a$wmid1, a$wmid2, a$ACORN_1p,a$ACORN_2p, a$ACORN_3p,a$ACORN_4p,a$ACORN_5p, a$Turn10 , a$Turn05)
+a1 <- subset(a1)
+
+# Visualisation
+
+library(car)
+scatter3d (a.Turn05 ~ a.uk1 + a.uk2, fill=FALSE, data = a1)
+scatter3d (a.Turn05 ~ a.uk1 + a.uk2, fill=FALSE, data = a1, fit = "smooth")
+
+scatter3d (a.Turn10 ~ a.uk1 + a.uk2, fill=FALSE, data = a1)
+scatter3d (a.Turn10 ~ a.uk1 + a.uk2, fill=FALSE, data = a1, fit = "smooth")
+
+# PCA 
+
+library(FactoMineR)
+
+# PCA 1
+
+res.pca = PCA(a1 [, 5:9], scale.unit=TRUE, ncp=2, graph = T, )
+
+# PCA en sélection de variables 
+
+res.pca = PCA(a1 [,c('a.uk1', 'a.uk2')], scale.unit=TRUE, ncp=2, graph = T, )
+res.pca = PCA(a1 [,c('a.uk1', 'a.uk2', 'a.Turn10', 'a.Turn05')], scale.unit=TRUE, ncp=2, graph = T, )	
+	
+</pre>
 <h1><a id="140914">14/09/2014 - Stata - Surface 3D</a></h1>
 
 <pre>
