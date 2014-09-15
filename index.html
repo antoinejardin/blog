@@ -33,6 +33,7 @@
 
 <div id="history">
 <ul>
+<li><a href="#150914">15/09/2014 - R - PCA et sélections de variables </a></li>
 <li><a href="#130914_2">13/09/2014 - R : Analyse en Composantes Principales et composants multiples</a></li>
 <li><a href="#130914">13/09/2014 - Stata : Analyse des correspondances multiples</a></li>
 <li><a href="#120914">12/09/2014 - Stata : Boucles simples</a></li>
@@ -83,7 +84,167 @@
 
 <div id="main">
 
-<h1><a id="150915">15/09/2014 - R - PCA et sélections de variables </a></h1>
+<h1><a id="160514">16/09/2014</a></h1>
+
+<pre>
+
+ACORN * Turn 10
+
+> ei.reg(formula, auk)
+
+Call:  ei.reg(formula = formula, data = auk) 
+
+Estimated internal cells:
+          Turn10  cto10
+ACORN_1p  0.754   0.246
+ACORN_2p  0.688   0.312
+ACORN_3p  0.692   0.308
+ACORN_4p  0.603   0.397
+ACORN_5p  0.465   0.535
+cacorn    0.270   0.730
+
+> ei.reg.bayes(formula, auk, sample = 1000, weights = auk$pop)
+
+Formula:  formula 
+Total sims:  1000 
+
+Estimated internal cells: (averaged across simulations)
+          Turn10  cto10
+ACORN_1p  0.754   0.246
+ACORN_2p  0.688   0.311
+ACORN_3p  0.694   0.306
+ACORN_4p  0.601   0.399
+ACORN_5p  0.464   0.535
+cacorn    0.238   0.754
+
+
+> summary(acornbay) (bayesian regression)
+
+Formula:  formula 
+Total sims:  1000 
+
+Estimated internal cells: (across simulations)
+                 Mean     Std. Dev.  2.5%     97.5%  
+ACORN_1p.Turn10  0.75367  0.00666    0.74104  0.76680
+ACORN_2p.Turn10  0.68884  0.00733    0.67558  0.70204
+ACORN_3p.Turn10  0.69399  0.01132    0.67181  0.71520
+ACORN_4p.Turn10  0.60139  0.01279    0.57674  0.62646
+ACORN_5p.Turn10  0.46427  0.01021    0.44403  0.48442
+cacorn.Turn10    0.23903  0.07614    0.10194  0.39719
+ACORN_1p.cto10   0.24657  0.00687    0.23257  0.26019
+ACORN_2p.cto10   0.31190  0.00710    0.29789  0.32574
+ACORN_3p.cto10   0.30563  0.01146    0.28273  0.32845
+ACORN_4p.cto10   0.39833  0.01296    0.37357  0.42397
+ACORN_5p.cto10   0.53594  0.01040    0.51628  0.55523
+cacorn.cto10     0.75883  0.07591    0.61230  0.90920
+
+
+> summary(acornreg) (ecological model)
+
+Call:  ei.reg(formula = formula, data = auk) 
+
+Estimated internal cells:
+                 Estimate  Std. Error  t-stat  
+ACORN_1p.Turn10  7.54e-01  6.99e-03    1.08e+02
+ACORN_2p.Turn10  6.88e-01  7.06e-03    9.74e+01
+ACORN_3p.Turn10  6.92e-01  1.15e-02    6.03e+01
+ACORN_4p.Turn10  6.03e-01  1.30e-02    4.65e+01
+ACORN_5p.Turn10  4.65e-01  1.02e-02    4.55e+01
+cacorn.Turn10    2.70e-01  7.44e-02    3.63e+00
+ACORN_1p.cto10   2.46e-01  6.99e-03    3.51e+01
+ACORN_2p.cto10   3.12e-01  7.06e-03    4.43e+01
+ACORN_3p.cto10   3.08e-01  1.15e-02    2.68e+01
+ACORN_4p.cto10   3.97e-01  1.30e-02    3.06e+01
+ACORN_5p.cto10   5.35e-01  1.02e-02    5.23e+01
+cacorn.cto10     7.30e-01  7.44e-02    9.82e+00
+
+
+
+
+Race * Turn 10
+
+
+
+formula <- cbind(Turn10, cto10) ~ cbind(white, mixed, asian, black, chinese, crace)
+
+
+Call:  ei.reg(formula = formula, data = auk) 
+
+Estimated internal cells:
+         Turn10     cto10    
+white        0.672      0.328
+mixed       -1.023      2.023
+asian        0.611      0.389
+black        0.647      0.353
+chinese      1.374     -0.374
+crace    -1359.466   1360.466
+
+
+ei.reg.bayes(formula, auk, sample = 1000, weights = auk$pop)
+
+Formula:  formula 
+Total sims:  1000 
+
+Estimated internal cells: (averaged across simulations)
+         Turn10     cto10    
+white        0.672      0.328
+mixed       -1.102      2.110
+asian        0.614      0.385
+black        0.660      0.339
+chinese      1.387     -0.391
+crace    -1506.428   1544.131
+Warning message:
+	
+	
+	
+	
+> summary(racebay)
+
+Formula:  formula 
+Total sims:  1000 
+
+Estimated internal cells: (across simulations)
+                Mean       Std. Dev.  2.5%       97.5%    
+white.Turn10     6.72e-01   4.13e-03   6.64e-01   6.80e-01
+mixed.Turn10    -1.16e+00   5.32e-01  -2.24e+00  -1.21e-01
+asian.Turn10     6.16e-01   4.28e-02   5.31e-01   7.04e-01
+black.Turn10     6.68e-01   9.24e-02   4.93e-01   8.54e-01
+chinese.Turn10   1.42e+00   4.14e-01   6.49e-01   2.23e+00
+crace.Turn10    -1.64e+03   3.41e+03  -7.85e+03   5.29e+03
+white.cto10      3.28e-01   4.23e-03   3.20e-01   3.37e-01
+mixed.cto10      2.08e+00   5.24e-01   1.06e+00   3.11e+00
+asian.cto10      3.86e-01   4.03e-02   3.10e-01   4.60e-01
+black.cto10      3.45e-01   9.15e-02   1.62e-01   5.20e-01
+chinese.cto10   -3.97e-01   4.16e-01  -1.27e+00   4.18e-01
+crace.cto10      1.77e+03   3.48e+03  -5.16e+03   8.62e+03
+
+
+
+
+> summary(racereg)
+
+Call:  ei.reg(formula = formula, data = auk) 
+
+Estimated internal cells:
+                Estimate   Std. Error  t-stat   
+white.Turn10     6.72e-01   4.13e-03    1.62e+02
+mixed.Turn10    -1.02e+00   5.19e-01   -1.97e+00
+asian.Turn10     6.11e-01   3.80e-02    1.61e+01
+black.Turn10     6.47e-01   8.76e-02    7.39e+00
+chinese.Turn10   1.37e+00   3.97e-01    3.46e+00
+crace.Turn10    -1.36e+03   3.52e+03   -3.86e-01
+white.cto10      3.28e-01   4.13e-03    7.94e+01
+mixed.cto10      2.02e+00   5.19e-01    3.90e+00
+asian.cto10      3.89e-01   3.80e-02    1.02e+01
+black.cto10      3.53e-01   8.76e-02    4.03e+00
+chinese.cto10   -3.74e-01   3.97e-01   -9.40e-01
+crace.cto10      1.36e+03   3.52e+03    3.86e-01
+
+
+</pre>
+
+
+<h1><a id="150914">15/09/2014 - R - PCA et sélections de variables </a></h1>
 
 <pre>
 
