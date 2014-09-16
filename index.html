@@ -33,6 +33,8 @@
 
 <div id="history">
 <ul>
+
+<li><a href="#160914">16/09/2014 - Régressions multiniveaux et écologiques</a></li>
 <li><a href="#150914">15/09/2014 - R - PCA et sélections de variables </a></li>
 <li><a href="#130914_2">13/09/2014 - R : Analyse en Composantes Principales et composants multiples</a></li>
 <li><a href="#130914">13/09/2014 - Stata : Analyse des correspondances multiples</a></li>
@@ -84,9 +86,188 @@
 
 <div id="main">
 
-<h1><a id="160514">16/09/2014</a></h1>
+<h1><a id="160514">16/09/2014 -  Régressions multiniveaux et écologiques</a></h1>
 
 <pre>
+
+# Régression multiniveaux
+
+
+# On trouve beaucoup de choses peu explicites et trop compliquées pour l'utilisation des modèles linéaires multiniveaux sous Stata
+# Ici un exemple simple
+
+# Une DV, une IV et 2 niveaux
+
+# On prédit le taux de participation en fonction de la part des minorités ethniques, dans chaque région du Royaume Uni
+
+# Turn 10 <- minority (region)
+
+# Effet fixe (toutes les droites de régressions sont parallèles mais la constante varie
+# Hypothèse implicite : effet ethnicité sur le vote constant dans toutes les régions.
+
+xtmixed Turn10 minority || reg:
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -1734.7254  
+Iteration 1:   log likelihood = -1734.7254  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs      =       572
+Group variable: reg                             Number of groups   =        10
+
+                                                Obs per group: min =        28
+                                                               avg =      57.2
+                                                               max =        87
+
+
+                                                Wald chi2(1)       =     62.51
+Log likelihood = -1734.7254                     Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+      Turn10 |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    minority |  -.1819814   .0230165    -7.91   0.000    -.2270929     -.13687
+       _cons |    66.4992   .8216178    80.94   0.000     64.88886    68.10954
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects Parameters  |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+reg: Identity                |
+                   sd(_cons) |   2.448575   .6003537      1.514299    3.959271
+-----------------------------+------------------------------------------------
+                sd(Residual) |   4.905379   .1463629      4.626739    5.200799
+------------------------------------------------------------------------------
+LR test vs. linear regression: chibar2(01) =    84.77 Prob >= chibar2 = 0.0000
+
+
+# On prédit les scores dans chaquel selon le % de minorités et la région
+
+predict p, fitted
+
+# Graphique 
+
+twoway line p minority, connect(ascending)
+
+<img src="https://lut.im/il7LCwXi/MKDXw2Bj" width="800">
+
+
+## Effets aléatoires
+
+# On fait varier la constante, mais aussi la pente de chaque droite
+# Hypothèse : l'effet de l'ethnicité sur le vote n'est PAS le même dans toutes les régions
+
+xtmixed Turn10 minority || reg: minority , mle cov(unstructured)
+
+# Nb : on indique après || que minority peut varier par région.
+
+# Résultats
+
+
+
+Performing EM optimization: 
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -1732.4864  
+Iteration 1:   log likelihood = -1732.4864  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs      =       572
+Group variable: reg                             Number of groups   =        10
+
+                                                Obs per group: min =        28
+                                                               avg =      57.2
+                                                               max =        87
+
+
+                                                Wald chi2(1)       =     19.10
+Log likelihood = -1732.4864                     Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+      Turn10 |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    minority |  -.2117185   .0484391    -4.37   0.000    -.3066575   -.1167796
+       _cons |   66.53254   .7951699    83.67   0.000     64.97403    68.09104
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects Parameters  |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+reg: Unstructured            |
+                sd(minority) |   .1053446   .0503945      .0412493    .2690344
+                   sd(_cons) |   2.355273   .6069453      1.421313    3.902948
+        corr(minority,_cons) |  -.0671606   .5684415     -.8294699    .7825483
+-----------------------------+------------------------------------------------
+                sd(Residual) |   4.851571   .1460745      4.573554    5.146488
+------------------------------------------------------------------------------
+LR test vs. linear regression:       chi2(3) =    89.24   Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+
+# Graphique : 
+
+twoway line m minority, connect(ascending)
+
+<img src="https://lut.im/eH69pANt/d8iWZWsd" width="800">
+
+# On peut comparer les scores prédits par région
+
+mean m p , over(reg)
+
+Mean estimation                     Number of obs    =     573
+
+    _subpop_1: reg = 1. East Midlands
+    _subpop_2: reg = 2. East of England
+    _subpop_3: reg = 3. London
+    _subpop_4: reg = 4. North East
+    _subpop_5: reg = 5. North West
+    _subpop_6: reg = 7. South East
+    _subpop_7: reg = 8. South West
+    _subpop_8: reg = 9. Wales
+    _subpop_9: reg = 10. West Midlands
+   _subpop_10: reg = 11. Yorkshire and The Humber
+
+--------------------------------------------------------------
+        Over |       Mean   Std. Err.     [95% Conf. Interval]
+-------------+------------------------------------------------
+m            |
+   _subpop_1 |   66.05814   .3189383      65.43171    66.68457
+   _subpop_2 |   67.31629   .0978942      67.12402    67.50857
+   _subpop_3 |   64.58616   .2577564       64.0799    65.09243
+   _subpop_4 |   61.91952   .1184591      61.68685    62.15219
+   _subpop_5 |   62.64286   .2574374      62.13722     63.1485
+   _subpop_6 |   67.94802   .0909599      67.76936    68.12667
+   _subpop_7 |   68.52627   .0822443      68.36473    68.68781
+   _subpop_8 |   64.97668   .0861006      64.80757     65.1458
+   _subpop_9 |   64.20154   .4233557      63.37002    65.03306
+  _subpop_10 |   63.40059   .0778068      63.24777    63.55341
+-------------+------------------------------------------------
+p            |
+   _subpop_1 |   66.07222   .2922972      65.49812    66.64633
+   _subpop_2 |   67.31565   .1238212      67.07245    67.55885
+   _subpop_3 |    64.5402   .3273598      63.89723    65.18318
+   _subpop_4 |   61.89642   .0847722      61.72992    62.06292
+   _subpop_5 |   62.66781   .1397813      62.39326    62.94236
+   _subpop_6 |   67.96505   .0633998      67.84053    68.08958
+   _subpop_7 |   68.54139   .0599742      68.42359    68.65919
+   _subpop_8 |   64.97384    .066721       64.8428    65.10489
+   _subpop_9 |   64.23475   .3323162      63.58204    64.88745
+  _subpop_10 |   63.36292    .218928      62.93292    63.79292
+--------------------------------------------------------------
+
+# Et graphiquement les prédictions par individus (ici individus = ville)
+
+<img src="https://lut.im/4efsgKSa/kzlQwSrd" width="800">
+
+
+*******************************
+
+Régression écologique  (EiPack)
 
 ACORN * Turn 10
 
