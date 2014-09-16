@@ -86,6 +86,146 @@
 
 <div id="main">
 
+
+<h1><a id="160514_2">16/09/2014 - Faire varier les niveaux d'analyse avec xtmixed</a></h1>
+
+<pre>
+	
+*** Multiniveau fixe et random selon facteurs ***
+
+** TO 09 **
+
+xtmixed to09 preca ||  codereg:
+predict to9f, fitted
+xtmixed to09 preca ||  codereg: preca
+predict to9r, fitted
+
+xtmixed to09  p_cs6 ||  codereg:
+predict to9f_cs6, fitted
+xtmixed to09 p_cs6 ||  codereg: p_cs6
+predict to9r_cs6, fitted
+
+xtmixed to09  p_pop_etr ||  codereg:
+predict to9f_etr, fitted
+xtmixed to09 p_pop_etr ||  codereg: p_pop_etr
+predict to9r_etr, fitted
+
+xtmixed to09  p_ndipl0 ||  codereg:
+predict to9f_ndip, fitted
+xtmixed to09  p_ndipl0 ||  codereg: p_ndipl0
+predict to9r_ndip, fitted
+
+xtmixed to09  p_lochlm ||  codereg:
+predict to9f_hlm, fitted
+xtmixed to09  p_lochlm ||  codereg: p_lochlm
+predict to9r_hlm, fitted
+
+** Graphiques **
+
+sc to9f preca, msize(small)
+sc to9r preca, msize(small)
+
+sc to9f_cs6 p_cs6, msize(small)
+sc to9r_cs6 p_cs6, msize(small)
+
+sc to9f_etr p_pop_etr , msize(small)
+sc to9r_etr p_pop_etr , msize(small)
+
+sc to9f_ndip p_ndipl0 , msize(small)
+sc to9r_ndip p_ndipl0 , msize(small)
+
+sc to9f_hlm p_lochlm , msize(small)
+sc to9r_hlm p_lochlm , msize(small)
+
+
+** Combinaison **
+
+graph combine "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\fcs6.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\fetr.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\fhlm.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\fndip.gph", ycommon xcommon
+graph combine "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\rcs6.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\retr.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\rhlm.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\rndip.gph", ycommon xcommon
+
+
+** IDF **
+
+
+sc to9f preca if  codereg == 11, msize(small)
+sc to9r preca if  codereg == 11, msize(small)
+
+sc to9f_cs6 p_cs6 if  codereg == 11, msize(small)
+sc to9r_cs6 p_cs6 if  codereg == 11, msize(small)
+
+sc to9f_etr p_pop_etr if  codereg == 11 , msize(small)
+sc to9r_etr p_pop_etr if  codereg == 11 , msize(small)
+
+sc to9f_ndip p_ndipl0 if  codereg == 11 , msize(small)
+sc to9r_ndip p_ndipl0 if  codereg == 11 , msize(small)
+
+sc to9f_hlm p_lochlm if  codereg == 11 , msize(small)
+sc to9r_hlm p_lochlm if  codereg == 11 , msize(small)
+
+** Régression IDF : Unité département **
+
+
+xtmixed to09 preca ||  codedep:
+predict dto9f, fitted
+xtmixed to09 preca ||  codedep: preca
+predict dto9r, fitted
+
+xtmixed to09  p_cs6 ||  codedep:
+predict dto9f_cs6, fitted
+xtmixed to09 p_cs6 ||  codedep: p_cs6
+predict dto9r_cs6, fitted
+
+xtmixed to09  p_pop_etr ||  codedep:
+predict dto9f_etr, fitted
+xtmixed to09 p_pop_etr ||  codedep: p_pop_etr
+predict dto9r_etr, fitted
+
+xtmixed to09  p_ndipl0 ||  codedep:
+predict dto9f_ndip, fitted
+xtmixed to09  p_ndipl0 ||  codedep: p_ndipl0
+predict dto9r_ndip, fitted
+
+xtmixed to09  p_lochlm ||  codedep:
+predict dto9f_hlm, fitted
+xtmixed to09  p_lochlm ||  codedep: p_lochlm
+predict dto9r_hlm, fitted
+
+** Graphiques unité département || contexte = IDF **
+
+
+sc dto9f preca if  codereg == 11, msize(small)
+sc dto9r preca if  codereg == 11, msize(small)
+
+sc dto9f_cs6 p_cs6 if  codereg == 11, msize(small)
+sc dto9r_cs6 p_cs6 if  codereg == 11, msize(small)
+
+sc dto9f_etr p_pop_etr if  codereg == 11 , msize(small)
+sc dto9r_etr p_pop_etr if  codereg == 11 , msize(small)
+
+sc dto9f_ndip p_ndipl0 if  codereg == 11 , msize(small)
+sc dto9r_ndip p_ndipl0 if  codereg == 11 , msize(small)
+
+sc dto9f_hlm p_lochlm if  codereg == 11 , msize(small)
+sc dto9r_hlm p_lochlm if  codereg == 11 , msize(small)
+
+
+** Graphique **
+
+graph combine "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dfcs6.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dfetr.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dfhlm.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dfndip.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\drcs6.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dretr.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\drhlm.gph""C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\drndip.gph" , ycommon xcommon
+
+
+
+# Effets fixes et aléatoires en France - Niveau département
+
+<img src="https://lut.im/a8j8wfqu/H2fKPdBq" width="800">
+
+
+# Effets fixes et aléatoires en Ile de France - Niveau département
+
+<img src="https://lut.im/kB6bA95H/vzaFmE0c" width="800">
+
+</pre>
+
 <h1><a id="160514">16/09/2014 -  Régressions multiniveaux et écologiques</a></h1>
 
 <pre>
@@ -269,6 +409,8 @@ p            |
 ## Résultats d'un modèle plus complexe associant effet classe et effet "race"
 
 <img src="https://lut.im/O4SkqEoG/cp7UagvE" width="800">
+
+
 
 
 *******************************
