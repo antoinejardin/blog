@@ -180,6 +180,70 @@ sc xp10 p_cs6
 
 <img src="https://lut.im/5cs0JDfB/6H54mgUe" width="800">
 
+
+## Combinaison des facteurs - Analyse mutlivariée
+
+
+
+xtmixed to09 c.p_cs6##c.p_pop_etr || codereg : p_cs6  p_pop_etr || codedep : p_cs6 p_pop_etr
+
+
+
+Performing EM optimization: 
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -153765.97  
+Iteration 1:   log likelihood = -153765.97  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs      =     46552
+
+-----------------------------------------------------------
+                |   No. of       Observations per Group
+ Group Variable |   Groups    Minimum    Average    Maximum
+----------------+------------------------------------------
+        codereg |       23          1     2024.0       5212
+        codedep |       99          1      470.2       1799
+-----------------------------------------------------------
+
+                                                Wald chi2(3)       =     81.69
+Log likelihood = -153765.97                     Prob > chi2        =    0.0000
+
+-------------------------------------------------------------------------------------
+               to09 |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+--------------------+----------------------------------------------------------------
+              p_cs6 |  -.1437075   .0252556    -5.69   0.000    -.1932075   -.0942076
+          p_pop_etr |  -.4484845   .0806867    -5.56   0.000    -.6066275   -.2903414
+                    |
+c.p_cs6#c.p_pop_etr |  -.0015336   .0007074    -2.17   0.030    -.0029201    -.000147
+                    |
+              _cons |   48.62806   .5233202    92.92   0.000     47.60238    49.65375
+-------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects Parameters  |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+codereg: Independent         |
+                   sd(p_cs6) |   .1004194   .0190052       .069298    .1455171
+                sd(p_pop~tr) |   .3090872   .0684859      .2002056     .477184
+                   sd(_cons) |   2.047456   .4591439      1.319265    3.177586
+-----------------------------+------------------------------------------------
+codedep: Independent         |
+                   sd(p_cs6) |   .1123182    .010403      .0936723    .1346756
+                sd(p_pop~tr) |   .3558943   .0332028      .2964211    .4273002
+                   sd(_cons) |   2.338768   .2262164      1.934885    2.826958
+-----------------------------+------------------------------------------------
+                sd(Residual) |   6.511199    .021412      6.469367    6.553301
+------------------------------------------------------------------------------
+LR test vs. linear regression:       chi2(6) = 12676.89   Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+
+predict final, fitted
+
 	
 </pre>
 
