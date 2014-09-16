@@ -143,9 +143,13 @@ sc to9r_hlm p_lochlm , msize(small)
 graph combine "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\fcs6.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\fetr.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\fhlm.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\fndip.gph", ycommon xcommon
 graph combine "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\rcs6.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\retr.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\rhlm.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\rndip.gph", ycommon xcommon
 
+# Effets fixes et aléatoires en France - Niveau département
+
+<img src="https://lut.im/a8j8wfqu/H2fKPdBq" width="800">
+
+
 
 ** IDF **
-
 
 sc to9f preca if  codereg == 11, msize(small)
 sc to9r preca if  codereg == 11, msize(small)
@@ -162,8 +166,8 @@ sc to9r_ndip p_ndipl0 if  codereg == 11 , msize(small)
 sc to9f_hlm p_lochlm if  codereg == 11 , msize(small)
 sc to9r_hlm p_lochlm if  codereg == 11 , msize(small)
 
-** Régression IDF : Unité département **
 
+** Régression IDF : Unité département **
 
 xtmixed to09 preca ||  codedep:
 predict dto9f, fitted
@@ -190,8 +194,8 @@ predict dto9f_hlm, fitted
 xtmixed to09  p_lochlm ||  codedep: p_lochlm
 predict dto9r_hlm, fitted
 
-** Graphiques unité département || contexte = IDF **
 
+** Graphiques unité département || contexte = IDF **
 
 sc dto9f preca if  codereg == 11, msize(small)
 sc dto9r preca if  codereg == 11, msize(small)
@@ -212,12 +216,6 @@ sc dto9r_hlm p_lochlm if  codereg == 11 , msize(small)
 ** Graphique **
 
 graph combine "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dfcs6.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dfetr.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dfhlm.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dfndip.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\drcs6.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\dretr.gph" "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\drhlm.gph""C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\MULTINIV\TO09\drndip.gph" , ycommon xcommon
-
-
-
-# Effets fixes et aléatoires en France - Niveau département
-
-<img src="https://lut.im/a8j8wfqu/H2fKPdBq" width="800">
 
 
 # Effets fixes et aléatoires en Ile de France - Niveau département
