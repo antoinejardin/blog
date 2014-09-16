@@ -86,6 +86,102 @@
 
 <div id="main">
 
+<h1><a id="160514_3">16/09/2014 - Le multiniveaux : approche intuitive et modélisation complexe</a></h1>
+
+<pre>
+
+# Unité d'analyse : Bureaux de vote.
+# Données France entière
+# Cartelec
+
+* Linéaire simple 
+
+xtmixed to09 p_cs6
+
+predict xp1
+sc xp1 p_cs6
+
+<img src="https://lut.im/hygOGUY5/QYBOcf6p" width="800">
+
+* Linéaire simple : département
+
+xtmixed to09 p_cs6 || codereg :
+predict xp2, fitted
+
+sc xp2 p_cs6
+
+<img src="https://lut.im/29BB2TDF/9iiIDrgh" width="800">
+
+* Multiniveaux : région et CSP
+
+xtmixed to09 p_cs6 || codereg : p_cs6
+predict xp3, fitted
+
+sc xp3 p_cs6
+
+<img src="https://lut.im/DxQ0McGr/ykRFck9F" width="800">
+
+* Multiniveaux : département
+
+xtmixed to09 p_cs6 || codedep :
+predict xp4, fitted
+
+sc xp4 p_cs6
+
+<img src="https://lut.im/NRqZeMYz/lUMxQeIE" width="800">
+
+* Multiniveaux : département et CSP
+
+xtmixed to09 p_cs6 || codedep : p_cs6
+predict xp5, fitted
+
+sc xp5 p_cs6
+
+<img src="https://lut.im/cv4Yq9Oe/GqLcUluh" width="800">
+
+
+
+* Multiniveaux : région et département
+
+xtmixed to09 p_cs6 || codereg : || codedep :
+predict xp6, fitted
+
+sc xp6 p_cs6
+
+<img src="https://lut.im/1StbuDbJ/yxjtLclT" width="800">
+
+
+* Multiniveaux : région (CSP) et département
+
+xtmixed to09 p_cs6 || codereg : p_cs6 || codedep :
+predict xp7, fitted
+
+<img src="https://lut.im/dJrEXJhT/9vNVdoUl" width="800">
+
+* Multiniveaux : région (CSP) et département (CSP)
+
+sc xp7 p_cs6
+
+<img src="https://lut.im/UfQLAjqF/68R4yAgw" width="800">
+
+xtmixed to09 p_cs6 || codereg : p_cs6 || codedep : p_cs6
+predict xp8, fitted
+
+sc xp8 p_cs6
+
+<img src="https://lut.im/UfQLAjqF/68R4yAgw" width="800">
+
+* Multiniveaux : région (CSP) et département (CSP) et ville (CSP)
+
+xtmixed to09 p_cs6 || codereg: p_cs6 || codedep: p_cs6 || code: p_cs6
+predict xp10, fitted
+
+sc xp10 p_cs6
+
+<img src="https://lut.im/5cs0JDfB/6H54mgUe" width="800">
+
+	
+</pre>
 
 <h1><a id="160514_2">16/09/2014 - Faire varier les niveaux d'analyse avec xtmixed</a></h1>
 
