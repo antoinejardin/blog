@@ -87,9 +87,908 @@
 
 <div id="main">
 
+
 <h1><a id="170514">17/09/2014 - Syntaxe propre pour le multiniveau</a></h1>
+
+
 <pre>
 
+
+** Base multiniveau **
+
+
+
+** EFFET CSP
+
+
+
+* Effet fixe - niveau région
+xtmixed to09 p_cs6 || reg :
+predict cs6_f_reg_to9, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to09 p_cs6 || reg : p_cs6
+predict cs6_r_reg_to9, fitted
+
+* Effet fixe - niveau département
+xtmixed to09 p_cs6 || dep :
+predict cs6_f_dep_to9, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to09 p_cs6 || dep : p_cs6
+predict cs6_r_dep_to9, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to09 p_cs6 if reg==11 || code :
+predict cs6_f_com_idf_to9, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to09 p_cs6 if reg==11 || code : p_cs6
+predict cs6_r_com_idf_to9, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to09 p_cs6 if dep=="93" || code :
+predict cs6_f_com_ssd_to9, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to09 p_cs6 if dep=="93" || code : p_cs6
+predict cs6_r_com_ssd_to9, fitted
+
+
+* Modèle complet non pertinent
+
+
+** Graphiques
+
+
+** CS6
+ 
+* Reg
+sc cs6_f_reg_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_cs6_reg.gph"
+sc  cs6_r_reg_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_cs6_reg.gph"
+
+* Dep
+sc   cs6_f_dep_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_cs6_dep.gph"
+sc  cs6_r_dep_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_cs6_dep.gph"
+
+* Com IDF
+sc   cs6_f_com_idf_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_cs6_com_idf.gph"
+sc  cs6_r_com_idf_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_cs6_com_idf.gph"
+
+* Com SSD
+sc   cs6_f_com_ssd_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_cs6_com_ssd.gph"
+sc    cs6_r_com_ssd_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_cs6_com_ssd.gph"
+
+**** Combinaison
+
+
+ 
+* Reg
+sc cs6_f_reg_to9 p_cs6, msize(tiny) name(f1, replace) title(fixe par région)
+sc cs6_r_reg_to9 p_cs6, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  cs6_f_dep_to9 p_cs6, msize(tiny) name(f2, replace) title(fixe par département)
+sc  cs6_r_dep_to9 p_cs6, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  cs6_f_com_idf_to9 p_cs6, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  cs6_r_com_idf_to9 p_cs6, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  cs6_f_com_ssd_to9 p_cs6, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  cs6_r_com_ssd_to9 p_cs6, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+* Par niveau
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % d'ouvriers par effets)
+
+* Par effets
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % d'ouvriers par niveau)
+
+
+
+*** Etrangers ***
+
+
+
+ gen p_etr = p_pop_etr
+
+* Effet fixe - niveau région
+xtmixed to09 p_etr || reg :
+predict etr_f_reg_to9, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to09 p_etr || reg : p_etr
+predict etr_r_reg_to9, fitted
+
+* Effet fixe - niveau département
+xtmixed to09 p_etr || dep :
+predict etr_f_dep_to9, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to09 p_etr || dep : p_etr
+predict etr_r_dep_to9, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to09 p_etr if reg==11 || code :
+predict etr_f_com_idf_to9, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to09 p_etr if reg==11 || code : p_etr
+predict etr_r_com_idf_to9, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to09 p_etr if dep=="93" || code :
+predict etr_f_com_ssd_to9, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to09 p_etr if dep=="93" || code : p_etr
+predict etr_r_com_ssd_to9, fitted
+
+
+* Modèle complet non pertinent
+
+** Graphiques
+
+** etr
+ 
+* Reg
+sc etr_f_reg_to9 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_etr_reg.gph"
+sc  etr_r_reg_to9 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_etr_reg.gph"
+
+* Dep
+sc   etr_f_dep_to9 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_etr_dep.gph"
+sc  etr_r_dep_to9 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_etr_dep.gph"
+
+* Com IDF
+sc   etr_f_com_idf_to9 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_etr_com_idf.gph"
+sc  etr_r_com_idf_to9 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_etr_com_idf.gph"
+
+* Com SSD
+sc   etr_f_com_ssd_to9 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_etr_com_ssd.gph"
+sc    etr_r_com_ssd_to9 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_etr_com_ssd.gph"
+
+**** Combinaison
+ 
+* Reg
+sc etr_f_reg_to9 p_etr, msize(tiny) name(f1, replace) title(fixe par région)
+sc etr_r_reg_to9 p_etr, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  etr_f_dep_to9 p_etr, msize(tiny) name(f2, replace) title(fixe par département)
+sc  etr_r_dep_to9 p_etr, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  etr_f_com_idf_to9 p_etr, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  etr_r_com_idf_to9 p_etr, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  etr_f_com_ssd_to9 p_etr, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  etr_r_com_ssd_to9 p_etr, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+* Par effets
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % d'étrangers par effets)
+
+* Par niveau
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % d'étrangers par niveau)
+
+
+*** Diplôme ***
+
+
+gen p_ldip = p_ndipl0 + p_cep + p_bepc
+
+
+* Effet fixe - niveau région
+xtmixed to09 p_ldip || reg :
+predict ldip_f_reg_to9, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to09 p_ldip || reg : p_ldip
+predict ldip_r_reg_to9, fitted
+
+* Effet fixe - niveau département
+xtmixed to09 p_ldip || dep :
+predict ldip_f_dep_to9, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to09 p_ldip || dep : p_ldip
+predict ldip_r_dep_to9, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to09 p_ldip if reg==11 || code :
+predict ldip_f_com_idf_to9, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to09 p_ldip if reg==11 || code : p_ldip
+predict ldip_r_com_idf_to9, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to09 p_ldip if dep=="93" || code :
+predict ldip_f_com_ssd_to9, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to09 p_ldip if dep=="93" || code : p_ldip
+predict ldip_r_com_ssd_to9, fitted
+
+
+* Modèle complet non pertinent
+
+** Graphiques
+
+** ldip
+ 
+* Reg
+sc ldip_f_reg_to9 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_ldip_reg.gph"
+sc  ldip_r_reg_to9 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_ldip_reg.gph"
+
+* Dep
+sc   ldip_f_dep_to9 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_ldip_dep.gph"
+sc  ldip_r_dep_to9 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_ldip_dep.gph"
+
+* Com IDF
+sc   ldip_f_com_idf_to9 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_ldip_com_idf.gph"
+sc  ldip_r_com_idf_to9 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_ldip_com_idf.gph"
+
+* Com SSD
+sc   ldip_f_com_ssd_to9 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_ldip_com_ssd.gph"
+sc    ldip_r_com_ssd_to9 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_ldip_com_ssd.gph"
+
+**** Combinaison
+ 
+* Reg
+sc ldip_f_reg_to9 p_ldip, msize(tiny) name(f1, replace) title(fixe par région)
+sc ldip_r_reg_to9 p_ldip, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  ldip_f_dep_to9 p_ldip, msize(tiny) name(f2, replace) title(fixe par département)
+sc  ldip_r_dep_to9 p_ldip, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  ldip_f_com_idf_to9 p_ldip, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  ldip_r_com_idf_to9 p_ldip, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  ldip_f_com_ssd_to9 p_ldip, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  ldip_r_com_ssd_to9 p_ldip, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+
+*** Cumul des effets 
+
+* Par effets
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % de bas niveau de diplôme par effets)
+
+* Par niveau
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % de bas niveau de diplôme par niveau)
+
+
+
+##################################### 2007 ####################################
+
+
+** Base multiniveau **
+
+
+** EFFET CSP
+
+
+* Effet fixe - niveau région
+xtmixed to07t1 p_cs6 || reg :
+predict cs6_f_reg_to7, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to07t1 p_cs6 || reg : p_cs6
+predict cs6_r_reg_to7, fitted
+
+* Effet fixe - niveau département
+xtmixed to07t1 p_cs6 || dep :
+predict cs6_f_dep_to7, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to07t1 p_cs6 || dep : p_cs6
+predict cs6_r_dep_to7, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to07t1 p_cs6 if reg==11 || code :
+predict cs6_f_com_idf_to7, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to07t1 p_cs6 if reg==11 || code : p_cs6
+predict cs6_r_com_idf_to7, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to07t1 p_cs6 if dep=="93" || code :
+predict cs6_f_com_ssd_to7, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to07t1 p_cs6 if dep=="93" || code : p_cs6
+predict cs6_r_com_ssd_to7, fitted
+
+
+* Modèle complet non pertinent
+
+** Graphiques
+
+
+** CS6
+ 
+* Reg
+sc cs6_f_reg_to7 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_cs6_reg.gph"
+sc  cs6_r_reg_to7 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_cs6_reg.gph"
+
+* Dep
+sc   cs6_f_dep_to7 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_cs6_dep.gph"
+sc  cs6_r_dep_to7 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_cs6_dep.gph"
+
+* Com IDF
+sc   cs6_f_com_idf_to7 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_cs6_com_idf.gph"
+sc  cs6_r_com_idf_to7 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_cs6_com_idf.gph"
+
+* Com SSD
+sc   cs6_f_com_ssd_to7 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_cs6_com_ssd.gph"
+sc    cs6_r_com_ssd_to7 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_cs6_com_ssd.gph"
+
+**** Combinaison
+
+* Reg
+sc cs6_f_reg_to7 p_cs6, msize(tiny) name(f1, replace) title(fixe par région)
+sc cs6_r_reg_to7 p_cs6, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  cs6_f_dep_to7 p_cs6, msize(tiny) name(f2, replace) title(fixe par département)
+sc  cs6_r_dep_to7 p_cs6, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  cs6_f_com_idf_to7 p_cs6, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  cs6_r_com_idf_to7 p_cs6, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  cs6_f_com_ssd_to7 p_cs6, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  cs6_r_com_ssd_to7 p_cs6, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+* Par niveau
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % d'ouvriers par effets)
+
+* Par effets
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % d'ouvriers par niveau)
+
+
+
+*** Etrangers ***
+
+
+* Effet fixe - niveau région
+xtmixed to07t1 p_etr || reg :
+predict etr_f_reg_to7, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to07t1 p_etr || reg : p_etr
+predict etr_r_reg_to7, fitted
+
+* Effet fixe - niveau département
+xtmixed to07t1 p_etr || dep :
+predict etr_f_dep_to7, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to07t1 p_etr || dep : p_etr
+predict etr_r_dep_to7, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to07t1 p_etr if reg==11 || code :
+predict etr_f_com_idf_to7, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to07t1 p_etr if reg==11 || code : p_etr
+predict etr_r_com_idf_to7, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to07t1 p_etr if dep=="93" || code :
+predict etr_f_com_ssd_to7, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to07t1 p_etr if dep=="93" || code : p_etr
+predict etr_r_com_ssd_to7, fitted
+
+
+* Modèle complet non pertinent
+
+** Graphiques
+
+** etr
+ 
+* Reg
+sc etr_f_reg_to7 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_etr_reg.gph"
+sc  etr_r_reg_to7 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_etr_reg.gph"
+
+* Dep
+sc   etr_f_dep_to7 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_etr_dep.gph"
+sc  etr_r_dep_to7 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_etr_dep.gph"
+
+* Com IDF
+sc   etr_f_com_idf_to7 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_etr_com_idf.gph"
+sc  etr_r_com_idf_to7 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_etr_com_idf.gph"
+
+* Com SSD
+sc   etr_f_com_ssd_to7 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_etr_com_ssd.gph"
+sc    etr_r_com_ssd_to7 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_etr_com_ssd.gph"
+
+**** Combinaison
+ 
+* Reg
+sc etr_f_reg_to7 p_etr, msize(tiny) name(f1, replace) title(fixe par région)
+sc etr_r_reg_to7 p_etr, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  etr_f_dep_to7 p_etr, msize(tiny) name(f2, replace) title(fixe par département)
+sc  etr_r_dep_to7 p_etr, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  etr_f_com_idf_to7 p_etr, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  etr_r_com_idf_to7 p_etr, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  etr_f_com_ssd_to7 p_etr, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  etr_r_com_ssd_to7 p_etr, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+* Par effets
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % d'étrangers par effets)
+
+* Par niveau
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % d'étrangers par niveau)
+
+
+
+*** Diplôme ***
+
+
+* Effet fixe - niveau région
+xtmixed to07t1 p_ldip || reg :
+predict ldip_f_reg_to7, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to07t1 p_ldip || reg : p_ldip
+predict ldip_r_reg_to7, fitted
+
+* Effet fixe - niveau département
+xtmixed to07t1 p_ldip || dep :
+predict ldip_f_dep_to7, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to07t1 p_ldip || dep : p_ldip
+predict ldip_r_dep_to7, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to07t1 p_ldip if reg==11 || code :
+predict ldip_f_com_idf_to7, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to07t1 p_ldip if reg==11 || code : p_ldip
+predict ldip_r_com_idf_to7, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to07t1 p_ldip if dep=="93" || code :
+predict ldip_f_com_ssd_to7, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to07t1 p_ldip if dep=="93" || code : p_ldip
+predict ldip_r_com_ssd_to7, fitted
+
+
+* Modèle complet non pertinent
+
+** Graphiques
+
+** ldip
+ 
+* Reg
+sc ldip_f_reg_to7 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_ldip_reg.gph"
+sc  ldip_r_reg_to7 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_ldip_reg.gph"
+
+* Dep
+sc   ldip_f_dep_to7 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_ldip_dep.gph"
+sc  ldip_r_dep_to7 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_ldip_dep.gph"
+
+* Com IDF
+sc   ldip_f_com_idf_to7 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_ldip_com_idf.gph"
+sc  ldip_r_com_idf_to7 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_ldip_com_idf.gph"
+
+* Com SSD
+sc   ldip_f_com_ssd_to7 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\fixe_ldip_com_ssd.gph"
+sc    ldip_r_com_ssd_to7 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to7\rand_ldip_com_ssd.gph"
+
+**** Combinaison
+ 
+* Reg
+sc ldip_f_reg_to7 p_ldip, msize(tiny) name(f1, replace) title(fixe par région)
+sc ldip_r_reg_to7 p_ldip, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  ldip_f_dep_to7 p_ldip, msize(tiny) name(f2, replace) title(fixe par département)
+sc  ldip_r_dep_to7 p_ldip, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  ldip_f_com_idf_to7 p_ldip, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  ldip_r_com_idf_to7 p_ldip, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  ldip_f_com_ssd_to7 p_ldip, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  ldip_r_com_ssd_to7 p_ldip, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+*** Cumul des effets 
+
+* Par effets
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % de bas niveau de diplôme par effets)
+
+* Par niveau
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % de bas niveau de diplôme par niveau)
+
+
+
+##################################### 2010 ####################################
+
+
+** Base multiniveau **
+
+** EFFET CSP
+
+
+* Effet fixe - niveau région
+xtmixed to10t1 p_cs6 || reg :
+predict cs6_f_reg_to10, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to10t1 p_cs6 || reg : p_cs6
+predict cs6_r_reg_to10, fitted
+
+* Effet fixe - niveau département
+xtmixed to10t1 p_cs6 || dep :
+predict cs6_f_dep_to10, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to10t1 p_cs6 || dep : p_cs6
+predict cs6_r_dep_to10, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to10t1 p_cs6 if reg==11 || code :
+predict cs6_f_com_idf_to10, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to10t1 p_cs6 if reg==11 || code : p_cs6
+predict cs6_r_com_idf_to10, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to10t1 p_cs6 if dep=="93" || code :
+predict cs6_f_com_ssd_to10, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to10t1 p_cs6 if dep=="93" || code : p_cs6
+predict cs6_r_com_ssd_to10, fitted
+
+
+* Modèle complet non pertinent
+
+
+** Graphiques
+
+
+** CS6
+ 
+* Reg
+sc cs6_f_reg_to10 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_cs6_reg.gph"
+sc  cs6_r_reg_to10 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_cs6_reg.gph"
+
+* Dep
+sc   cs6_f_dep_to10 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_cs6_dep.gph"
+sc  cs6_r_dep_to10 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_cs6_dep.gph"
+
+* Com IDF
+sc   cs6_f_com_idf_to10 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_cs6_com_idf.gph"
+sc  cs6_r_com_idf_to10 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_cs6_com_idf.gph"
+
+* Com SSD
+sc   cs6_f_com_ssd_to10 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_cs6_com_ssd.gph"
+sc    cs6_r_com_ssd_to10 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_cs6_com_ssd.gph"
+
+**** Combinaison
+ 
+* Reg
+sc cs6_f_reg_to10 p_cs6, msize(tiny) name(f1, replace) title(fixe par région)
+sc cs6_r_reg_to10 p_cs6, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  cs6_f_dep_to10 p_cs6, msize(tiny) name(f2, replace) title(fixe par département)
+sc  cs6_r_dep_to10 p_cs6, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  cs6_f_com_idf_to10 p_cs6, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  cs6_r_com_idf_to10 p_cs6, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  cs6_f_com_ssd_to10 p_cs6, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  cs6_r_com_ssd_to10 p_cs6, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+* Par niveau
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % d'ouvriers par effets)
+
+* Par effets
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % d'ouvriers par niveau)
+
+
+*** Etrangers ***
+
+
+* Effet fixe - niveau région
+xtmixed to10t1 p_etr || reg :
+predict etr_f_reg_to10, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to10t1 p_etr || reg : p_etr
+predict etr_r_reg_to10, fitted
+
+* Effet fixe - niveau département
+xtmixed to10t1 p_etr || dep :
+predict etr_f_dep_to10, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to10t1 p_etr || dep : p_etr
+predict etr_r_dep_to10, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to10t1 p_etr if reg==11 || code :
+predict etr_f_com_idf_to10, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to10t1 p_etr if reg==11 || code : p_etr
+predict etr_r_com_idf_to10, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to10t1 p_etr if dep=="93" || code :
+predict etr_f_com_ssd_to10, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to10t1 p_etr if dep=="93" || code : p_etr
+predict etr_r_com_ssd_to10, fitted
+
+
+* Modèle complet non pertinent
+
+** Graphiques
+
+** etr
+ 
+* Reg
+sc etr_f_reg_to10 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_etr_reg.gph"
+sc  etr_r_reg_to10 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_etr_reg.gph"
+
+* Dep
+sc   etr_f_dep_to10 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_etr_dep.gph"
+sc  etr_r_dep_to10 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_etr_dep.gph"
+
+* Com IDF
+sc   etr_f_com_idf_to10 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_etr_com_idf.gph"
+sc  etr_r_com_idf_to10 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_etr_com_idf.gph"
+
+* Com SSD
+sc   etr_f_com_ssd_to10 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_etr_com_ssd.gph"
+sc    etr_r_com_ssd_to10 p_etr, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_etr_com_ssd.gph"
+
+**** Combinaison
+ 
+* Reg
+sc etr_f_reg_to10 p_etr, msize(tiny) name(f1, replace) title(fixe par région)
+sc etr_r_reg_to10 p_etr, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  etr_f_dep_to10 p_etr, msize(tiny) name(f2, replace) title(fixe par département)
+sc  etr_r_dep_to10 p_etr, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  etr_f_com_idf_to10 p_etr, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  etr_r_com_idf_to10 p_etr, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  etr_f_com_ssd_to10 p_etr, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  etr_r_com_ssd_to10 p_etr, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+* Par effets
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % d'étrangers par effets)
+
+* Par niveau
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % d'étrangers par niveau)
+
+
+*** Diplôme ***
+
+
+
+* Effet fixe - niveau région
+xtmixed to10t1 p_ldip || reg :
+predict ldip_f_reg_to10, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to10t1 p_ldip || reg : p_ldip
+predict ldip_r_reg_to10, fitted
+
+* Effet fixe - niveau département
+xtmixed to10t1 p_ldip || dep :
+predict ldip_f_dep_to10, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to10t1 p_ldip || dep : p_ldip
+predict ldip_r_dep_to10, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to10t1 p_ldip if reg==11 || code :
+predict ldip_f_com_idf_to10, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to10t1 p_ldip if reg==11 || code : p_ldip
+predict ldip_r_com_idf_to10, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to10t1 p_ldip if dep=="93" || code :
+predict ldip_f_com_ssd_to10, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to10t1 p_ldip if dep=="93" || code : p_ldip
+predict ldip_r_com_ssd_to10, fitted
+
+
+* Modèle complet non pertinent
+
+** Graphiques
+
+** ldip
+ 
+* Reg
+sc ldip_f_reg_to10 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_ldip_reg.gph"
+sc  ldip_r_reg_to10 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_ldip_reg.gph"
+
+* Dep
+sc   ldip_f_dep_to10 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_ldip_dep.gph"
+sc  ldip_r_dep_to10 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_ldip_dep.gph"
+
+* Com IDF
+sc   ldip_f_com_idf_to10 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_ldip_com_idf.gph"
+sc  ldip_r_com_idf_to10 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_ldip_com_idf.gph"
+
+* Com SSD
+sc   ldip_f_com_ssd_to10 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\fixe_ldip_com_ssd.gph"
+sc    ldip_r_com_ssd_to10 p_ldip, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\to10\rand_ldip_com_ssd.gph"
+
+**** Combinaison
+ 
+* Reg
+sc ldip_f_reg_to10 p_ldip, msize(tiny) name(f1, replace) title(fixe par région)
+sc ldip_r_reg_to10 p_ldip, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  ldip_f_dep_to10 p_ldip, msize(tiny) name(f2, replace) title(fixe par département)
+sc  ldip_r_dep_to10 p_ldip, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  ldip_f_com_idf_to10 p_ldip, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  ldip_r_com_idf_to10 p_ldip, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  ldip_f_com_ssd_to10 p_ldip, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  ldip_r_com_ssd_to10 p_ldip, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+*** Cumul des effets 
+
+* Par effets
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % de bas niveau de diplôme par effets)
+
+* Par niveau
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % de bas niveau de diplôme par niveau)
+
+
+#########################################  Evolution dans le temps ###########################################
+
+
+sc cs6_r_com_idf_to7 p_cs6 ,msize(tiny) name(x, replace) title(2007) 
+sc cs6_r_com_idf_to9 p_cs6 ,msize(tiny) name(y, replace) title(2009)
+sc cs6_r_com_idf_to10 p_cs6 ,msize(tiny) name(z, replace) title(2010)
+
+graph combine (x y z) , xcommon ycommon row(1) title(Effet du % d'ouvriers au cours du temps.)
+
+sc ldip_r_com_idf_to7 p_ldip ,msize(tiny) name(x, replace) title(2007) 
+sc ldip_r_com_idf_to9 p_ldip ,msize(tiny) name(y, replace) title(2009)
+sc ldip_r_com_idf_to10 p_ldip ,msize(tiny) name(z, replace) title(2010)
+
+graph combine (x y z) , xcommon ycommon row(1) title(Effet du % de faiblement diplômés au cours du temps.)
+
+sc etr_r_com_idf_to7 p_etr ,msize(tiny) name(x, replace) title(2007) 
+sc etr_r_com_idf_to9 p_etr ,msize(tiny) name(y, replace) title(2009)
+sc etr_r_com_idf_to10 p_etr ,msize(tiny) name(z, replace) title(2010)
+
+graph combine (x y z) , xcommon ycommon row(1) title(Effet du % d'étrangers au cours du temps.)
+
+</pre>
+
+
+<pre>
 
 ** Base multiniveau **
 
