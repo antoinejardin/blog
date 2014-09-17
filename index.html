@@ -87,6 +87,107 @@
 
 <div id="main">
 
+<h1><a id="170514">17/09/2014 - Syntaxe propre pour le multiniveau</a></h1>
+<pre>
+
+
+** Base multiniveau **
+
+* Effet fixe - niveau région
+xtmixed to09 p_cs6 || reg :
+predict cs6_f_reg_to9, fitted
+
+* Effet aléatoire - niveau région
+xtmixed to09 p_cs6 || reg : p_cs6
+predict cs6_r_reg_to9, fitted
+
+* Effet fixe - niveau département
+xtmixed to09 p_cs6 || dep :
+predict cs6_f_dep_to9, fitted
+
+* Effet aléatoire - niveau département
+xtmixed to09 p_cs6 || dep : p_cs6
+predict cs6_r_dep_to9, fitted
+
+* Effet fixe - niveau commune en IDF
+xtmixed to09 p_cs6 if reg==11 || code :
+predict cs6_f_com_idf_to9, fitted
+
+* Effet aléatoire - niveau commune en IDF
+xtmixed to09 p_cs6 if reg==11 || code : p_cs6
+predict cs6_r_com_idf_to9, fitted
+
+* Effet fixe - niveau commune en SSD
+xtmixed to09 p_cs6 if dep=="93" || code :
+predict cs6_f_com_ssd_to9, fitted
+
+* Effet aléatoire - niveau commune en SSD
+xtmixed to09 p_cs6 if dep=="93" || code : p_cs6
+predict cs6_r_com_ssd_to9, fitted
+
+
+* Modèle complet non pertinent
+
+
+** Graphiques
+
+
+** CS6
+ 
+* Reg
+sc cs6_f_reg_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_cs6_reg.gph"
+sc  cs6_r_reg_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_cs6_reg.gph"
+
+* Dep
+sc   cs6_f_dep_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_cs6_dep.gph"
+sc  cs6_r_dep_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_cs6_dep.gph"
+
+* Com IDF
+sc   cs6_f_com_idf_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_cs6_com_idf.gph"
+sc  cs6_r_com_idf_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_cs6_com_idf.gph"
+
+* Com SSD
+sc   cs6_f_com_ssd_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\fixe_cs6_com_ssd.gph"
+sc    cs6_r_com_ssd_to9 p_cs6, msize(tiny)
+graph save Graph "C:\Users\Antoine\Desktop\GRAPH\TO9\rand_cs6_com_ssd.gph"
+
+**** Combinaison
+
+* Reg
+sc cs6_f_reg_to9 p_cs6, msize(tiny) name(f1, replace) title(fixe par région)
+sc cs6_r_reg_to9 p_cs6, msize(tiny) name(r1, replace) title(aléatoire par région)
+
+* Dep
+sc  cs6_f_dep_to9 p_cs6, msize(tiny) name(f2, replace) title(fixe par département)
+sc  cs6_r_dep_to9 p_cs6, msize(tiny) name(r2, replace) title(aléatoire par département)
+
+* Com IDF
+sc  cs6_f_com_idf_to9 p_cs6, msize(tiny) name(f3, replace) title(fixe par commune (IDF))
+sc  cs6_r_com_idf_to9 p_cs6, msize(tiny) name(r3, replace) title(aléatoire par commune (IDF) )
+
+* Com SSD
+sc  cs6_f_com_ssd_to9 p_cs6, msize(tiny) name(f4, replace) title(fixe par commune (SSD))
+sc  cs6_r_com_ssd_to9 p_cs6, msize(tiny) name(r4, replace) title(aléatoire par commune (SSD) )
+
+
+* Par niveau
+graph combine (f1 r1 f2 r2 f3 r3 f4 r4), xcommon ycommon title(Effet du % d'ouvriers par effets)
+
+* Par effets
+graph combine (f1 f2 f3 f4 r1 r2 r3 r4) , xcommon ycommon title(Effet du % d'ouvriers par niveau)
+
+<img src="https://lut.im/7baJtOf1/X84RYsCe" width="800">
+	
+	
+</pre>
+
 <h1><a id="160514_3">16/09/2014 - Le multiniveaux : approche intuitive et modélisation complexe</a></h1>
 
 <pre>
