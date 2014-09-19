@@ -33,7 +33,8 @@
 
 <div id="history">
 <ul>
-<li><a href="160514_3">16/09/2014 - Le multiniveaux : approche intuitive et modélisation complexe</a></li>
+<li><a href="#190914">19/09/214 - Régressions logistiques multiniveaux</a></li>
+<li><a href="#160514_3">16/09/2014 - Le multiniveaux : approche intuitive et modélisation complexe</a></li>
 <li><a href="#160514_2">16/09/2014 - Faire varier les niveaux d'analyse avec xtmixed</a></li>
 <li><a href="#160914">16/09/2014 - Régressions multiniveaux et écologiques</a></li>
 <li><a href="#150914">15/09/2014 - R - PCA et sélections de variables </a></li>
@@ -86,6 +87,150 @@
 </div>
 
 <div id="main">
+
+
+<h1><a id="190914">19/09/214 - Régression logistique multiniveaux</a></h1>
+
+<pre>
+
+# On utilise d'abord une variable indépendante quantitative (résultats plus simples à présenter graphiquement)
+
+recode agea (999=.), gen (age)
+(26 differences between agea and age)
+
+# Logistique simple
+
+logit relig age
+
+Iteration 0:   log likelihood = -14191.584  
+Iteration 1:   log likelihood = -13809.088  
+Iteration 2:   log likelihood = -13808.602  
+Iteration 3:   log likelihood = -13808.602  
+
+Logistic regression                               Number of obs   =      20686
+                                                  LR chi2(1)      =     765.96
+                                                  Prob > chi2     =     0.0000
+Log likelihood = -13808.602                       Pseudo R2       =     0.0270
+
+------------------------------------------------------------------------------
+       relig |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         age |   .0211436   .0007796    27.12   0.000     .0196156    .0226717
+       _cons |  -.7841393   .0400099   -19.60   0.000    -.8625572   -.7057215
+------------------------------------------------------------------------------
+
+predict mu1
+(option pr assumed; Pr(relig))
+(26 missing values generated)
+
+<img src="https://lut.im/W47dpUKR/FQkUiZei" width="800">
+
+
+# Logistique multiniveaux à effets fixes
+
+xtmelogit relig age || pays:
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -13314.375  (not concave)
+Iteration 1:   log likelihood =  -13311.48  
+Iteration 2:   log likelihood = -13311.316  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -13311.316  
+Iteration 1:   log likelihood = -13311.221  
+Iteration 2:   log likelihood =  -13311.22  
+
+Mixed-effects logistic regression               Number of obs      =     20686
+Group variable: pays                            Number of groups   =        10
+
+                                                Obs per group: min =      1623
+                                                               avg =    2068.6
+                                                               max =      2944
+
+Integration points =   7                        Wald chi2(1)       =    712.44
+Log likelihood =  -13311.22                     Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+       relig |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         age |   .0215006   .0008055    26.69   0.000     .0199218    .0230794
+       _cons |   -.787238   .1655119    -4.76   0.000    -1.111635   -.4628407
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects Parameters  |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+pays: Identity               |
+                   sd(_cons) |   .5067557   .1145899      .3253277    .7893621
+------------------------------------------------------------------------------
+LR test vs. logistic regression: chibar2(01) =   994.76 Prob>=chibar2 = 0.0000
+
+predict mu2, mu
+(26 missing values generated)
+
+
+<img src="https://lut.im/9Nhuv3mO/X4uULiSW" width="800">
+
+
+
+# Logistique multiniveaux à effets aléatoires.
+
+xtmelogit relig age || pays: age
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -13321.571  (not concave)
+Iteration 1:   log likelihood = -13304.507  (not concave)
+Iteration 2:   log likelihood = -13296.668  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -13296.668  (not concave)
+Iteration 1:   log likelihood =  -13292.28  (not concave)
+Iteration 2:   log likelihood = -13288.334  (not concave)
+Iteration 3:   log likelihood = -13277.951  
+Iteration 4:   log likelihood = -13276.179  
+Iteration 5:   log likelihood =  -13275.77  
+Iteration 6:   log likelihood =  -13275.49  
+Iteration 7:   log likelihood = -13275.488  
+
+Mixed-effects logistic regression               Number of obs      =     20686
+Group variable: pays                            Number of groups   =        10
+
+                                                Obs per group: min =      1623
+                                                               avg =    2068.6
+                                                               max =      2944
+
+Integration points =   7                        Wald chi2(1)       =     79.10
+Log likelihood = -13275.488                     Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+       relig |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         age |   .0227661   .0025598     8.89   0.000     .0177489    .0277833
+       _cons |  -.8480708   .1650972    -5.14   0.000    -1.171655   -.5244863
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects Parameters  |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+pays: Independent            |
+                     sd(age) |   .0076514   .0018989      .0047043    .0124448
+                   sd(_cons) |   .5045974   .1199723      .3166392    .8041283
+------------------------------------------------------------------------------
+LR test vs. logistic regression:     chi2(2) =  1066.23   Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+predict mu3, mu
+(26 missing values generated)
+
+
+<img src="https://lut.im/LUkgno0q/ZU0Qi9Nr" width="800">
+	
+</pre>
 
 
 <h1><a id="170514">17/09/2014 - Syntaxe propre pour le multiniveau</a></h1>
