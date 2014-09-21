@@ -33,6 +33,7 @@
 
 <div id="history">
 <ul>
+<li><a id="210914">21/09/2014 - Identifier une pente spécifique dans une régression multiniveaux</a></li>
 <li><a href="#190914">19/09/214 - Régressions logistiques multiniveaux</a></li>
 <li><a href="#160514_3">16/09/2014 - Le multiniveaux : approche intuitive et modélisation complexe</a></li>
 <li><a href="#160514_2">16/09/2014 - Faire varier les niveaux d'analyse avec xtmixed</a></li>
@@ -88,9 +89,21 @@
 
 <div id="main">
 
+<h1><a id="210914">Identifier une pente spécifique dans une régression multiniveau</a></h1>
+<pre>
+
+## On peut chercher à identifier des pentes spécifiques
+# Pour cela, on utilise la superposition des graphiques
+
+sc v1 v2 if dep=="93", mc(black) msize(tiny)|| sc  v1 v2 if code=="93005", mc(blue)
+
+<img src="https://lut.im/WhDF6R4b/8Ekqlfqf" width="800">
+
+# En bleu, la zone sélectionnée
+
+</pre>
 
 <h1><a id="190914">19/09/214 - Régression logistique multiniveaux</a></h1>
-
 <pre>
 
 # On utilise d'abord une variable indépendante quantitative (résultats plus simples à présenter graphiquement)
