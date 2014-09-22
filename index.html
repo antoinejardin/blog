@@ -89,6 +89,104 @@
 
 <div id="main">
 
+<h1><a id="220914">Stata - Calcul en masse de régressions indépendantes</h1>
+<pre>
+
+## Cet exemple est inspiré du tutorial suivant : http://data.princeton.edu/pop510/lang2.html ##
+
+# On utilise la commande statsby
+# Avec celle ci, on estime xa, xb, xc, valeurs de la constante et des coefficients pour les deux régresseurs
+# On calcule un xa xb xc pour chaque commune (variable code)
+# A condition que la commune comporte au moins 10 bureaux de vote
+# On sauvegarde le résultat dans un dataset nommé OLS
+
+statsby xa=_b[_cons] xb=_b[p_cs6] xc=_b[p_etr], by(code) saving(ols,	replace)	:	regress	to09	c.p_cs6##c.p_etr	if	numpoll>=10
+(running regress on estimation sample)
+
+command:  regress to09 c.p_cs6##c.p_etr if numpoll>=10
+sa:  _b[_cons]
+sb:  _b[p_cs6]
+sc:  _b[p_etr]
+by:  code
+
+Statsby groups
+1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5 
+xxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxx.xx..xx..xx.x    50
+xxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxx.xxxxx........   100
+.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   150
+.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xx...   200
+............x...x.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   250
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   300
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   350
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   400
+xx..xx..x...x..xxxxxx.x.x..xx....x.x..xx...xxx.xxx   450
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   500
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   550
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   600
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   650
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   700
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   750
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   800
+xxxx..xxx...x..xxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxx   850
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   900
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   950
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  1000
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx........xx..  1050
+.x......x.x.xxx.x..x...x.xx.x..x.xxxx.xx.xxx...x..  1100
+.....x.......x.xx.x.xxxx.xx.xx.xx..x.x.x.x.xxx..x.  1150
+........x.xxx.............................xx......  1200
+.x.xxxx........xxx.xxxxxxxxxxxxxx.xxxxxxxxxxxxxxxx  1250
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxx  1300
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  1350
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  1400
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxx  1450
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  1500
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  1550
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  1600
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  1650
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxx  1700
+xxxxxxxxxxxxxxxxx.xx..x....xxx..xxxx...x..........  1750
+.......xxx...x...x..x.............................  1800
+...x......x.x.................xxx..xxxx..x.xxx....  1850
+.........x..xxx..x..xxxxx..xx..........x..........  1900
+..........x...x.....x........x...................x  1950
+..........x.......................................  2000
+............xx
+
+
+# on ouvre le dataset OLS
+
+use ols
+
+# On peut alors lister les valeurs
+
+list xa xb xc in 1/100 if sa !=. , noo clean
+
+           xa          xb          xc  
+     49.96838   -.4279612    .1522969  
+     52.78135   -.6799241   -1.413004  
+     50.77018   -.4634046    .0496405  
+     55.41978   -.7300375   -1.330037  
+     49.40392   -.5293525   -.6993962  
+     52.53788   -.6603755   -1.505755  
+     50.75808   -.2102391   -1.051468  
+     39.68076    .6149334     -.44797  
+     56.33086   -.8241126   -1.974604  
+      29.4404    .5362971    2.167218  
+     49.42233    -.572734    .1117042  
+     57.91374   -.9895416   -.6107507  
+     32.80398     .066948    1.594798  
+    -7.311819    2.692374    4.367924  
+     43.48525   -.3300791    .0880475  
+     39.08242   -.2814568     -.86502  
+     39.26466   -.3470989    .0405313  
+
+# On peut les représenter graphiquement
+
+<img src="https://lut.im/zarFGnK0/xP1XAEey" width="800">
+
+</pre>
+
 <h1><a id="210914">Identifier une pente spécifique dans une régression multiniveau</a></h1>
 <pre>
 
