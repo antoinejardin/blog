@@ -90,6 +90,15 @@
 
 <div id="main">
 
+<pre>
+use "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\geocode.dta", clear
+statsby xa=_b[_cons]  xc=_b[p_etr], by(code) saving(ols, replace) : regress to09 p_etr if numpoll>=5 & reg==11
+use ols.dta, replace
+outsheet using "C:\Users\Antoine\Desktop\data.csv", comma replace
+
+
+Import - Jonction QGIS
+</pre>
 <h1><a id="220914">Stata - Calcul en masse de régressions indépendantes</h1>
 <pre>
 
