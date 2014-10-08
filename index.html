@@ -90,6 +90,189 @@
 
 <div id="main">
 
+<h1>Notes pour moi même</h1>
+<pre>
+	
+** Append Fichiers
+* Une variable de temps
+* Une variable pour chaque type de résultats électoraux
+* Ex : une variable taux de participation commune
+
+**** Le reste de la structure DOIT être identique
+**** => Beaucoup de Data management
+
+append using "C:\Users\Antoine\Desktop\xp2007_2.dta"
+append using "C:\Users\Antoine\Desktop\xp2009.dta"
+append using "C:\Users\Antoine\Desktop\xp2010_1.dta"
+append using "C:\Users\Antoine\Desktop\xp2010_2.dta"
+
+* Variable temps
+
+tab time
+
+** Effet précarité
+
+* Temps x Fixe
+
+xtmixed vote preca || time:
+predict fixed_time, fitted
+
+* Temps x Random
+
+xtmixed vote preca || time: preca
+predict random_time, fitted
+
+* Temps x Fixe x Ville x Fixe
+
+xtmixed vote preca || time: || code:
+predict fixed_time_fixed_com, fitted
+
+* Temps x Fixe x Ville x Random
+
+xtmixed vote preca || time: || code: preca
+predict fixed_time_random_com, fitted
+
+* Temps x Random x Ville x Random
+
+xtmixed vote preca || time: preca || code: preca
+predict random_time_random_com, fitted
+
+
+** Effet % ETR
+
+xtmixed vote  p_etr || time:
+predict f_t_etr, fitted
+
+xtmixed vote  p_etr || time:  p_etr
+predict r_t_etr, fitted
+
+xtmixed vote  p_etr || time: || code:
+predict f_t_f_c_etr, fitted
+
+xtmixed vote  p_etr || time: || code: p_etr
+predict  f_t_r_c_etr, fitted
+
+xtmixed vote  p_etr || time: p_etr || code: p_etr
+predict  r_t_r_c_etr, fitted
+
+
+**** Utilisation des résultats
+
+sc r_t_r_c_etr p_etr [w=pop] if  codedep=="93", msize(vtiny) ms(oh) mc(blue) by(time)     ///
+|| sc r_t_r_c_etr p_etr [w=pop] if  codedep=="92", msize(vtiny) ms(oh) mc(red) by(time)   ///
+|| sc r_t_r_c_etr p_etr [w=pop] if  codedep=="75", msize(vtiny) ms(oh) mc(black) by(time)
+
+
+*** Régressions indépendantes
+* Note : séparation par temps ET commune
+
+statsby xa=_b[_cons]  xc=_b[p_etr] r2=e(r2), by(code time) saving(ols, replace) : regress vote p_etr
+
+** Base de données
+
+use ols.dta, replace
+
+** Graphiques généraux
+
+sc xc r2 if r2 !=. , by(time)
+sc xc r2 if r2 !=. &  xc < 10, by(time)
+sc xc r2 if r2 !=. &  xc < 10 & xc >-10, by(time)
+
+* Trajectoire des effets dans le temps 
+
+sort time
+
+twoway connected xc r2 if r2 !=. &  xc < 10 & xc >-10 & code=="75120", mlabel(time)
+twoway connected xc r2 if r2 !=. &  xc < 10 & xc >-10 & code=="75116", mlabel(time)
+twoway connected xc r2 if r2 !=. &  xc < 10 & xc >-10 & code=="75118", mlabel(time)
+twoway connected xc r2 if r2 !=. &  xc < 10 & xc >-10 & code=="75113", mlabel(time)
+
+encode  code, gen (coded)
+
+list code
+
+numlabel coded, add
+destring code, gen (id)
+
+twoway connected xc r2 if  id<76000, mlabel(time)
+twoway connected xc r2 if  id<76000, mlabel(time) by(code)
+twoway connected xc r2 if  id<76000,  by(code)
+
+graph save Graph "C:\Users\Antoine\Desktop\traj_etr.gph"
+
+
+** Fichier origine
+statsby xa=_b[_cons]  xb=_b[p_etr] xc=_b[p_ldip] r2=e(r2), by(code time) saving(ols, replace) : regress vote p_etr  p_ldip
+
+** OLS
+use ols.dta, replace
+
+sort time
+encode  code, gen (coded)
+
+list code
+numlabel coded, add
+
+destring code, gen (id)
+
+recode id (75000/75999 = 75) (77000/77999 = 77) (78000 /78999 = 78) (91000/91999 = 91) (92000/92999 = 92) (93000/93999 = 93) (94000/94999 = 94) (95000/95999 = 95), gen (dep)
+
+tab dep
+
+sc  xb  xc  [w=r2] if dep==92, msize(tiny) by( time)
+
+
+
+use C:\Users\Antoine\Desktop\xp2007_1.dta , replace
+statsby xa=_b[_cons]  xb=_b[p_etr] xc=_b[p_ldip] r2=e(r2), by(code time) saving(ols, replace) : regress vote c.p_etr##c.p_ldip [w=pop]
+
+
+
+gen limit=0
+replace limit = 1 if xb<10 & xb>-10 & xc<10 & xc>-10
+
+sc  xb  xc  [w=r2] if limit==1, msize(tiny) by( time)
+sc  xb  xc  [w=r2] if limit==1, msize(tiny) by(dep)
+sc  xb  xc  [w=r2] if limit==1 & dep==93, msize(tiny) by(time)
+sc  xb  xc  [w=r2] if limit==1 & dep==93, msize(tiny)
+
+tab time
+recode time (2007.1 = 1) (2007.2 =2) (2009 =3) (2010.1 = 4 ) (2010.2 = 5), gen (elec)
+tab elec
+
+sc  xb  xc  [w=r2] if limit==1 & dep==93 & elec==1, msize(tiny) mc(blue)
+
+sc  xb  xc  [w=r2] if limit==1 & dep==93 & elec==1, msize(tiny) mc(blue) || sc  xb  xc  [w=r2] if limit==1 & dep==93  & elec==3, msize(tiny) mc(red) || sc  xb  xc  [w=r2] if limit==1 & dep==93 & elec==4, msize(tiny) mc(black)
+graph save Graph "C:\Users\Antoine\Desktop\SSD_time.gph"
+
+sc  xb  xc  [w=r2] if limit==1 & dep==75 & elec==1, msize(tiny) mc(blue) || sc  xb  xc  [w=r2] if limit==1 & dep==75  & elec==3, msize(tiny) mc(red) || sc  xb  xc  [w=r2] if limit==1 & dep==75 & elec==4, msize(tiny) mc(black)
+
+graph save Graph "C:\Users\Antoine\Desktop\Paris_temps.gph"
+
+sc  xb  xc  [w=r2] if limit==1 & dep==92 & elec==1, msize(tiny) mc(blue) || sc  xb  xc  [w=r2] if limit==1 & dep==92  & elec==3, msize(tiny) mc(red) || sc  xb  xc  [w=r2] if limit==1 & dep==92 & elec==4, msize(tiny) mc(black)
+graph save Graph "C:\Users\Antoine\Desktop\HDS_temps.gph"
+
+graph combine "C:\Users\Antoine\Desktop\SSD_time.gph" "C:\Users\Antoine\Desktop\Paris_temps.gph" "C:\Users\Antoine\Desktop\HDS_temps.gph", ycommon xcommon
+
+****
+
+xtmixed vote  p_ldip || time:
+predict f_t_ldip, fitted
+
+xtmixed vote  p_ldip || time:  p_ldip
+predict r_t_ldip, fitted
+
+xtmixed vote  p_ldip || time: || code:
+predict f_t_f_c_ldip, fitted
+
+xtmixed vote  p_ldip || time: || code: p_ldip
+predict  f_t_r_c_ldip, fitted
+
+xtmixed vote  p_ldip || time: p_ldip || code: p_ldip
+predict  r_t_r_c_ldip, fitted
+</pre>
+
+<h1> Batch linear regressions</h1>
 <pre>
 use "C:\Users\Antoine\Desktop\DATASET\FR\Cartelec\geocode.dta", clear
 statsby xa=_b[_cons]  xc=_b[p_etr], by(code) saving(ols, replace) : regress to09 p_etr if numpoll>=5 & reg==11
